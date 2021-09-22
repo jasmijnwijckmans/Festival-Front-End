@@ -19,25 +19,27 @@ function SendMessage(){
 //GetMessage(api_url);
 
 function GetMessage(){
-fetch("")
-  .then((response) => response.json())
-  .then((data) => {
-    appendData(data);
+    fetch("https://api.genderize.io/?name=luc") //API list of messages
+    .then((response) => response.json())  //What's the difference 
+    .then(function(data) {
+        console.log(data);
+        appendData(data); 
   })
   .catch(error => {
     console.error(error);
 });
 }
 function appendData(data){
-    var MessageData = document.getElementById("myData");
-    for (var i=0; i<data.length; i++) {
-        var p = document.createElement("p");
-        p.innerHTML = 'User ID: '+ data[i].userID + ',  ' + data[i].messageText;
+    var MessageData = document.getElementById("myData"); // if API contains more messages --> need a for loop
+     var p = document.createElement("p");
+        p.innerHTML = data.gender + " ;by User: " + data.name;
         MessageData.appendChild(p);
-    }
+    
 }
 
 GetMessage();
+
+
 
 
 
