@@ -9,8 +9,15 @@ function SendMessage(){
 
   }
 
-function GoToSwitch(){
-    window.location.href = "ChatSwitch.html"
- 
-}
+const api_url = "https://api.agify.io/?name=bella"
 
+async function GetMessage(url){
+    const message = await fetch(url);
+    var data = await message.json();
+    console.log(data);
+}
+GetMessage(api_url);
+
+function NewGetMessage(){
+    fetch("https://api.agify.io/?name=bella");
+}
