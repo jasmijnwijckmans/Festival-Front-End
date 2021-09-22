@@ -3,21 +3,6 @@ function SendMessage(){
     var message = document.getElementById("messagebox");
     alert(message.value + " has been send");
     console.log(message.value);
-
-    var myJSON = "{\"messageText\": \"" + document.getElementById("messagebox").value + "\",\"timestamp\":\""+ document.getElementById("messagebox").time +"\" }"
-    fetch("https://api.genderize.io/?name=luc", {
-            method: "post",
-            headers: {
-                "accept" : "text/plain",
-                "Content-Type": "application/json"
-            },
-            body: myJSON
-        })
-
-
-
-
-
     GetMessage();
 
 
