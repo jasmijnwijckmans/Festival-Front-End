@@ -3,7 +3,25 @@ function SendMessage(){
     var message = document.getElementById("messagebox");
     alert(message.value + " has been send");
     console.log(message.value);
+
+    let dataReceived = "";
+    var myJSON = "{\"messageText\": \"" + document.getElementById("messagebox").value + "\",\"timestamp\":\""+ document.getElementById("messagebox").value +"\"}"
+    fetch("", {
+            method: "post",
+            headers: {
+                "accept" : "text/plain",
+                "Content-Type": "application/json"
+                },
+            body: myJSON
+            })
+    .then(response => response.json())
+    .then(json => console.log(json))       
+    .catch(error => {
+         console.error(error);
+    });
     GetMessage();
+
+
 
 
    //var p =  document.createElement("p");
