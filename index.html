@@ -2,26 +2,45 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="InspectionOverview">
-  <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="InspectionOverview">
+    <meta name="author" content="">
 
-  //<title>Inspection Overview</title>
+    <title>FESTIVAL</title>
 
-  //<link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">
-  <link rel="stylesheet" href="styles.css">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">
+    <link rel="stylesheet" href="styles.css">
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-  <script src="scripts.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="GeneralScripts.js"></script>
+    <script src="IndexScripts.js"></script>
 </head>
 
 <body>
-  //<input type="button" value="GoTo Login" onclick="GoToLogin();">
-  //<input type="button" value="GoTo Overview" onclick="GoToOverview();">
-  //<input type="button" value="GoTo Dashboard" onclick="GoToDashboard();">
-  //<input type="button" value="GoTo Custom Reporting" onclick="GoToCustomReportsOverview();">
+    <input type="button" value="GoTo Login" onclick="GoToLogin();">
+    <p>Welkom op het Ciber Festival!</p>
+
+    <br>
+    <div>
+        <div id="SwitchImage">
+            <img id="Image" width="600" height="400"
+                 src="https://tse4.mm.bing.net/th/id/OIP.co7Q8cJicqhZWoOfCh7TqgHaEx?pid=ImgDet&rs=1" onclick="NextImage();">
+        </div>
+    </div>
+
+    <br>
+    <div>
+        <div id="RegisterImage">
+            <img id="Register"
+                 src="https://tse4.mm.bing.net/th/id/OIP.8NNkbZYxLd0o-5Cb3RrDkQHaCy?pid=ImgDet&rs=1" onclick="RegisterHere();">
+        </div>
+    </div>
+    <input type="button" value="GoTo Register" onclick="GoToRegister();">
+
+    <br>
+    <input type="button" value="?" onclick="GoToHelp();">
 </body>
 
 </html>

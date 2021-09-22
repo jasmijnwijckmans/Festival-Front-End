@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="InspectionOverview">
+    <meta name="author" content="">
+
+    <title>FESTIVAL</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="GeneralScripts.js"></script>
+    <script src="LoginPageScripts.js"></script>
+</head>
+
+<body>
+    <div class="LoginScreen">
+        <input type="button" value="DEBUG: GoToHome" onclick="GoToHome();">
+        <input type="button" value="DEBUG: GoTodetails" onclick="GoToDetails();">
+        <input type="button" value="DEBUG: Authenticate" onclick="SendAuthenticationKey();">
+        <div class="LoginDetails">
+            <div>
+                <form id="formElem">
+                    <label for="Username">Username:</label><br>
+                    <input style="width: 100%;" type="text" id="Username"><br>
+                    <label for="Password">Password:</label><br>
+                    <input style="width: 100%;" type="password" id="Password"><br>
+                    <p id="LoginErrorMessage" style="color: red"></p>
+                    <input type="button" value="Login" onclick="Login()">
+                </form>
+            </div>
+        </div>
+        <div class="FootBar" style="text-align:center; font-style:italic;">
+            <p>Lorem Ipsum very important text</p>
+        </div>
+    </div>
+</body>
+
+</html>
