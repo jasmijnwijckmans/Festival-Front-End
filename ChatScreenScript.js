@@ -75,9 +75,19 @@ function NewGetMessage(){
     .then(function(returndata){
         LastUpdated = new Date();
         for(var i=0;i<returndata.data.length;i++){
-        var p = document.createElement("p");
-        p.innerHTML = returndata.data[i].messageText + " ;by User: " + returndata.data[i].userName;
-        document.getElementById("myData").appendChild(p);
+        var temp = "";
+        returndata.data.forEach((itemData) => {
+              temp += "<tr>";
+              temp += "<td>" + itemData[i].messageText + "</td>";
+              temp += "<td>" + itemData[i].timestamp + "</td>";
+              temp += "<td>" + itemData[i].userName + "</td>";
+              temp += "<td>" + itemData[i].userRole + "</td></tr>";
+      
+            });
+        document.getElementById("myData").innerHTML = temp;
+        //var p = document.createElement("p");
+        //p.innerHTML = returndata.data[i].messageText + " ;by User: " + returndata.data[i].userName;
+        //document.getElementById("myData").appendChild(p);
         }
     })
     .catch(error => {
