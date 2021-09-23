@@ -19,28 +19,34 @@
 </head>
 
 <body>
-    <input type="button" value="GoTo Login" onclick="GoToLogin();">
-    <p>Welkom op het Ciber Festival!</p>
+    <div class="HomeScreen">
+        <input type="button" value="GoTo Login" onclick="GoToLogin();">
+        <p>Welkom op het Ciber Festival!</p>
 
-    <br>
-    <div>
-        <div id="SwitchImage">
-            <img id="Image" width="600" height="400"
-                 src="https://tse4.mm.bing.net/th/id/OIP.co7Q8cJicqhZWoOfCh7TqgHaEx?pid=ImgDet&rs=1" onclick="NextImage();">
+        <br>
+        <div>
+            <div id="SwitchImage">
+                <img id="Image" width="600" height="400"
+                     src="https://tse4.mm.bing.net/th/id/OIP.co7Q8cJicqhZWoOfCh7TqgHaEx?pid=ImgDet&rs=1" onclick="NextImage();">
+            </div>
+        </div>
+
+        <br>
+        <div>
+            <div id="RegisterImage">
+                <img id="Register"
+                     src="https://tse4.mm.bing.net/th/id/OIP.8NNkbZYxLd0o-5Cb3RrDkQHaCy?pid=ImgDet&rs=1" onclick="RegisterHere();">
+            </div>
+        </div>
+        <input type="button" value="GoTo Register" onclick="GoToRegister();">
+
+        <br>
+        <input type="button" value="?" onclick="GoToHelp();">
+
+        <div class="FootBar" style="text-align:center; font-style:italic;">
+            <p>Lorem Ipsum very important text</p>
         </div>
     </div>
-
-    <br>
-    <div>
-        <div id="RegisterImage">
-            <img id="Register"
-                 src="https://tse4.mm.bing.net/th/id/OIP.8NNkbZYxLd0o-5Cb3RrDkQHaCy?pid=ImgDet&rs=1" onclick="RegisterHere();">
-        </div>
-    </div>
-    <input type="button" value="GoTo Register" onclick="GoToRegister();">
-
-    <br>
-    <input type="button" value="?" onclick="GoToHelp();">
 </body>
 
 </html>

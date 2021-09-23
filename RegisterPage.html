@@ -15,16 +15,24 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
           integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="GeneralScripts.js"></script>
-    <script src="CreateStageScripts.js"></script>
+    <script src="RegisterPageScripts.js"></script>
 </head>
 
 <body>
-    <div class="CreateStageScreen">
-        <input id="Field" type="tekst" placeholder="Enter stage name">
-
-        <br>
-        <input type="button" value="Button" onclick="ButtonCreateStage();">
-
+    <div class="RegisterScreen">
+        <input type="button" value="<-- [Homepage]" onclick="GoToHome();">
+        <div class="RegisterDetails">
+            <div>
+                <form id="formElem">
+                    <label for="Username">Username:</label><br>
+                    <input style="width: 100%;" type="text" id="Username"><br>
+                    <label for="Password">Password:</label><br>
+                    <input style="width: 100%;" type="password" id="Password"><br>
+                    <p id="LoginErrorMessage" style="color: red"></p>
+                    <input type="button" value="Register" onclick="Register()">
+                </form>
+            </div>
+        </div>
         <div class="FootBar" style="text-align:center; font-style:italic;">
             <p>Lorem Ipsum very important text</p>
         </div>

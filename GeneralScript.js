@@ -1,4 +1,8 @@
 
+function GoToHome() {
+    window.location.href = 'index.html';
+}
+
 function GoToLogin(){
     window.location.href = '' ;
 }
