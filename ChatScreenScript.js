@@ -4,7 +4,7 @@ function SendMessage(){
     //alert(message.value + " has been send");
     console.log(message.value);
     let dataReceived = "";
-    var myJSON = "{\"messageText\": \" " + document.getElementById("messagebox").value + "\",\"userID\": 1 }"
+    var myJSON = "{\"messageText\": \"" + document.getElementById("messagebox").value + "\",\"userID\": 1 }"
     fetch(" ", {
             method: "post",
             headers: {
@@ -62,7 +62,7 @@ var LastUpdated = new Date();
 LastUpdated.setMonth(LastUpdated.getMonth() - 3);
 
 function NewGetMessage(){
-    var Json = "{\"stageID\": 1 \", \"lastUpdated\": " + LastUpdated.toISOString() +"\"}"
+    var Json = "{\"stageID\": 1, \"lastUpdated\":" + LastUpdated.toISOString() + "\"}"
     fetch(" ", {
         method: "put",
             headers: {
@@ -75,16 +75,17 @@ function NewGetMessage(){
     .then(function(returndata){
         LastUpdated = new Date();
         for(var i=0;i<returndata.data.length;i++){
-        var temp = "";
-        returndata.data.forEach((itemData) => {
-              temp += "<tr>";
-              temp += "<td>" + itemData[i].messageText + "</td>";
-              temp += "<td>" + itemData[i].timestamp + "</td>";
-              temp += "<td>" + itemData[i].userName + "</td>";
-              temp += "<td>" + itemData[i].userRole + "</td></tr>";
-      
-            });
-        document.getElementById("myData").innerHTML = temp;
+            var temp = "";
+            if(returndata.data[i].userRole =="Admin"){
+                temp += "<tr style=\"color:red\">";
+            } else {
+                temp += "<tr>";
+            }
+            temp += "<td>" + returndata.data[i].messageText + "</td>";
+            temp += "<td>" + returndata.data[i].timestamp + "</td>";
+            temp += "<td>" + returndata.data[i].userName + "</td>";
+            temp += "<td>" + returndata.data[i].userRole + "</td></tr>";
+            document.getElementById("myData").innerHTML += temp;
         //var p = document.createElement("p");
         //p.innerHTML = returndata.data[i].messageText + " ;by User: " + returndata.data[i].userName;
         //document.getElementById("myData").appendChild(p);
