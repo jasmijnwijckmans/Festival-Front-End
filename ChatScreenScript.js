@@ -1,10 +1,10 @@
 
 function SendMessage(){
     var message = document.getElementById("messagebox");
-    alert(message.value + " has been send");
+    //alert(message.value + " has been send");
     console.log(message.value);
     let dataReceived = "";
-    var myJSON = "{\"messageText\": \" " + document.getElementById("messagebox").value + "\",\"userID\":\" 1 \"}"
+    var myJSON = "{\"messageText\": \" " + document.getElementById("messagebox").value + "\",\"userID\": 1 }"
     fetch(" ", {
             method: "post",
             headers: {
@@ -15,11 +15,11 @@ function SendMessage(){
             })
     .then(response => response.json())
     .then(json => {
-        if(json.succes){
-        console.log(json);
+        if(json.succes==false){
+            console.log(json.errorMessage);
         }
         else{
-        console.log(json.errorMessage);
+            NewGetMessage();
         }
     })       
     .catch(error => {
@@ -40,28 +40,30 @@ function SendMessage(){
 //}
 //GetMessage(api_url);
 
-function GetMessage(){
-    fetch("https://api.genderize.io/?name=luc") //API list of messages
-    .then((response) => response.json())  //What's the difference 
-    .then(function(data) {
-        console.log(data);
-        appendData(data); 
-  })
-  .catch(error => {
-    console.error(error);
-});
-}
-function appendData(data){
+//function GetMessage(){
+    //fetch("https://api.genderize.io/?name=luc") //API list of messages
+    //.then((response) => response.json())  //What's the difference 
+    //.then(function(data) {
+        //console.log(data);
+        //appendData(data); 
+  //})
+  //.catch(error => {
+   // console.error(error);
+//});
+//}
+//function appendData(data){
   // if API contains more messages --> need a for loop
-     var p = document.createElement("p");
-        p.innerHTML = data.gender + " ;by User: " + data.name;
-        document.getElementById("myData").appendChild(p);
+     //var p = document.createElement("p");
+        //p.innerHTML = data.gender + " ;by User: " + data.name;
+        //document.getElementById("myData").appendChild(p);
     
-}
+//}
+var LastUpdated = new Date();
+LastUpdated.setMonth(LastUpdated.getMonth() - 3);
 
 function NewGetMessage(){
-    var Json = "{\"stageID\": \"1\" \",\"lastUpdated\":\"1\"}"
-    fetch(" ",{
+    var Json = "{\"stageID\": 1 \", \"lastUpdated\": " + LastUpdated.toISOString() +"\"}"
+    fetch(" ", {
         method: "put",
             headers: {
                 "accept" : "text/plain",
@@ -70,10 +72,11 @@ function NewGetMessage(){
             body: Json
              })
     .then(response => response.json())
-    .then(function(data){
-        for(var i=0;i<data.length;i++){
+    .then(function(returndata){
+        LastUpdated = new Date();
+        for(var i=0;i<returndata.data.length;i++){
         var p = document.createElement("p");
-        p.innerHTML = data[i].messageText + " ;by User: " + data[i].userName;
+        p.innerHTML = returndata.data[i].messageText + " ;by User: " + returndata.data[i].userName;
         document.getElementById("myData").appendChild(p);
         }
     })
@@ -82,6 +85,8 @@ function NewGetMessage(){
     });
 
 }
+
+
 
 
 
