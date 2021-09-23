@@ -3,10 +3,9 @@ function SendMessage(){
     var message = document.getElementById("messagebox");
     alert(message.value + " has been send");
     console.log(message.value);
-
     let dataReceived = "";
-    var myJSON = "{\"messageText\": \"" + document.getElementById("messagebox").value + "\",\"timestamp\":\""+ document.getElementById("messagebox").value +"\"}"
-    fetch("", {
+    var myJSON = "{\"messageText\": \" " + document.getElementById("messagebox").value + "\",\"userID\":\" 1 \"}"
+    fetch(" ", {
             method: "post",
             headers: {
                 "accept" : "text/plain",
@@ -15,15 +14,17 @@ function SendMessage(){
             body: myJSON
             })
     .then(response => response.json())
-    .then(json => console.log(json))       
+    .then(json => {
+        if(json.succes){
+        console.log(json);
+        }
+        else{
+        console.log(json.errorMessage);
+        }
+    })       
     .catch(error => {
-         console.error(error);
+        console.log("Error");
     });
-    GetMessage();
-
-
-
-
    //var p =  document.createElement("p");
    //p.innerHTML = message;
    //document.getElementById("SendedMessage").appendChild(p)
@@ -51,11 +52,35 @@ function GetMessage(){
 });
 }
 function appendData(data){
-    var MessageData = document.getElementById("myData"); // if API contains more messages --> need a for loop
+  // if API contains more messages --> need a for loop
      var p = document.createElement("p");
         p.innerHTML = data.gender + " ;by User: " + data.name;
-        MessageData.appendChild(p);
+        document.getElementById("myData").appendChild(p);
     
+}
+
+function NewGetMessage(){
+    var Json = "{\"stageID\": \"1\" \",\"lastUpdated\":\"1\"}"
+    fetch(" ",{
+        method: "put",
+            headers: {
+                "accept" : "text/plain",
+                "Content-Type": "application/json"
+                },
+            body: Json
+             })
+    .then(response => response.json())
+    .then(function(data){
+        for(var i=0;i<data.length;i++){
+        var p = document.createElement("p");
+        p.innerHTML = data[i].messageText + " ;by User: " + data[i].userName;
+        document.getElementById("myData").appendChild(p);
+        }
+    })
+    .catch(error => {
+        console.error("Error");
+    });
+
 }
 
 
