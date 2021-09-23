@@ -1,12 +1,11 @@
 
 function SendMessage(){
     var message = document.getElementById("messagebox");
-    alert(message.value + " has been send");
+    //alert(message.value + " has been send");
     console.log(message.value);
-
     let dataReceived = "";
-    var myJSON = "{\"messageText\": \"" + document.getElementById("messagebox").value + "\",\"timestamp\":\""+ document.getElementById("messagebox").value +"\"}"
-    fetch("", {
+    var myJSON = "{\"messageText\": \"" + document.getElementById("messagebox").value + "\",\"userID\": 1 }"
+    fetch(" ", {
             method: "post",
             headers: {
                 "accept" : "text/plain",
@@ -15,15 +14,17 @@ function SendMessage(){
             body: myJSON
             })
     .then(response => response.json())
-    .then(json => console.log(json))       
+    .then(json => {
+        if(json.succes==false){
+            console.log(json.errorMessage);
+        }
+        else{
+            NewGetMessage();
+        }
+    })       
     .catch(error => {
-         console.error(error);
+        console.log("Error");
     });
-    GetMessage();
-
-
-
-
    //var p =  document.createElement("p");
    //p.innerHTML = message;
    //document.getElementById("SendedMessage").appendChild(p)
@@ -39,24 +40,64 @@ function SendMessage(){
 //}
 //GetMessage(api_url);
 
-function GetMessage(){
-    fetch("https://api.genderize.io/?name=luc") //API list of messages
-    .then((response) => response.json())  //What's the difference 
-    .then(function(data) {
-        console.log(data);
-        appendData(data); 
-  })
-  .catch(error => {
-    console.error(error);
-});
-}
-function appendData(data){
-    var MessageData = document.getElementById("myData"); // if API contains more messages --> need a for loop
-     var p = document.createElement("p");
-        p.innerHTML = data.gender + " ;by User: " + data.name;
-        MessageData.appendChild(p);
+//function GetMessage(){
+    //fetch("https://api.genderize.io/?name=luc") //API list of messages
+    //.then((response) => response.json())  //What's the difference 
+    //.then(function(data) {
+        //console.log(data);
+        //appendData(data); 
+  //})
+  //.catch(error => {
+   // console.error(error);
+//});
+//}
+//function appendData(data){
+  // if API contains more messages --> need a for loop
+     //var p = document.createElement("p");
+        //p.innerHTML = data.gender + " ;by User: " + data.name;
+        //document.getElementById("myData").appendChild(p);
     
+//}
+var LastUpdated = new Date();
+LastUpdated.setMonth(LastUpdated.getMonth() - 3);
+
+function NewGetMessage(){
+    var Json = "{\"stageID\": 1, \"lastUpdated\":" + LastUpdated.toISOString() + "\"}"
+    fetch(" ", {
+        method: "put",
+            headers: {
+                "accept" : "text/plain",
+                "Content-Type": "application/json"
+                },
+            body: Json
+             })
+    .then(response => response.json())
+    .then(function(returndata){
+        LastUpdated = new Date();
+        for(var i=0;i<returndata.data.length;i++){
+            var temp = "";
+            if(returndata.data[i].userRole =="Admin"){
+                temp += "<tr style=\"color:red\">";
+            } else {
+                temp += "<tr>";
+            }
+            temp += "<td>" + returndata.data[i].messageText + "</td>";
+            temp += "<td>" + returndata.data[i].timestamp + "</td>";
+            temp += "<td>" + returndata.data[i].userName + "</td>";
+            temp += "<td>" + returndata.data[i].userRole + "</td></tr>";
+            document.getElementById("myData").innerHTML += temp;
+        //var p = document.createElement("p");
+        //p.innerHTML = returndata.data[i].messageText + " ;by User: " + returndata.data[i].userName;
+        //document.getElementById("myData").appendChild(p);
+        }
+    })
+    .catch(error => {
+        console.error("Error");
+    });
+
 }
+
+
 
 
 

@@ -16,17 +16,29 @@
     <h1>Dummy Stage</h1>
     <div class = "ChatScreen">
       <input value=" " id="messagebox" >
-      <input type ="button" value="Send" onclick="SendMessage()">
+      <input type ="button" value="Send" onclick="SendMessage() ">
     </div>
   </div>
 
-  <div id="SendedMessage">
- 
+
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th> Message Text</th>
+          <th> Time Stamp</th>
+          <th> User Name</th>
+          <th> User Role</th>
+        </tr>
+      </thead>
+      <tbody id="myData">
+      </tbody>
+    </table>
   </div>
 
-  <div id="myData">
+<!-- <div id="myData">
 
-  </div>
+  </div> -->
 
  
 
