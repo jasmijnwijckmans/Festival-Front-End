@@ -1,0 +1,90 @@
+/*Stylesheet*/
+
+/*General Styles*/
+header {
+    position: fixed;
+    left: 0;
+    top: inherit;
+    width: 100%;
+    height: 5px;
+    background-color: lightsalmon;
+}
+/*Navigation bar*/
+nav {
+    position: fixed;
+    top:5px;
+    left: 0;
+    width: 100%;
+    height: 46.8px;
+    background-color: lightgray;
+}
+
+.pageheader{
+    position:absolute;
+    left: 40%;
+}
+
+.gobackbutton {
+    float: left;
+    background-color: gray;
+    border: none;
+    color: white;
+    padding: 5px 5px;
+    font-size: 25px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+
+/*Create Stage screen*/
+.createstagescreen {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+}
+
+label {
+    float: left;
+    width: 150px;
+    text-align: right;
+}
+
+input {
+    float: left;
+}
+
+.createstagebutton {
+    float: right;
+    background-color: gray;
+    border: none;
+    color: white;
+    padding: 5px 5px;
+    font-size: 25px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+/*login and register screen*/
+.loginscreen {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+}
+
+.registerscreen {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+}
+
+
+/*Footer*/
+footer {
+    position: fixed;
+    left: 0;
+    bottom:0;
+    width: 100%;
+    height: 46.8px;
+    background-color: lightgray;
+}
+
