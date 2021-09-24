@@ -1,0 +1,66 @@
+
+
+.ChatArea{
+    text-align: left;
+    margin: 0 auto;
+    margin-bottom: 25px;
+    padding: 10px;
+    background: lightblue;
+    height: 750px;
+    border: 1px solid blue;
+    overflow: auto;
+    border-radius: 4px;
+    border-bottom: 4px solid blue;
+}
+
+.ChatScreen{
+    float:left;
+    top: 35%;
+    left: 43%;
+    width: 400px;
+    background-color: white;
+    border: 1px solid blue;
+    border-radius: 5px;
+    padding: 25px;
+}
+
+.tableChatScreen {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+
+}
+
+.tableChatScreen thead tr {
+    font-weight: bold; 
+    font-size: 2em; 
+    font-family: sans-serif;
+    color: black;
+    text-align: left;
+}
+
+.tableChatScreen th,
+.tableChatScreen td {
+    padding: 15px 15px;
+}
+
+
+.tableChatScreen tbody tr {
+    border-bottom: 1px solid white;
+}
+.tableChatScreen  tbody tr:nth-of-type(even) {
+    background-color: lightblue;
+}
+
+.tableChatScreen  tbody tr:last-of-type {
+    border-bottom: 2px solid blue;
+}
+.DjBooth{
+    background-color: white;
+    border: 1px solid blue; 
+    float:right;
+    border-radius: 5px;
+    padding: 25px;
+}

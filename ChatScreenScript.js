@@ -63,32 +63,31 @@ LastUpdated.setMonth(LastUpdated.getMonth() - 3);
 
 function NewGetMessage(){
     var Json = "{\"stageID\":" +localStorage.getItem('current-StageID') +"\", \"lastUpdated\":" + LastUpdated.toISOString() + "\"}"
-    fetch(" ", {
-        method: "put",
-            headers: {
+    fetch("https://api.genderize.io/?name=luc", {
+       method: "put",
+         headers: {
                 "accept" : "text/plain",
-                "Content-Type": "application/json"
-                },
-            body: Json
-             })
+               "Content-Type": "application/json"
+               },
+           body: Json
+           })
     .then(response => response.json())
-    .then(function(returndata){
+    .then(function(data){
         LastUpdated = new Date();
+
         for(var i=0;i<returndata.data.length;i++){
             var temp = "";
-            if(returndata.data[i].userRole =="Admin"){
+            if(returndata.data[i].gender =="Admin"){
                 temp += "<tr style=\"color:red\">";
-            } else {
+            } 
+            else {
                 temp += "<tr>";
             }
-            temp += "<td>" + returndata.data[i].messageText + "</td>";
-            temp += "<td>" + returndata.data[i].timestamp + "</td>";
-            temp += "<td>" + returndata.data[i].userName + "</td>";
-            //temp += "<td>" + returndata.data[i].userRole + "</td></tr>";
+            temp += "<td style = \" font-weight: bold\">" + returndata.data[i].userName + ":" + "</td>";
+            temp += "<td style=\"text-align:left\">" + returndata.data[i].messageText + "</td>";
+            temp += "<td style=\"font-weight: lighter\">" + returndata.data[i].timestamp + "</td>";
             document.getElementById("myData").innerHTML += temp;
-        //var p = document.createElement("p");
-        //p.innerHTML = returndata.data[i].messageText + " ;by User: " + returndata.data[i].userName;
-        //document.getElementById("myData").appendChild(p);
+
         }
     })
     .catch(error => {
@@ -97,6 +96,7 @@ function NewGetMessage(){
 
 
 }
+
 
 function LoadPage(){
     document.getElementById("stageName").innerHTML = "Stage " + localStorage.getItem('current-StageID')
