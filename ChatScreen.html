@@ -8,12 +8,13 @@
 
   <script src="ChatScreenScript.js"></script>
   <script src="GeneralScript.js"></script>
+  <script src="ChatSwitchScript.js"></script>
 </head>
 
-<body>
+<body onload ="LoadPage()">
   <div class = "ChatArea">
     <input type="button" value="Go to Switch Menu" onclick="GoToSwitch()">
-    <h1>Dummy Stage</h1>
+     <h1 id = "stageName"> Stage </h1>
     <div class = "ChatScreen">
       <input value=" " id="messagebox" >
       <input type ="button" value="Send" onclick="SendMessage() ">
@@ -28,7 +29,6 @@
           <th> Message Text</th>
           <th> Time Stamp</th>
           <th> User Name</th>
-          <th> User Role</th>
         </tr>
       </thead>
       <tbody id="myData">
