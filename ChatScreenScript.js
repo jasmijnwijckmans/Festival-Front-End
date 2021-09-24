@@ -62,7 +62,7 @@ var LastUpdated = new Date();
 LastUpdated.setMonth(LastUpdated.getMonth() - 3);
 
 function NewGetMessage(){
-    var Json = "{\"stageID\": 1, \"lastUpdated\":" + LastUpdated.toISOString() + "\"}"
+    var Json = "{\"stageID\":" +localStorage.getItem('current-StageID') +"\", \"lastUpdated\":" + LastUpdated.toISOString() + "\"}"
     fetch(" ", {
         method: "put",
             headers: {
@@ -84,7 +84,7 @@ function NewGetMessage(){
             temp += "<td>" + returndata.data[i].messageText + "</td>";
             temp += "<td>" + returndata.data[i].timestamp + "</td>";
             temp += "<td>" + returndata.data[i].userName + "</td>";
-            temp += "<td>" + returndata.data[i].userRole + "</td></tr>";
+            //temp += "<td>" + returndata.data[i].userRole + "</td></tr>";
             document.getElementById("myData").innerHTML += temp;
         //var p = document.createElement("p");
         //p.innerHTML = returndata.data[i].messageText + " ;by User: " + returndata.data[i].userName;
@@ -95,8 +95,13 @@ function NewGetMessage(){
         console.error("Error");
     });
 
+
 }
 
+function LoadPage(){
+    document.getElementById("stageName").innerHTML = "Stage " + localStorage.getItem('current-StageID')
+    NewGetMessage();
+}
 
 
 
