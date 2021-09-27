@@ -30,28 +30,30 @@
 
         <nav>
             <button class="gobackbutton" onclick="GoToChatSwitch();"><i class="fa fa-arrow-left"></i></button>
-            <h2 class="pageheader">Site details</h2>
+            <h2 class="pageheader">Create new stage</h2>
         </nav>
 
         <section>
             <div class="createstagescreen">
-                <div class="row" style="padding-left: 10px;">
-                    <label for="stagenamefield">Stage Name:</label><br>
-                    <input id="stagenamefield" type="text" placeholder="Enter stage name">
-                </div>
+                <form>
+                    <div class="row" style="padding-left: 10px;">
+                        <label for="stagenamefield">Stage Name:</label><br>
+                        <input id="stagenamefield" type="text" placeholder="Enter stage name">
+                    </div>
 
-                <div class="row" style="padding-left: 10px;"> 
-                <label for="stagegenre">Genre:</label>
-                <select class="dropdown" name="stagegenre" id="stagegenre">
-                    <option value="Rock">Rock</option>
-                    <option value="Pop">Pop</option>
-                </select>
-                </div>
+                    <div class="row" style="padding-left: 10px;">
+                        <label for="stagegenre">Genre:</label>
+                        <select class="dropdown" name="stagegenre" id="stagegenre">
+                            <option value="Rock">Rock</option>
+                            <option value="Pop">Pop</option>
+                        </select>
+                    </div>
 
-                <div class="row" style="padding-left: 10px;">
-                    <label for="stagesizefield">Stage Size:</label><br>
-                    <input id="stagesizefield" type="text" placeholder="Enter Size">
-                </div>
+                    <div class="row" style="padding-left: 10px;">
+                        <label for="stagesizefield">Stage Size:</label><br>
+                        <input id="stagesizefield" type="text" placeholder="Enter Size">
+                    </div>
+                </form>
             </div>
         </section>
 

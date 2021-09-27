@@ -6,20 +6,13 @@ function GoToHome() {
 function GoToLogin() {
     window.location.href = 'LoginPage.html' ;
 }
-
-function GoToRegister() {
-    window.location.href = 'RegisterPage.html';
-}
-
-
-    
+ 
 function GoToHelp(){
     window.location.href = 'Help.html';
-
 }
 
-function showDiv() {
-    document.getElementById('welcomeDiv').style.display = "block";
+function GoToCreateStage() {
+    window.location.href = 'CreateStage.html';
 }
 
 var StageID;
@@ -36,8 +29,6 @@ function GoToSwitch(StageID) {
     UpdateActivity();
 }
 
-
-
 function Login() {
     let dataReceived = "";
     var myJSON = "{\"Username\": \"" + document.getElementById("Username").value + "\",\"Password\":\"" + document.getElementById("Password").value + "\"}"
@@ -52,10 +43,10 @@ function Login() {
         .then(response => response.json())
         .then(json => {
             if (json.success) {
-                localStorage.setItem('AuthenticationKey', json.data);
+                localStorage.setItem('AuthenticationKey', json.data.authenticationKey);
                 GoToSwitch();
             } else {
-                document.getElementById("LoginErrorMessage").innerHTML = json.responseMessage + " (" + json.errorCodes + ")";
+                document.getElementById("ErrorMessage").innerHTML = json.responseMessage + " (" + json.errorCodes + ")";
             }
         })
         .catch(error => {
