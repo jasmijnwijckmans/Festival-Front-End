@@ -23,4 +23,6 @@ function MakeNewStage(){
     window.location.href = '';
 }
 
-
+function GoToCreateStage() {
+    window.location.href = "CreateStage.html"
+}
