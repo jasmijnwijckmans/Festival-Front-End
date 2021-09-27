@@ -7,7 +7,9 @@ function GoToStage(StageID){
     
 
 
-function GoToHelp(){
-    window.location.href = 'Help.html';
-
-}
+function GoToInfo() {
+    localStorage.getItem("stages", StageID)
+    window.location.href = 'Info.html';
+    LoadPage(){
+        document.getElementById("stageName").innerHTML = "Stage " + localStorage.getItem('current-StageID')
+        NewGetMessage();
