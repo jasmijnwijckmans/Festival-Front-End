@@ -5,36 +5,38 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-
+  <link rel="stylesheet" href="stylesChatScreen.css">
   <script src="ChatScreenScript.js"></script>
   <script src="GeneralScript.js"></script>
   <script src="ChatSwitchScript.js"></script>
 </head>
 
-<body onload ="LoadPage()">
+<body onload = "LoadPage()">
   <div class = "ChatArea">
     <input type="button" value="Go to Switch Menu" onclick="GoToSwitch()">
-     <h1 id = "stageName"> Stage </h1>
-    <div class = "ChatScreen">
-      <input value=" " id="messagebox" >
-      <input type ="button" value="Send" onclick="SendMessage() ">
+     <h1 id = "stageName" style = " font-weight: bold; font-size: 2.5em; font-family: sans-serif;"> </h1>
+    <div style="overflow-x:auto;" class = "ChatScreen">
+        <table class="tableChatScreen">
+         <!-- <thead>
+            <tr>
+              <th> Chatroom</th>
+              <th> </th>
+              <th> </th>
+            </tr>
+          </thead> -->
+          <tbody id="myData">
+          </tbody>
+        </table>
+        <div class = "SendMessage">
+    <input value=" " id="messagebox" >
+    <input type ="button" value="Send" onclick="SendMessage() ">
+  </div>
     </div>
+    
+
   </div>
 
 
-  <div class="container">
-    <table class="table">
-      <thead>
-        <tr>
-          <th> Message Text</th>
-          <th> Time Stamp</th>
-          <th> User Name</th>
-        </tr>
-      </thead>
-      <tbody id="myData">
-      </tbody>
-    </table>
-  </div>
 
 <!-- <div id="myData">
 

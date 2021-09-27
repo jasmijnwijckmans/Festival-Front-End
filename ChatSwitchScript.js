@@ -4,6 +4,7 @@ function GoToStage(StageID){
     localStorage.setItem('current-StageID', StageID)
     window.location.href = 'ChatScreen.html';
 }
+<<<<<<< HEAD
     
 
 
@@ -13,3 +14,5 @@ function GoToInfo() {
     LoadPage(){
         document.getElementById("stageName").innerHTML = "Stage " + localStorage.getItem('current-StageID')
         NewGetMessage();
+=======
+>>>>>>> master

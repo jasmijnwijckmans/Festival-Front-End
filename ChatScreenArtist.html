@@ -5,36 +5,46 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="stylesChatScreen.css">
   <script src="ChatScreenScript.js"></script>
-  <script src="ChatScreenScriptArtist.js"></script>
+  <script src="ChatSwitchScript.js"></script>
   <script src="GeneralScript.js"></script>
 </head>
 
-<body>
-  <div class = "ChatAreaArtist">
+<body onload = "LoadPage()">
+  <div class = "ChatArea">
     <input type="button" value="Go to Switch Menu" onclick="GoToSwitch()">
-    <h1>Dummy Stage</h1>
-    <div class = "ChatScreen">
-      <h1>Chat Room</h1>
-      <input value=" " id="messagebox" >
-      <input type ="button" value="Send" onclick="SendMessage()">
-      <div id="SendedMessage">
- 
-      </div>
-    
-      <div id="myData">
-    
-      </div>
+     <h1 id = "stageName"> </h1>
+    <div style="overflow-x:auto;" class = "ChatScreen">
+        <table class="tableChatScreen">
+          <!-- <thead>
+            <tr>
+              <th> Chatroom</th>
+              <th> </th>
+              <th> </th>
+            </tr>
+          </thead> -->
+          <tbody id="myData">
+          </tbody>
+        </table>
+        <div class = "SendMessage">
+    <input value=" " id="messagebox" >
+    <input type ="button" value="Send" onclick="SendMessage() ">
+  </div>
+
     </div>
 
     <div class = "DjBooth">
-      <h1> DJ Booth</h1>
+      <h1 style = " font-weight: bold; font-size: 2em; font-family: sans-serif;" > DJ Booth</h1>
       <input type= "button" value = "Previous Song" onclick = "SwitchSong()">
       <input type= "button" value = "Pauze" onclick = "SwitchSong()">
       <input type= "button" value = "Next Song" onclick = "SwitchSong()">
  
     </div>
+
   </div>
+
+
 
 
 
