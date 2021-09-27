@@ -47,9 +47,33 @@ footer {
 
 /*HomeScreen or index*/
 .homescreen {
-    position: absolute;
-    top: 20%;
-    left: 20%;
+    position: fixed;
+    top: 51.8px;
+    height:100%;
+    background-color: lightgreen;
+    width: 100%;
+}
+
+.loginbutton {
+    float: left;
+    background-color: gray;
+    border: none;
+    color: white;
+    padding: 5px 5px;
+    font-size: 25px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.registerbutton {
+    position:center;
+    background-color: gray;
+    border: none;
+    color: white;
+    padding: 5px 5px;
+    font-size: 25px;
+    cursor: pointer;
+    display: inline-block;
 }
 
 /*Create Stage screen*/
