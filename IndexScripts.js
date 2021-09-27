@@ -22,6 +22,3 @@ function NextImage() {
     }
 }
 
-function GoToRegister() {
-    window.location.href = '';
-}
