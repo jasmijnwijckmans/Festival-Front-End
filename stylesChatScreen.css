@@ -21,8 +21,8 @@
     float:left;
     top: 35%;
     left: 43%;
-    width: 600px;
-    height: 550px;
+    width: 1280px;
+    height: 450px;
     background-color: white;
     border: 1px solid black;
     border-radius: 5px;
@@ -56,16 +56,16 @@
     border-bottom: 1px solid white;
 }
 .tableChatScreen  tbody tr:nth-of-type(even) {
-    background-color: lightblue;
+    background-color: lightpink;
 }
 
 .tableChatScreen  tbody tr:last-of-type {
-    border-bottom: 2px solid blue;
+    border-bottom: 2px solid orange;
 }
 .MessageBox{
     position: absolute;
-    top: 85%;
-    left: 27%;
+    top: 70%;
+    left: 75%;
     width: 600px;
     height: 100px;
     padding: 20px;
@@ -74,10 +74,20 @@
 }
 .DjBooth{
     background-color: white;
-    border: 1px solid blue; 
+    border: 1px solid black; 
     float:right;
     border-radius: 5px;
     padding: 25px;
     width: 400px;
     height: 150px;
+    position: absolute;
+    top: 75%;
+    left: 1%;
+
+
 }
+/*hide role-specific div html*/
+div.DjBooth {
+    display: none;
+}
+    

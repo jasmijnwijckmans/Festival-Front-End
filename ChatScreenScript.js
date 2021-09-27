@@ -104,8 +104,6 @@ function LoadPage(){
 }
 
 
-
-//deze function ook oproepen bij GoToStage en miss deze functions in General script zetten
 function UpdateActivity(){
     var Json = "{\"stageID\":" +localStorage.getItem('current-StageID') +"\", \"userID\": 1 }"
     fetch("", {
@@ -129,11 +127,8 @@ function UpdateActivity(){
 
 }
 
-var StageID;
-function GoToSwitch(StageID){
-    localStorage.setItem('current-StageID', StageID)
-    window.location.href = 'ChatSwitch.html';
-    UpdateActivity();
+if(localStorage.getItem("UserRole")=="artist"){
+    $("div.DjBooth").show();
 }
- 
+
 
