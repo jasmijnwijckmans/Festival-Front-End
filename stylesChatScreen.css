@@ -1,25 +1,30 @@
 
 
 .ChatArea{
+    position: absolute;
+    top: 10%;
+    left: 5%;
     text-align: left;
     margin: 0 auto;
     margin-bottom: 25px;
     padding: 10px;
-    background: lightblue;
-    height: 750px;
-    border: 1px solid blue;
+    background: lightsalmon;
+    width: 1300px;
+    height: 650px;
+    border: 1px solid darkorange;
     overflow: auto;
     border-radius: 4px;
-    border-bottom: 4px solid blue;
+    border-bottom: 4px solid darkorange;
 }
 
 .ChatScreen{
     float:left;
     top: 35%;
     left: 43%;
-    width: 400px;
+    width: 600px;
+    height: 550px;
     background-color: white;
-    border: 1px solid blue;
+    border: 1px solid black;
     border-radius: 5px;
     padding: 25px;
 }
@@ -57,10 +62,22 @@
 .tableChatScreen  tbody tr:last-of-type {
     border-bottom: 2px solid blue;
 }
+.MessageBox{
+    position: absolute;
+    top: 85%;
+    left: 27%;
+    width: 600px;
+    height: 100px;
+    padding: 20px;
+    
+
+}
 .DjBooth{
     background-color: white;
     border: 1px solid blue; 
     float:right;
     border-radius: 5px;
     padding: 25px;
+    width: 400px;
+    height: 150px;
 }

@@ -105,7 +105,35 @@ function LoadPage(){
 
 
 
+//deze function ook oproepen bij GoToStage en miss deze functions in General script zetten
+function UpdateActivity(){
+    var Json = "{\"stageID\":" +localStorage.getItem('current-StageID') +"\", \"userID\": 1 }"
+    fetch("", {
+       method: "put",
+         headers: {
+                "accept" : "text/plain",
+               "Content-Type": "application/json"
+               },
+           body: Json
+           })
+    .then(response => response.json())
+    .then(json => {
+        if(json.succes==false){
+            console.log(json.errorMessage);
+        }
+    })       
+    .catch(error => {
+        console.error("Error");
+    });
 
 
+}
 
+var StageID;
+function GoToSwitch(StageID){
+    localStorage.setItem('current-StageID', StageID)
+    window.location.href = 'ChatSwitch.html';
+    UpdateActivity();
+}
+ 
 
