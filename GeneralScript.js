@@ -14,7 +14,28 @@ function GoToHelp(){
 function GoToCreateStage() {
     window.location.href = 'CreateStage.html';
 }
+function UpdateActivity() {
+    var Json = "{\"stageID\":" + localStorage.getItem('current-StageID') + "\", \"userID\": 1 }"
+    fetch("", {
+        method: "put",
+        headers: {
+            "accept": "text/plain",
+            "Content-Type": "application/json"
+        },
+        body: Json
+    })
+        .then(response => response.json())
+        .then(json => {
+            if (json.succes == false) {
+                console.log(json.errorMessage);
+            }
+        })
+        .catch(error => {
+            console.error("Error");
+        });
 
+
+}
 var StageID;
 
 function GoToStage(StageID) {
@@ -53,3 +74,5 @@ function Login() {
             }
         })
 }
+
+
