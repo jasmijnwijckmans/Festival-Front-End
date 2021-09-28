@@ -23,7 +23,7 @@
 
 </head>
   
-<body>
+<body onload = "GetInfo()">
     <div class="container-fluid">
         <header>
         </header>
@@ -55,12 +55,19 @@
 
             </div>
 
-            <div class="gotoinfo">
-                <div class="row" style="padding-left: 10px;">
-                    <label for="help">Info:</label><br>
-                    <input id="stagenamefield" type="button" value="Info" onclick="GetInfo();">
-                </div>
-            </div>
+            <table class="tableChatScreen">
+             <thead>
+               <tr>
+                <th> Stage Name</th>
+                <th> Current Song</th>
+                <th> Number of Users</th>
+               </tr>
+               </thead>
+               <tbody id="myData">
+               </tbody>
+               </table>
+
+            
 
             <div class="gotocreatestage">
                 <div class="row" style="padding-left: 10px;">

@@ -15,8 +15,8 @@ function GoToCreateStage() {
     window.location.href = 'CreateStage.html';
 }
 function UpdateActivity() {
-    var Json = "{\"stageID\":" + localStorage.getItem('current-StageID') + "\", \"userID\": 1 }"
-    fetch("", {
+    var Json = "{\"stageID\":" + localStorage.getItem('current-StageID') + ", \"userID\": "+localStorage.getItem("UserID")+" }"
+    fetch("https://localhost:44372/api/UserActivity", {
         method: "put",
         headers: {
             "accept": "text/plain",
