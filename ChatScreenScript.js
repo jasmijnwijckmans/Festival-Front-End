@@ -4,7 +4,7 @@ function SendMessage() {
     console.log(message.value);
     let dataReceived = "";
     var myJSON = "{\"messageText\": \"" + document.getElementById("messagebox").value + "\",\"userID\": 1 }"
-    fetch("https://1a63a4ab-7d00-4b50-aac3-f73fb23a4d1f.mock.pstmn.io/api/Message", {
+    fetch("https://localhost:44372/api/Messages", {
             method: "post",
             headers: {
                 "accept": "text/plain",
@@ -60,8 +60,8 @@ var LastUpdated = new Date();
 LastUpdated.setMonth(LastUpdated.getMonth() - 3);
 //+ LastUpdated.toISOString() +
 function NewGetMessage() {
-    var Json = "{\"stageID\":" + localStorage.getItem('current-StageID') + "\", \"lastUpdated\": \"hallo\"}"
-    fetch("https://1a63a4ab-7d00-4b50-aac3-f73fb23a4d1f.mock.pstmn.io/api/Message", {
+    var Json = "{\"stageID\":" + localStorage.getItem('current-StageID') + ", \"lastUpdated\":\""+LastUpdated.toISOString()+"\"}"
+    fetch("https://localhost:44372/api/Messages", {
             method: "put",
             headers: {
                 "accept": "text/plain",
@@ -81,7 +81,7 @@ function NewGetMessage() {
                 }
                 temp += "<td style = \" font-weight: bold\">" + returndata.data[i].userName + ":" + "</td>";
                 temp += "<td style=\"text-align:left\">" + returndata.data[i].messageText + "</td>";
-                temp += "<td style=\"font-weight: lighter\">" + returndata.data[i].timestamp + "</td>";
+                temp += "<td style=\"font-weight: lighter\">" + new Date(returndata.data[i].timestamp + "Z").toLocaleTimeString() + "</td>";
                 document.getElementById("myData").innerHTML += temp;
 
             }
