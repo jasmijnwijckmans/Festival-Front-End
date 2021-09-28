@@ -29,48 +29,53 @@
         </header>
 
     <nav>
-            <button class="gobackbutton" onclick="GoToChatSwitch();"><i class="fa fa-arrow-left"></i></button>
-            <h2 class="pageheader"></h2>
+            <button class="gobackbutton" onclick="GoToHome();"><i class="fa fa-arrow-left"></i></button>
+            <h2 class="pageheader"> Festival name</h2>
     </nav>
-
-    <section>
-        <div class="createstagescreen"></div>
-       <div class="row" style="padding-left: 10px;">
-       <label for="stage 1">Stage 1:</label><br>
-                    <input id="stagenamefield" type="button" value="Join" onclick="GoToStage(1);">
-       </div>
-
-       <div class="gotostage"></div>
-       <div class="row" style="padding-left: 10px;">
-       <label for="stage">Stage 2:</label><br>
-       <input id="stagenamefield" type="button" value="Join" onclick="GoToStage(2);">
-       </div>
-                    
-       <div class="gotostage"></div>
-       <div class="row" style="padding-left: 10px;">
-       <label for="stage">Stage 3:</label><br>
-       <input id="stagenamefield" type="button" value="Join" onclick="GoToStage(3);">
-       </div>
-                    
-       <div class="gotohelp"></div>
-       <div class="row" style="padding-left: 10px;">
-       <label for="help">Help:</label><br>
-       <input id="stagenamefield" type="button" value="Help" onclick="GoToHelp();">
-        </div>
-
-       <div class="gotocreatestage"></div>
-       <div class="row" style="padding-left: 10px;">
-       <label for="createstage">Create:</label><br>
-       <input type="button" value="Create" onclick= "GoToCreateStage();">
-
-       </div>
         
-       
+    <section>
+        <div class="createstagescreen">
+            <div class="gotostage">
+                <div class="row" style="padding-left: 10px;">
+                    <label for="stage 1">Stage 1:</label><br>
+                    <input id="stagenamefield" type="button" value="Join" onclick="GoToStage(1);">
+                </div>
+
+
+                <div class="row" style="padding-left: 10px;">
+                    <label for="stage">Stage 2:</label><br>
+                    <input id="stagenamefield" type="button" value="Join" onclick="GoToStage(2);">
+                </div>
+
+                <div class="gotostage"></div>
+                <div class="row" style="padding-left: 10px;">
+                    <label for="stage">Stage 3:</label><br>
+                    <input id="stagenamefield" type="button" value="Join" onclick="GoToStage(3);">
+                </div>
+
+            </div>
+
+            <div class="gotoinfo">
+                <div class="row" style="padding-left: 10px;">
+                    <label for="help">Info:</label><br>
+                    <input id="stagenamefield" type="button" value="Info" onclick="GetInfo();">
+                </div>
+            </div>
+
+            <div class="gotocreatestage">
+                <div class="row" style="padding-left: 10px;">
+                    <label for="createstage">Create:</label><br>
+                    <input type="button" value="Create" onclick="GoToCreateStage();">
+
+                </div>
+            </div>
+
+        </div>
                         
 </section>
 
     <footer>
-        <button class="Info" onclick=" onclick=" GoToInfo();>Info <i class="fa fa-arrow-right"></i></button>
+        <button class="createstagebutton" onclick="GoToHelp();"><i class="fa fa-question"></i></button>
        
 
     </footer>

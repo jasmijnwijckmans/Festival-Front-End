@@ -5,7 +5,7 @@ function SendMessage(){
     console.log(message.value);
     let dataReceived = "";
     var myJSON = "{\"messageText\": \"" + document.getElementById("messagebox").value + "\",\"userID\": 1 }"
-    fetch(" ", {
+    fetch("", {
             method: "post",
             headers: {
                 "accept" : "text/plain",
@@ -63,7 +63,7 @@ LastUpdated.setMonth(LastUpdated.getMonth() - 3);
 
 function NewGetMessage(){
     var Json = "{\"stageID\":" +localStorage.getItem('current-StageID') +"\", \"lastUpdated\":" + LastUpdated.toISOString() + "\"}"
-    fetch("https://api.genderize.io/?name=luc", {
+    fetch("", {
        method: "put",
          headers: {
                 "accept" : "text/plain",
@@ -72,7 +72,7 @@ function NewGetMessage(){
            body: Json
            })
     .then(response => response.json())
-    .then(function(data){
+    .then(function(returndata){
         LastUpdated = new Date();
 
         for(var i=0;i<returndata.data.length;i++){
@@ -103,29 +103,6 @@ function LoadPage(){
     NewGetMessage();
 }
 
-
-function UpdateActivity(){
-    var Json = "{\"stageID\":" +localStorage.getItem('current-StageID') +"\", \"userID\": 1 }"
-    fetch("", {
-       method: "put",
-         headers: {
-                "accept" : "text/plain",
-               "Content-Type": "application/json"
-               },
-           body: Json
-           })
-    .then(response => response.json())
-    .then(json => {
-        if(json.succes==false){
-            console.log(json.errorMessage);
-        }
-    })       
-    .catch(error => {
-        console.error("Error");
-    });
-
-
-}
 
 if(localStorage.getItem("UserRole")=="artist"){
     $("div.DjBooth").show();
