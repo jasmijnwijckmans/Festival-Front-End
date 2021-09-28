@@ -53,7 +53,7 @@ function GoToSwitch(StageID) {
 function Login() {
     let dataReceived = "";
     var myJSON = "{\"Username\": \"" + document.getElementById("Username").value + "\",\"Password\":\"" + document.getElementById("Password").value + "\"}"
-    fetch("https://localhost:44372/api/Login", { 
+    fetch("https://1a63a4ab-7d00-4b50-aac3-f73fb23a4d1f.mock.pstmn.io/api/Login", {
         method: "post",
         headers: {
             "success": true,
@@ -75,4 +75,32 @@ function Login() {
         })
 }
 
+function Register() {
+    let dataReceived = "";
+    var myJSON = "{\"Username\": \"" + document.getElementById("Username").value + "\",\"Password\":\"" + document.getElementById("Password").value + "\"}"
+    fetch("https://1a63a4ab-7d00-4b50-aac3-f73fb23a4d1f.mock.pstmn.io/api/User", {
+        method: "post",
+        headers: {
+            "success": true,
+            "Content-Type": "application/json"
+        },
+        body: myJSON
+    })
+        .then(response => response.json())
+        .then(json => {
+            if (json.success) {
+                localStorage.setItem('AuthenticationKey', json.data.authenticationKey);
+                localStorage.setItem('UserID', json.data.userID);
+                localStorage.setItem('UserName', json.data.userName);
+                localStorage.setItem('UserRole', json.data.userRole);
+                GoToSwitch();
+            } else {
+                document.getElementById("ErrorMessage").innerHTML = json.responseMessage[0];
+            }
+        })
+}
+
+function Logout() {
+    window.location.href = 'index.html';
+}
 

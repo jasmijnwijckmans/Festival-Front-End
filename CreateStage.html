@@ -31,6 +31,7 @@
         <nav>
             <button class="gobackbutton" onclick="GoToSwitch(0);"><i class="fa fa-arrow-left"></i></button>
             <h2 class="pageheader">Create new stage</h2>
+            <button class="logoutbutton" onclick="LogOut();"><i class="fa fa-sign-out-alt"></i></button>
         </nav>
 
         <section>
@@ -54,11 +55,13 @@
                         <input id="stagesizefield" type="text" placeholder="Enter Size">
                     </div>
                 </form>
+                <button class="createstagebutton" onclick="ButtonCreateStage();"><i class="fa fa-plus-circle"></i></button>
+                <input id="RoleError" type="text">
             </div>
         </section>
 
         <footer>
-            <button class="createstagebutton" onclick="ButtonCreateStage();">Create <i class="fa fa-arrow-right"></i></button>
+
         </footer>
     </div>
 </body>
