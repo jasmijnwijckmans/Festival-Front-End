@@ -24,8 +24,64 @@ nav {
     left: 40%;
 }
 
+/*Buttons*/
+.gohomebutton {
+    float: left;
+    background-color: gray;
+    border: none;
+    color: white;
+    padding: 5px 5px;
+    font-size: 25px;
+    cursor: pointer;
+    display: inline-block;
+}
+
 .gobackbutton {
     float: left;
+    background-color: gray;
+    border: none;
+    color: white;
+    padding: 5px 5px;
+    font-size: 25px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.logoutbutton {
+    float: right;
+    background-color: gray;
+    border: none;
+    color: white;
+    padding: 5px 5px;
+    font-size: 25px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.loginbutton {
+    float: left;
+    background-color: gray;
+    border: none;
+    color: white;
+    padding: 5px 5px;
+    font-size: 25px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.registerbutton {
+    position: center;
+    background-color: gray;
+    border: none;
+    color: white;
+    padding: 5px 5px;
+    font-size: 25px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.createstagebutton {
+    float: right;
     background-color: gray;
     border: none;
     color: white;
@@ -54,33 +110,13 @@ footer {
     width: 100%;
 }
 
-.loginbutton {
-    float: left;
-    background-color: gray;
-    border: none;
-    color: white;
-    padding: 5px 5px;
-    font-size: 25px;
-    cursor: pointer;
-    display: inline-block;
-}
-
-.registerbutton {
-    position:center;
-    background-color: gray;
-    border: none;
-    color: white;
-    padding: 5px 5px;
-    font-size: 25px;
-    cursor: pointer;
-    display: inline-block;
-}
-
 /*Create Stage screen*/
 .createstagescreen {
-    position: absolute;
-    top: 30%;
-    left: 10%;
+    position: fixed;
+    top: 51.8px;
+    height: 100%;
+    background-color: lightgreen;
+    width: 100%;
 }
 
 label {
@@ -93,22 +129,15 @@ input {
     float: left;
 }
 
-.createstagebutton {
-    float: right;
-    background-color: gray;
-    border: none;
-    color: white;
-    padding: 5px 5px;
-    font-size: 25px;
-    cursor: pointer;
-    display: inline-block;
-}
+
 
 /*login and register screen*/
 .loginscreen {
-    position: absolute;
-    top: 30%;
-    left: 10%;
+    position: fixed;
+    top: 51.8px;
+    height: 100%;
+    background-color: lightgreen;
+    width: 100%;
 }
 
 .registerscreen {
