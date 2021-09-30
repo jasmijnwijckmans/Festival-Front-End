@@ -19,41 +19,36 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
           integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="GeneralScript.js"></script>
-    <script src="IndexScripts.js"></script>
 </head>
 
 <body>
     <div class="container-fluid">
         <header>
         </header>
+
         <nav>
-            <button class="gotologinbutton" onclick="GoToLogin();">Login <i class="fa fa-user"></i></button>
-            <h2 class="pageheader">Welkom op het Ciber Festival!</h2>
+            <button class="homebutton" onclick="GoToHome();"><i class="fa fa-home"></i></button>
+            <h2 class="pageheader">Help</h2>
         </nav>
-        
 
-        <section class="homescreen">
+        <section class="helpscreen">
 
-                <article id="SwitchImage" class="switchimage">
-                    <img id="Image" width="600" height="400"
-                        src="https://tse4.mm.bing.net/th/id/OIP.co7Q8cJicqhZWoOfCh7TqgHaEx?pid=ImgDet&rs=1" onclick="NextImage();">
+                <article>
+                    <p>Bullet point: het eerste help puntje</p>
                 </article>
                 <br>
-                <article class="gotoregisterbutton">
-                <button onclick="GoToLogin();">Register <i class="fa fa-user-plus"></i></button>
+                <article>
+                    <p>Bullet point: het tweede help puntje</p>
+                </article>
+                <br>
+                <article>
+                    <p>Bullet point: enz...</p>
                 </article>
         </section>
 
         <footer>
-<<<<<<< HEAD
-            <button class="createstagebutton" onclick="GoToHelp();"><i class="fa fa-question"></i></button>
             <article>
-                <p></p>
-=======
-            <button class="gotohelpbutton" onclick="GoToHelp();"><i class="fa fa-question"></i></button>
-            <article class="footbartext">
-                <p>The buttons should be functional AND nicely aligned</p>
->>>>>>> thomas
+                <p>For contact call: Funs --> 040 232 9090</p>
             </article>
         </footer>
     </div>

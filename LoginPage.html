@@ -28,32 +28,46 @@
 
         <nav>
             <button class="gohomebutton" onclick="GoToHome();"><i class="fa fa-home"></i></button>
-            <h2 class="pageheader">Log-in screen</h2>
+            <h2 class="pageheader">Login and register screen</h2>
         </nav>
 
-        <section>
-            <div class="loginscreen">
-                <div class="LoginDetails">
-                    <div>
-                        <form id="formElem">
-                            <label for="Username">Username:</label><br>
-                            <input style="width: 100%;" type="text" id="Username"><br>
-                            <label for="Password">Password:</label><br>
-                            <input style="width: 100%;" type="password" id="Password"><br>
-                            <p id="ErrorMessage" style="color: red"></p>
-                        </form>
+        <section class="loginscreen">
 
-                        <input type="button" value="Login" onclick="Login()">
-                        <input type="button" value="Register" onclick="Register()">
-                    </div>
-                </div>
-            </div>
+            <article class="loginform">
+                    <label for="Username">Username:</label>
+                    <input style="width: 100%;" type="text" id="Username">
+                    <label for="Password">Password:</label>
+                    <input style="width: 100%;" type="password" id="Password">
+                    <p id="ErrorMessage" class="loginerrormessage"></p>
+            </article>
+
+            <br>
+
+            <article class="loginbutton">
+            <input type="button" value="Login" onclick="Login()">
+            </article>
+
+            <br>
+
+            <article class="registeroption">
+                <p>If you do not yet have an account register here:</p>
+                <br>
+                <input class="registerbutton" type="button" value="Register" onclick="Register()">
+            </article>
+
         </section>
 
         <footer>
+<<<<<<< HEAD
             <div style="text-align:center; font-style:italic;">
                 <p></p>
             </div>
+=======
+            <button class="gotohelpbutton" onclick="GoToHelp();"><i class="fa fa-question"></i></button>
+            <article class="footbartext">
+                <p>The buttons should be functional AND nicely aligned</p>
+            </article>
+>>>>>>> thomas
         </footer>
     </div>
 </body>
