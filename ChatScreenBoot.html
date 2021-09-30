@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Screen</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesChatScreen 2.0.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="ChatScreenScriptBoot.js"></script>
+    <script src="GeneralScriptBoot.js"></script>
+    <script src="ChatSwitchScript.js"></script>
+</head>
+
+<body onload="LoadPage()">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#" onclick="GoToSwitch(0)">Home Stage</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1 id="stageName" class="text-center font-weight-bold"> </h1>
+        </div>
+    </div>
+
+
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-9">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h1 class="text-left font-weight-bold"> Chat </h1>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="container" id="messages">
+                    
+    
+                </div>
+
+
+
+                <!-- <div class="container">
+            <div class="row">
+              <div class="message_input_wrapper">
+                <input class="message_input form-control" placeholder="Type your message here...." />
+              </div>
+              <div class="send_message ml-2" onclick="SendMessage()">
+                <div class="icon"></div>
+                <div class="text">Send</div>
+              </div>
+            </div>
+          </div> -->
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <input id="messagebox" class="rounded form-control border border-primary"
+                                placeholder="Type your message here...." />
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="button" class="btn btn-primary" onclick="SendMessage()">Send</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-sm-3">
+
+                <div class="DjBooth">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h1 class="text-left font-weight-bold"> DJ Booth</h1>
+                            </div>
+
+                        </div>
+                    </div>
+                    <input type="button" value="Previous Song" onclick="SwitchSong()">
+                    <input type="button" value="Pauze" onclick="SwitchSong()">
+                    <input type="button" value="Next Song" onclick="SwitchSong()">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <!-- <div id="myData">
+
+  </div> -->
+
+
+
+</body>
+
+</html>
