@@ -1,53 +1,35 @@
-
 function GoToHome() {
-    window.location.href = 'index.html';
+    window.location.href = 'indexBoot.html';
 }
 
 function GoToLogin() {
-    window.location.href = 'LoginPage.html' ;
+    window.location.href = 'LoginPageBoot.html' ;
 }
  
 function GoToHelp(){
-    window.location.href = 'Help.html';
+    window.location.href = 'HelpBoot.html';
 }
 
 function GoToCreateStage() {
-    window.location.href = 'CreateStage.html';
+    window.location.href = 'CreateStageBoot.html';
 }
-function UpdateActivity() {
-    var Json = "{\"stageID\":" + localStorage.getItem('current-StageID') + ", \"userID\": "+localStorage.getItem("UserID")+" }"
-    fetch("https://localhost:44372/api/UserActivity", {
-        method: "put",
-        headers: {
-            "accept": "text/plain",
-            "Content-Type": "application/json"
-        },
-        body: Json
-    })
-        .then(response => response.json())
-        .then(json => {
-            if (json.succes == false) {
-                console.log(json.errorMessage);
-            }
-        })
-        .catch(error => {
-            console.error("Error");
-        });
 
-
-}
 var StageID;
 
 function GoToStage(StageID) {
     localStorage.setItem('current-StageID', StageID)
-    window.location.href = 'ChatScreen.html';
+    window.location.href = 'ChatScreenBoot.html';
     UpdateActivity();
 }
 
 function GoToSwitch(StageID) {
     localStorage.setItem('current-StageID', StageID)
-    window.location.href = 'ChatSwitch.html';
+    window.location.href = 'ChatSwitchBoot.html';
     UpdateActivity();
+}
+
+function Logout() {
+    window.location.href = 'indexBoot.html';
 }
 
 function Login() {
@@ -100,7 +82,26 @@ function Register() {
         })
 }
 
-function Logout() {
-    window.location.href = 'index.html';
+function UpdateActivity() {
+    var Json = "{\"stageID\":" + localStorage.getItem('current-StageID') + ", \"userID\": "+localStorage.getItem("UserID")+" }"
+    fetch("https://localhost:44372/api/UserActivity", {
+        method: "put",
+        headers: {
+            "accept": "text/plain",
+            "Content-Type": "application/json"
+        },
+        body: Json
+    })
+        .then(response => response.json())
+        .then(json => {
+            if (json.succes == false) {
+                console.log(json.errorMessage);
+            }
+        })
+        .catch(error => {
+            console.error("Error");
+        });
 }
+
+
 

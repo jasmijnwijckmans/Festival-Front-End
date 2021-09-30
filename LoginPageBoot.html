@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="InspectionOverview">
+    <meta name="author" content="">
+
+    <title>FESTIVAL</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" 
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <script src="GeneralScriptBoot.js"></script>
+    <script src="IndexScripts.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <button onclick="GoToHome();"><i class="fa fa-home"></i></button>
+            </div>
+            <div class="col-sm-6">
+                <h2>Login and register screen</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 ml-23">
+                <label for="Username">Username:</label>
+                <input style="width: 100%;" type="text" id="Username">
+                <label for="Password">Password:</label>
+                <input style="width: 100%;" type="password" id="Password">
+                <p id="ErrorMessage"></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 ml-23">
+                <input type="button" value="Login" onclick="Login()">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 ml-23">
+                <p>If you do not yet have an account register here:</p>
+                <input type="button" value="Register" onclick="Register()">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <button onclick="GoToHelp();"><i class="fa fa-question"></i></button>
+            </div>
+            <div class="col-sm-6">
+                <div>
+                    <p>If you are blind use the force</p>
+                </div>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+    </div>
+</body>
+
+</html>
