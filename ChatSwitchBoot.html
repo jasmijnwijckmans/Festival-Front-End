@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="InspectionOverview">
+    <meta name="author" content="">
+
+    <title>FESTIVAL</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">
+    <link rel="stylesheet" href="ChatSwitch.css">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="GeneralScript.js"></script>
+    <script src="ChatSwitchScriptBoot.js"></script>
+
+</head>
+
+<body onload="GetInfo()">
+
+    <div class="container-fluid">
+        <div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <button class="gobackbutton" onclick="GoToHome();"><i class="fa fa-sign-out"></i></button>
+            </div>
+            <div class="col-sm-6">
+                <h2>Stage Area</h2>
+            </div>
+            <div class="col-sm-3">
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="container mt-5 p-3 my-3 bg-primary text-black">
+                <div class="container p-3 my-3 bg-primary text-black">
+                    <div class="row" id="stages"></div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-sm-3">
+            </div>
+            <div class="col-sm-6">
+                <h2>if you are blind use the force</h2>
+            </div>
+            <div class="col-sm-3">
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+    <div class="gotocreatestage">
+        <div class="row" style="padding-left: 10px;">
+            <label for="createstage">Create:</label><br>
+            <input type="button" value="Create" onclick="GoToCreateStage();">
+
+        </div>
+    </div>
+</body>
+
+</html>
