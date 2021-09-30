@@ -3,14 +3,16 @@ function SendMessage() {
     //alert(message.value + " has been send");
     console.log(message.value);
     let dataReceived = "";
-    var myJSON = "{\"messageText\": \"" + document.getElementById("messagebox").value + "\",\"userID\": 1 }"
-    fetch("https://localhost:44372/api/Messages", {
+    var mijnMessage = {}
+    mijnMessage.messageText = document.getElementById("messagebox").value;
+    mijnMessage.userID = 1;
+    fetch("https://1a63a4ab-7d00-4b50-aac3-f73fb23a4d1f.mock.pstmn.io/api/Message", {
             method: "post",
             headers: {
                 "accept": "text/plain",
                 "Content-Type": "application/json"
             },
-            body: myJSON
+            body: mijnMessage
         })
         .then(response => response.json())
         .then(json => {
@@ -61,7 +63,7 @@ LastUpdated.setMonth(LastUpdated.getMonth() - 3);
 //+ LastUpdated.toISOString() +
 function NewGetMessage() {
     var Json = "{\"stageID\":" + localStorage.getItem('current-StageID') + ", \"lastUpdated\":\""+LastUpdated.toISOString()+"\"}"
-    fetch("https://localhost:44372/api/Messages", {
+    fetch("https://1a63a4ab-7d00-4b50-aac3-f73fb23a4d1f.mock.pstmn.io/api/Message", {
             method: "put",
             headers: {
                 "accept": "text/plain",
@@ -95,13 +97,16 @@ function NewGetMessage() {
 
 
 function LoadPage() {
-    document.getElementById("stageName").innerHTML = "Stage " + localStorage.getItem('current-StageID');
-    NewGetMessage();
 
+     document.getElementById("stageName").innerHTML = "Stage " + localStorage.getItem('current-StageID');
     if (localStorage.getItem("UserRole") == "artist") {
-        var elements = document.getElementsByClassName("DjBooth");
-        elements[0].style.display = "block";
+        $(".DjBooth").show();
     }
+    else{
+        $(".DjBooth").hide();  
+    }
+
+
 }
 
 
@@ -115,6 +120,5 @@ function GetActiveUsersStage(StageID) {
         .catch(error => {
             console.error(error);
         });
-
 
 }
