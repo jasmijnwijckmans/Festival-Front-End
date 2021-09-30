@@ -19,7 +19,7 @@ function SendMessage() {
             }
         })
         .catch(error => {
-            console.log("Error",error);
+            console.log("Error", error);
         });
     //var p =  document.createElement("p");
     //p.innerHTML = message;
@@ -73,22 +73,44 @@ function NewGetMessage() {
         .then(response => response.json())
         .then(function (returndata) {
             LastUpdated = new Date();
-            for (var i = 0; i < returndata.data.length; i++) {
-                var temp = "";
-                if (returndata.data[i].userRole == "Admin") {
-                    temp += "<tr style=\"color:red\">";
-                } else {
-                    temp += "<tr>";
-                }
-                temp += "<td style = \" font-weight: bold\">" + returndata.data[i].userName + ":" + "</td>";
-                temp += "<td style=\"text-align:left\">" + returndata.data[i].messageText + "</td>";
-                temp += "<td style=\"font-weight: lighter\">" + new Date(returndata.data[i].timestamp + "Z").toLocaleTimeString() + "</td>";
-                document.getElementById("myData").innerHTML += temp;
+
+            if (returndata.success) {
+                returndata.data.forEach(function (message) {
+
+                    var div = document.createElement("div");
+                    div.innerHTML = message.messageText;
+        
+                    if(localStorage.getItem("UserName")==message.userName){
+                        div.className="text-right border"
+                    }
+                    else{
+                        div.className="text-left border"
+                    }
+                    document.getElementById("messages").appendChild(div);
+
+
+                });
+            } else {
+                console.log("error")
 
             }
+
+            // for (var i = 0; i < returndata.data.length; i++) {
+            //     var temp = "";
+            //     if (returndata.data[i].userRole == "Admin") {
+            //         temp += "<tr style=\"color:red\">";
+            //     } else {
+            //         temp += "<tr>";
+            //     }
+            //     temp += "<td style = \" font-weight: bold\">" + returndata.data[i].userName + ":" + "</td>";
+            //     temp += "<td style=\"text-align:left\">" + returndata.data[i].messageText + "</td>";
+            //     temp += "<td style=\"font-weight: lighter\">" + new Date(returndata.data[i].timestamp + "Z").toLocaleTimeString() + "</td>";
+            //     document.getElementById("myData").innerHTML += temp;
+
+            // }
         })
         .catch(error => {
-            console.error("Error",);
+            console.error("Error", error);
         });
 
 
@@ -97,13 +119,12 @@ function NewGetMessage() {
 
 function LoadPage() {
 
-     document.getElementById("stageName").innerHTML = "Stage " + localStorage.getItem('current-StageID');
-     NewGetMessage();
+    document.getElementById("stageName").innerHTML = "Stage " + localStorage.getItem('current-StageID');
+    NewGetMessage();
     if (localStorage.getItem("UserRole") == "artist") {
         $(".DjBooth").show();
-    }
-    else{
-        $(".DjBooth").hide();  
+    } else {
+        $(".DjBooth").hide();
     }
 
 
