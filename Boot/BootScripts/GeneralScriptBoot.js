@@ -1,3 +1,5 @@
+const baseurl = "https://localhost:44372";
+
 function GoToHome() {
     window.location.href = 'indexBoot.html';
 }
@@ -35,7 +37,7 @@ function Logout() {
 function Login() {
     let dataReceived = "";
     var myJSON = "{\"Username\": \"" + document.getElementById("Username").value + "\",\"Password\":\"" + document.getElementById("Password").value + "\"}"
-    fetch("https://localhost:44372/api/Login", {
+    fetch(baseurl + "/api/Login", {
         method: "post",
         headers: {
             "success": true,
@@ -60,7 +62,7 @@ function Login() {
 function Register() {
     let dataReceived = "";
     var myJSON = "{\"Username\": \"" + document.getElementById("Username").value + "\",\"Password\":\"" + document.getElementById("Password").value + "\"}"
-    fetch("https://1a63a4ab-7d00-4b50-aac3-f73fb23a4d1f.mock.pstmn.io/api/User", {
+    fetch(baseurl +"/api/User", {
         method: "post",
         headers: {
             "success": true,
@@ -84,7 +86,7 @@ function Register() {
 
 function UpdateActivity() {
     var Json = "{\"stageID\":" + localStorage.getItem('current-StageID') + ", \"userID\": "+localStorage.getItem("UserID")+" }"
-    fetch("https://localhost:44372/api/UserActivity", {
+    fetch(baseurl + "/api/UserActivity", {
         method: "put",
         headers: {
             "accept": "text/plain",

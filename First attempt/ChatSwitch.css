@@ -1,0 +1,4 @@
+/*hide role-specific div html*/
+div.gotocreatestage{
+    display:none;
+}
