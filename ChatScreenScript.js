@@ -2,7 +2,7 @@ function SendMessage() {
     var mijnMessage = {}
     mijnMessage.messageText = document.getElementById("messagebox").value;
     mijnMessage.userID = 1;
-    fetch("https://1a63a4ab-7d00-4b50-aac3-f73fb23a4d1f.mock.pstmn.io/api/Message", {
+    fetch("https://localhost:44372/api/Message", {
             method: "post",
             headers: {
                 "accept": "text/plain",

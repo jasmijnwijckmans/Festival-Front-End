@@ -35,7 +35,7 @@ function Logout() {
 function Login() {
     let dataReceived = "";
     var myJSON = "{\"Username\": \"" + document.getElementById("Username").value + "\",\"Password\":\"" + document.getElementById("Password").value + "\"}"
-    fetch("https://1a63a4ab-7d00-4b50-aac3-f73fb23a4d1f.mock.pstmn.io/api/Login", {
+    fetch("https://localhost:44372/api/Login", {
         method: "post",
         headers: {
             "success": true,

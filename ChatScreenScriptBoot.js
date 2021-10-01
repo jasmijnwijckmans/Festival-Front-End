@@ -1,8 +1,8 @@
 function SendMessage() {
     var mijnMessage = {}
     mijnMessage.messageText = document.getElementById("messagebox").value;
-    mijnMessage.userID = 1;
-    fetch("https://1a63a4ab-7d00-4b50-aac3-f73fb23a4d1f.mock.pstmn.io/api/Message", {
+    mijnMessage.userID = localStorage.getItem("UserID");
+    fetch("https://localhost:44372/api/Messages", {
             method: "post",
             headers: {
                 "accept": "text/plain",
@@ -59,10 +59,10 @@ LastUpdated.setMonth(LastUpdated.getMonth() - 3);
 //+ LastUpdated.toISOString() +
 function NewGetMessage() {
     var mijnMessage = {}
-    mijnMessage.stageID = 1;
-    // mijnMessage.stageID = localStorage.getItem('current-StageID');
+   //mijnMessage.stageID = 1;
+    mijnMessage.stageID = localStorage.getItem('current-StageID');
     mijnMessage.lastUpdated = LastUpdated.toISOString();
-    fetch("https://1a63a4ab-7d00-4b50-aac3-f73fb23a4d1f.mock.pstmn.io/api/Message", {
+    fetch("https://localhost:44372/api/Messages", {
             method: "put",
             headers: {
                 "accept": "text/plain",
@@ -78,13 +78,13 @@ function NewGetMessage() {
                 returndata.data.forEach(function (message) {
 
                     var div = document.createElement("div");
-                    div.innerHTML = message.messageText;
+                    div.innerHTML = message.userName + " " + message.messageText;
         
                     if(localStorage.getItem("UserName")==message.userName){
-                        div.className="text-right border"
+                        div.className="text-right"
                     }
                     else{
-                        div.className="text-left border"
+                        div.className="text-left"
                     }
                     document.getElementById("messages").appendChild(div);
 
@@ -132,7 +132,7 @@ function LoadPage() {
 
 
 function GetActiveUsersStage(StageID) {
-    fetch("https://1a63a4ab-7d00-4b50-aac3-f73fb23a4d1f.mock.pstmn.io/api/User") //API list of messages
+    fetch("https://localhost:44372/api/User") //API list of messages
         .then((response) => response.json()) //What's the difference 
         .then(function (returndata) {
             console.log(returndata);
