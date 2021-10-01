@@ -78,7 +78,7 @@ function NewGetMessage() {
                 returndata.data.forEach(function (message) {
 
                     var div = document.createElement("div");
-                    div.innerHTML = message.messageText;
+                    div.innerHTML = message.userName+ ": " +message.messageText;
         
                     if(localStorage.getItem("UserName")==message.userName){
                         div.className="text-right border"
