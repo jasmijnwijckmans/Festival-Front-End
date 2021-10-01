@@ -3,7 +3,7 @@ function ButtonCreateStage() {
     if (localStorage.getItem('UserRole') == "admin") {
     let dataReceived = "";
     var myJSON = "{\"StageName\": \"" + document.getElementById("stagenamefield").value + "\",\"StageActive\": true}" 
-    fetch("https://1a63a4ab-7d00-4b50-aac3-f73fb23a4d1f.mock.pstmn.io/api/Stage", { 
+    fetch("https://localhost:44372/api/Stage", { 
         method: "post",
         headers: {
             "success": true,
