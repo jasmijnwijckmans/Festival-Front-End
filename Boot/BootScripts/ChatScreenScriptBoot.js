@@ -49,31 +49,36 @@ function NewGetMessage() { //Every time the user sends a message or loads the pa
                 console.log(returndata)
                 returndata.data.forEach(function (message) {
                     
-                    var p = document.createElement("p");
-                    var p2 = document.createElement("p");
-                    var p3 = document.createElement("p");
+                    var divText = document.createElement("div");
+                    var divName = document.createElement("div");
+                    var divTime= document.createElement("div");
 
-                    // var div = document.createElement("div");
-                    // div.className = "messagebox";
+                    var div = document.createElement("div");
+                    div.id = message.messageText;
+                    div.className = "container"
 
-                    p.innerHTML = message.userName;
-                    p2.innerHTML = message.messageText;
-                    p3.innerHTML = new Date(message.timestamp).toLocaleTimeString();
+                    divName.innerHTML = message.userName;
+                    divText.innerHTML = message.messageText;
+                    divTime.innerHTML = new Date(message.timestamp).toLocaleTimeString();
 
 
                     if (localStorage.getItem("UserName") == message.userName) {
-                        p.className = "text-right"
-                        p2.className = "text-right"
-                        p3.className = "text-right"
+                        div.className = "text-right";
+                        divText.className = "font-weight-bold";
+                        divName.className = "font-weight-light";
+                        divTime.className = "time-left";
+                
                     } else {
-                        p.className = "text-left"
-                        p2.className = "text-left"
-                        p3.className = "text-left"
+                        div.className = "text-left";
+                        divText.className = "font-weight-bold";
+                        divName.className = "font-weight-light";
+                        divTime.className = "time-right";            
+           
                     }
-                    //$(".chatbox").append(div);
-                    $(".chatbox").append(p);
-                    $(".chatbox").append(p2);
-                    $(".chatbox").append(p3);
+                    $(".chatbox").append(div);
+                    $("#"+message.messageText).append(divName);
+                    $("#"+message.messageText).append(divText);
+                    $("#"+message.messageText).append(divTime);
                 });
             
 
