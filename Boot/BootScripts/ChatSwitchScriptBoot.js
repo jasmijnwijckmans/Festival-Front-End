@@ -1,5 +1,5 @@
 function GetInfo() {
-    fetch('https://localhost:44322/api/Stage')
+    fetch(baseurl + "/api/Stage")
         .then((response) => response.json()) //What's the difference 
         .then(function (returndata) {
             console.log(returndata);
