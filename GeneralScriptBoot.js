@@ -35,7 +35,7 @@ function Logout() {
 function Login() {
     let dataReceived = "";
     var myJSON = "{\"Username\": \"" + document.getElementById("Username").value + "\",\"Password\":\"" + document.getElementById("Password").value + "\"}"
-    fetch("https://localhost:44372/api/Login", {
+    fetch("https://localhost:44322/api/Login", {
         method: "post",
         headers: {
             "success": true,
@@ -84,7 +84,7 @@ function Register() {
 
 function UpdateActivity() {
     var Json = "{\"stageID\":" + localStorage.getItem('current-StageID') + ", \"userID\": "+localStorage.getItem("UserID")+" }"
-    fetch("https://localhost:44372/api/UserActivity", {
+    fetch("https://localhost:44322/api/UserActivity", {
         method: "put",
         headers: {
             "accept": "text/plain",

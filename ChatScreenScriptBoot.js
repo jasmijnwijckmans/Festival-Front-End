@@ -2,7 +2,7 @@ function SendMessage() {
     var mijnMessage = {}
     mijnMessage.messageText = document.getElementById("messagebox").value;
     mijnMessage.userID = localStorage.getItem("UserID");
-    fetch("https://localhost:44372/api/Messages", {
+    fetch("https://localhost:44322/api/Messages", {
             method: "post",
             headers: {
                 "accept": "text/plain",
@@ -62,7 +62,7 @@ function NewGetMessage() {
    //mijnMessage.stageID = 1;
     mijnMessage.stageID = localStorage.getItem('current-StageID');
     mijnMessage.lastUpdated = LastUpdated.toISOString();
-    fetch("https://localhost:44372/api/Messages", {
+    fetch("https://localhost:44322/api/Messages", {
             method: "put",
             headers: {
                 "accept": "text/plain",
@@ -132,7 +132,7 @@ function LoadPage() {
 
 
 function GetActiveUsersStage(StageID) {
-    fetch("https://localhost:44372/api/User") //API list of messages
+    fetch("https://localhost:44322/api/User") //API list of messages
         .then((response) => response.json()) //What's the difference 
         .then(function (returndata) {
             console.log(returndata);
