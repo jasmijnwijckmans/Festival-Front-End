@@ -86,10 +86,12 @@ function Register() {
                 // if response is is true, log the returning user ID
                console.log(json.data)
                //create alert to notify if regiter was succesful to do!!!
+               alert("You have been registered succesfully!, click Login to proceed");
                 //GoToSwitch();
             } else {
                 // errormessage
                 document.getElementById("ErrorMessage").innerHTML = json.responseMessage[0];
+                alert("something went wrong, try agian!")
             }
         })
 }
