@@ -1,4 +1,10 @@
-const baseurl = "https://festivalapplication20211001092547.azurewebsites.net";
+//Local API
+//1) const baseurl = "https://localhost:44372";
+
+//2) Mock API
+const baseurl = "https://1a63a4ab-7d00-4b50-aac3-f73fb23a4d1f.mock.pstmn.io";
+
+//!!IMPORTANT!!: Use only API 1 or 2!
 
 function GoToHome() {
     window.location.href = 'indexBoot.html';
@@ -59,26 +65,30 @@ function Login() {
         })
 }
 
+// script to register new user
 function Register() {
-    let dataReceived = "";
-    var myJSON = "{\"Username\": \"" + document.getElementById("Username").value + "\",\"Password\":\"" + document.getElementById("Password").value + "\"}"
+    // create request body
+    myJson = {}
+    myJson.Username = document.getElementById("Username").value;
+    myJson.Password = document.getElementById("Password").value;
     fetch(baseurl +"/api/User", {
         method: "post",
         headers: {
             "success": true,
             "Content-Type": "application/json"
         },
-        body: myJSON
+        body: JSON.stringify(myJson)
     })
+    // response as Json
         .then(response => response.json())
         .then(json => {
             if (json.success) {
-                localStorage.setItem('AuthenticationKey', json.data.authenticationKey);
-                localStorage.setItem('UserID', json.data.userID);
-                localStorage.setItem('UserName', json.data.userName);
-                localStorage.setItem('UserRole', json.data.userRole);
-                GoToSwitch();
+                // if response is is true, log the returning user ID
+               console.log(json.data)
+               //create alert to notify if regiter was succesful to do!!!
+                //GoToSwitch();
             } else {
+                // errormessage
                 document.getElementById("ErrorMessage").innerHTML = json.responseMessage[0];
             }
         })

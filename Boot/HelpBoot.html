@@ -8,59 +8,74 @@
     <meta name="author" content="">
 
     <title>FESTIVAL</title>
-
+    <!-- link to bootstrap for usage of columns and containers -->
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!-- link to bootstrap for fonts-->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <!-- Bootstrap Font Icon CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!-- Cloudflare Font Icon CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" 
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-
-    <script src="GeneralScriptBoot.js"></script>
+    <!-- link to the general script for clickthrough and the page specific script -->
+    <script src="BootScripts/GeneralScriptBoot.js"></script>
 </head>
 
 <body>
+    <!-- starting with creating a container fluid -->
     <div class="container-fluid">
+        <!-- page header -->
         <div>
         </div>
-
+        <!-- navigation bar -->
         <div class="row">
-            <div class="col-sm-3">
-                <button onclick="GoToHome();"><i class="fa fa-home"></i></button>
+            <div class="col-sm-1">
+                <button onclick="GoToHome();"><i class="bi bi-house btn btn-block"></i></button>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-10">
                 <h2>Help page</h2>
             </div>
-            <div class="col-sm-3"></div>
+            <div class="col-sm-1"></div>
         </div>
-
+        <!-- page specific section -->
         <div class="row">
-            <div class="col-sm-6 ml-23">
+            <div class="col-sm-12">
                 <article>
-                    <p>Bullet point: het eerste help puntje</p>
+                    <!-- For example the general info -->
+                    <h2>Header article 1</h2><br>
+                    <p>point 1 article 1</p><br>
+                    <p>point 2 article 1</p><br>
+                    <p>point X article 1</p><br>
                 </article>
                 <br>
                 <article>
-                    <p>Bullet point: het tweede help puntje</p>
+                    <!-- FAQs -->
+                    <h2>Header article 2</h2><br>
+                    <p>point 1 article 2</p><br>
+                    <p>point 2 article 2</p><br>
+                    <p>point X article 2</p><br>
                 </article>
                 <br>
                 <article>
-                <p>Bullet point: enz...</p>
+                    <!-- Could be any kind of relevant information -->
+                    <h2>Header article X</h2><br>
+                    <p>point 1 article X</p><br>
+                    <p>point 2 article X</p><br>
+                    <p>point X article X</p><br>
                 </article>
             </div>
         </div>
-
+        <!-- foot bar -->
         <div class="row">
-            <div class="col-sm-3"></div>
-            <div class="col-sm-6">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
                 <div>
-                    <p>If you are blind use the force</p>
+                    <p>If the question is not answered by the information above, please contact us.</p>
                 </div>
             </div>
-            <div class="col-sm-3"></div>
+            <div class="col-sm-1"></div>
         </div>
     </div>
 </body>
