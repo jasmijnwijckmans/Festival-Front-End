@@ -2,7 +2,7 @@
   
   .text-right{
     border: 2px solid #dedede;
-    background-color: lightgreen;
+    background-color: thistle;
     border-radius: 5px;
     padding: 10px;
     margin: 15px
@@ -18,11 +18,11 @@
 
   .time-right {
     text-align:left;
-    color: #aaa;
+    color: lightslategrey;
   }
   
 
   .time-left {
     text-align: right;
-    color: #999;
+    color: lightslategrey;
   }

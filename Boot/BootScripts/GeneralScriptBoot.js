@@ -26,14 +26,16 @@ var StageID;
 
 function GoToStage(StageID) {
     localStorage.setItem('current-StageID', StageID)
-    window.location.href = 'ChatScreenBoot.html';
     UpdateActivity();
+    window.location.href = 'ChatScreenBoot.html';
+
 }
 
 function GoToSwitch(StageID) {
     localStorage.setItem('current-StageID', StageID)
-    window.location.href = 'ChatSwitchBoot.html';
     UpdateActivity();
+    window.location.href = 'ChatSwitchBoot.html';
+
 }
 
 function Logout() {

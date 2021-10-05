@@ -62,8 +62,7 @@ function NewGetMessage() { //Every time the user sends a message or loads the pa
     
                     divName.innerHTML = message.userName;
                     divText.innerHTML = message.messageText;
-                    pTime.innerHTML = new Date(message.timestamp).toLocaleTimeString();
-
+                    pTime.innerHTML = new Date(message.timestamp + "Z").toLocaleTimeString([], {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'});
 
                     if (localStorage.getItem("UserName") == message.userName) {
 
