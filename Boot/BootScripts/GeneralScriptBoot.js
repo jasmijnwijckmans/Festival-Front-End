@@ -2,7 +2,7 @@
 //1) const baseurl = "https://localhost:44372";
 
 //2) Mock API
-const baseurl = "https://1a63a4ab-7d00-4b50-aac3-f73fb23a4d1f.mock.pstmn.io";
+const baseurl = "https://festivalapplication20211001092547.azurewebsites.net";
 
 //!!IMPORTANT!!: Use only API 1 or 2!
 
