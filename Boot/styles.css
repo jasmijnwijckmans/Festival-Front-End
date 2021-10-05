@@ -1,151 +1,117 @@
 /*Stylesheet*/
 
-/*General Styles*/
-header {
-    position: fixed;
-    left: 0;
-    top: inherit;
-    width: 100%;
-    height: 5px;
-    background-color: lightsalmon;
-}
-/*Navigation bar*/
-nav {
-    position: fixed;
-    top:5px;
-    left: 0;
-    width: 100%;
-    height: 46.8px;
-    background-color: lightgray;
-}
-
-.pageheader{
-    position:absolute;
-    left: 40%;
-}
-
-/*Buttons*/
-.gohomebutton {
-    float: left;
-    background-color: gray;
-    border: none;
-    color: white;
-    padding: 5px 5px;
-    font-size: 25px;
-    cursor: pointer;
-    display: inline-block;
-}
-
-.gobackbutton {
-    float: left;
-    background-color: gray;
-    border: none;
-    color: white;
-    padding: 5px 5px;
-    font-size: 25px;
-    cursor: pointer;
-    display: inline-block;
-}
-
-.logoutbutton {
-    float: right;
-    background-color: gray;
-    border: none;
-    color: white;
-    padding: 5px 5px;
-    font-size: 25px;
-    cursor: pointer;
-    display: inline-block;
-}
-
-.loginbutton {
-    float: left;
-    background-color: gray;
-    border: none;
-    color: white;
-    padding: 5px 5px;
-    font-size: 25px;
-    cursor: pointer;
-    display: inline-block;
-}
-
-.registerbutton {
-    position: center;
-    background-color: gray;
-    border: none;
-    color: white;
-    padding: 5px 5px;
-    font-size: 25px;
-    cursor: pointer;
-    display: inline-block;
-}
-
-.createstagebutton {
-    float: right;
-    background-color: gray;
-    border: none;
-    color: white;
-    padding: 5px 5px;
-    font-size: 25px;
-    cursor: pointer;
-    display: inline-block;
-}
-
-/*Footer*/
-footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 46.8px;
-    background-color: lightgray;
-}
-
-/*HomeScreen or index*/
-.homescreen {
-    position: fixed;
-    top: 51.8px;
-    height:100%;
-    background-color: lightgreen;
-    width: 100%;
-}
-
-/*Create Stage screen*/
-.createstagescreen {
-    position: fixed;
-    top: 51.8px;
+/*Navigation and Footer styling*/
+/*Positioning*/
+html, body {
     height: 100%;
-    background-color: lightgreen;
-    width: 100%;
-}
-
-label {
-    float: left;
-    width: 150px;
-    text-align: right;
-}
-
-input {
-    float: left;
-}
-
-
-
-/*login and register screen*/
-.loginscreen {
-    position: fixed;
-    top: 51.8px;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+  }
+  section {
+    min-height: 100%;
+    margin-bottom: -39.8px;
+  }
+  * html section{
     height: 100%;
-    background-color: lightgreen;
+    margin-bottom:38.8px;
+  }
+  #nav-spacer {
+    height: 39.8px;
+  }
+  nav {
+    position: fixed;
+    top: 0;
     width: 100%;
-}
+  }
+  #footer-spacer {
+    height: 39.8px;
+  }
+  footer {
+    height: 38.8px;
+  }
+  /*navigation bar and footer background*/
+  ul {
+      height:38.8px;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color:rgb(125, 0, 0);
+  }
+  /*Style of button*/ 
+  li {
+    float: left;
+  }
+  li a {
+      display: block;
+      color: thistle;
+      text-align: center;
+      text-decoration: none;
+  }
+  .btn {
+      background-color: rgb(125, 0, 0);
+      border: none;
+      color: thistle;
+      padding: 5px 5px;
+      font-size: 25px;
+      cursor: pointer;
+      display: inline-block;
+  }  
+  .btn:hover {
+      background-color:rgb(100, 0, 0);
+    }
+  /*Style of text*/ 
+  .navtxt{
+    margin:2.2px;
+    font-style:oblique;
+    font-weight:bold;
+    font-size: 30px;
+    color:lightgoldenrodyellow;
+    padding-left: 15px;
+  }
+  .foottxt{
+    text-align: center;
+    font-size: 12px;
+    color:white;
+    padding-left: 15px;
+  }
 
-.registerscreen {
+/*Index Page*/
+.indexpage{
+    background-color: thistle;
+}
+.indeximage{
     position: absolute;
-    top: 30%;
-    left: 10%;
+    top: 80%;
+    left: 40%;
+    padding: 5px 5px;
+    width:60%;
+    margin-left: -30%;
+    height:60%;
+    margin-top: -30%;
+    cursor:pointer;
 }
-
-
+.gotoregisterbtn{
+    position: absolute;
+    top: 60%;
+    left: 85%;
+    padding: 5px 5px;
+    width:20%;
+    margin-left: -10%;
+    height:30%;
+    margin-top: -15%;
+    background-color: rgb(125, 0, 0);
+    border: none;
+    color: thistle;
+    font-size: 25px;
+    cursor: pointer;
+    display: inline-block;
+    }  
+.gotoregisterbtn:hover {
+    background-color:rgb(100, 0, 0);
+    }
 
 
