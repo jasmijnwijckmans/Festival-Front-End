@@ -26,14 +26,16 @@ var StageID;
 
 function GoToStage(StageID) {
     localStorage.setItem('current-StageID', StageID)
-    window.location.href = 'ChatScreenBoot.html';
     UpdateActivity();
+    window.location.href = 'ChatScreenBoot.html';
+
 }
 
 function GoToSwitch(StageID) {
     localStorage.setItem('current-StageID', StageID)
-    window.location.href = 'ChatSwitchBoot.html';
     UpdateActivity();
+    window.location.href = 'ChatSwitchBoot.html';
+
 }
 
 function Logout() {
@@ -43,6 +45,7 @@ function Logout() {
 function Login() {
     let dataReceived = "";
     var myJSON = "{\"Username\": \"" + document.getElementById("Username").value + "\",\"Password\":\"" + document.getElementById("Password").value + "\"}"
+
     fetch(baseurl + "/api/Login", {
         method: "post",
         headers: {
@@ -79,6 +82,7 @@ function Register() {
         },
         body: JSON.stringify(myJson)
     })
+
     // response as Json
         .then(response => response.json())
         .then(json => {
@@ -97,7 +101,8 @@ function Register() {
 }
 
 function UpdateActivity() {
-    var Json = "{\"stageID\":" + localStorage.getItem('current-StageID') + ", \"userID\": "+localStorage.getItem("UserID")+" }"
+    var Json = "{\"stageID\":" + localStorage.getItem('current-StageID') + ", \"userID\":"+localStorage.getItem("UserID")+ " }"
+    console.log(Json);
     fetch(baseurl + "/api/UserActivity", {
         method: "put",
         headers: {
@@ -108,7 +113,7 @@ function UpdateActivity() {
     })
         .then(response => response.json())
         .then(json => {
-            if (json.succes == false) {
+            if (json.success == false) {
                 console.log(json.errorMessage);
             }
         })
