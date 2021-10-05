@@ -51,34 +51,44 @@ function NewGetMessage() { //Every time the user sends a message or loads the pa
                     
                     var divText = document.createElement("div");
                     var divName = document.createElement("div");
-                    var divTime= document.createElement("div");
+                    var pTime= document.createElement("p");
 
                     var div = document.createElement("div");
                     div.id = message.messageText;
-                    div.className = "container"
-
+    
                     divName.innerHTML = message.userName;
                     divText.innerHTML = message.messageText;
-                    divTime.innerHTML = new Date(message.timestamp).toLocaleTimeString();
+                    pTime.innerHTML = new Date(message.timestamp).toLocaleTimeString();
 
 
                     if (localStorage.getItem("UserName") == message.userName) {
-                        div.className = "text-right";
-                        divText.className = "font-weight-bold";
-                        divName.className = "font-weight-light";
-                        divTime.className = "time-left";
+                        div.className = "text-right p-3 mb-2 bg-primary text-white";
+                        divText.className = "font-weight-light";
+                        divName.className = "font-weight-bold";
+                        pTime.className = "time-right";
                 
                     } else {
                         div.className = "text-left";
-                        divText.className = "font-weight-bold";
-                        divName.className = "font-weight-light";
-                        divTime.className = "time-right";            
+                        divText.className = "font-weight-light";
+                        divName.className = "font-weight-bold";
+                        pTime.className = "time-left";            
            
                     }
+                    if(localStorage.getItem("UserRole") == "admin"){
+                        $( "div" ).last().addClass( "p-3 mb-2 bg-primary text-white");
+                    }
+                    else if(localStorage.getItem("UserRole") == "artist"){
+                        $( "div").last().addClass( "p-3 mb-2 bg-danger text-white" );
+                    }
+                    else{
+                        $( "div" ).last().addClass( "p-3 mb-2 bg-light text-white" );
+                    }
+                
+                    
                     $(".chatbox").append(div);
                     $("#"+message.messageText).append(divName);
                     $("#"+message.messageText).append(divText);
-                    $("#"+message.messageText).append(divTime);
+                    $("#"+message.messageText).append(pTime);
                 });
             
 

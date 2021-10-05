@@ -17,12 +17,13 @@
   
 
   .time-right {
-    float: right;
+    text-align:left;
     color: #aaa;
   }
   
 
   .time-left {
-    float: left;
+    text-align: right;
     color: #999;
   }
+ 
