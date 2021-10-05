@@ -2,14 +2,14 @@
   
   .text-right{
     border: 2px solid #dedede;
-    background-color: #f1f1f1;
+    background-color: lightgreen;
     border-radius: 5px;
     padding: 10px;
     margin: 15px
   }
-  .text-left{
+    .text-left{
     border: 2px solid #dedede;
-    background-color: #f1f1f1;
+    background-color: white;
     border-radius: 5px;
     padding: 10px;
     margin: 15px;
@@ -26,4 +26,3 @@
     text-align: right;
     color: #999;
   }
- 

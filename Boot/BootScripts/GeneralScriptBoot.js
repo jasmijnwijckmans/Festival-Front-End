@@ -1,4 +1,4 @@
-const baseurl = "https://1a63a4ab-7d00-4b50-aac3-f73fb23a4d1f.mock.pstmn.io";
+const baseurl = "https://festivalapplication20211001092547.azurewebsites.net";
 
 function GoToHome() {
     window.location.href = 'indexBoot.html';

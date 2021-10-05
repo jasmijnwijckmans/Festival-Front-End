@@ -48,51 +48,66 @@ function NewGetMessage() { //Every time the user sends a message or loads the pa
 
                 console.log(returndata)
                 returndata.data.forEach(function (message) {
-                    
+              
+
                     var divText = document.createElement("div");
                     var divName = document.createElement("div");
-                    var pTime= document.createElement("p");
+                    var pTime = document.createElement("p");
+
+                    var icon = document.createElement("div");
+
+                    divText.className = "font-weight-light";
+                    divName.className = "font-weight-bold";
+                    divName.id = "name";
 
                     var div = document.createElement("div");
                     div.id = message.messageText;
-    
+
                     divName.innerHTML = message.userName;
                     divText.innerHTML = message.messageText;
                     pTime.innerHTML = new Date(message.timestamp).toLocaleTimeString();
 
 
+
+
                     if (localStorage.getItem("UserName") == message.userName) {
-                        div.className = "text-right p-3 mb-2 bg-primary text-white";
-                        divText.className = "font-weight-light";
-                        divName.className = "font-weight-bold";
+
+                        div.className = "text-right";
                         pTime.className = "time-right";
-                
+                        $(".chatbox").append(div);
+                        $("#" + message.messageText).append(divText);
+                        $("#" + message.messageText).append(pTime);
+
+                        if (localStorage.getItem("UserRole") == "admin") {
+                            icon.className = "bi bi-person-circle";
+                            $("#" + message.messageText).prepend(icon);
+                        } else if (localStorage.getItem("UserRole") == "artist") {
+                            icon.className = "bi bi-disc"
+                            $("#" + message.messageText).prepend(icon);
+                        }
+
+
+
                     } else {
                         div.className = "text-left";
-                        divText.className = "font-weight-light";
-                        divName.className = "font-weight-bold";
-                        pTime.className = "time-left";            
-           
-                    }
-                    if(localStorage.getItem("UserRole") == "admin"){
-                        $( "div" ).last().addClass( "p-3 mb-2 bg-primary text-white");
-                    }
-                    else if(localStorage.getItem("UserRole") == "artist"){
-                        $( "div").last().addClass( "p-3 mb-2 bg-danger text-white" );
-                    }
-                    else{
-                        $( "div" ).last().addClass( "p-3 mb-2 bg-light text-white" );
-                    }
-                
-                    
-                    $(".chatbox").append(div);
-                    $("#"+message.messageText).append(divName);
-                    $("#"+message.messageText).append(divText);
-                    $("#"+message.messageText).append(pTime);
-                });
-            
+                        pTime.className = "time-left";
+                        $(".chatbox").append(div);
+                        $("#" + message.messageText).append(divName);
+                        $("#" + message.messageText).append(divText);
+                        $("#" + message.messageText).append(pTime);
 
+                        if (message.userRole == "visitor") {
+                            icon.className = "bi bi-person-circle";
+                            $("#" + message.messageText).prepend(icon);
+                        } else if (message.userRole == "artist") {
+                            icon.className = "bi bi-disc"
+                            $("#" + message.messageText).prepend(icon);
+                        }
+
+                    }
                 
+                });
+
             } else {
                 console.log("error")
 
