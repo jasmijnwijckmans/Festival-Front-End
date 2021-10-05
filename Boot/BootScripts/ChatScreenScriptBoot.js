@@ -44,12 +44,13 @@ function NewGetMessage() { //Every time the user sends a message or loads the pa
         .then(function (returndata) {
             LastUpdated = new Date();
 
-            if (returndata.success) {
+            if (returndata.success == true) {
 
-                console.log(returndata)
                 returndata.data.forEach(function (message) {
-              
+                    var div = document.createElement("div");
+                    div.id = message.messageID;
 
+                    console.log(returndata);
                     var divText = document.createElement("div");
                     var divName = document.createElement("div");
                     var pTime = document.createElement("p");
@@ -58,16 +59,10 @@ function NewGetMessage() { //Every time the user sends a message or loads the pa
 
                     divText.className = "font-weight-light";
                     divName.className = "font-weight-bold";
-                    divName.id = "name";
-
-                    var div = document.createElement("div");
-                    div.id = message.messageText;
-
+    
                     divName.innerHTML = message.userName;
                     divText.innerHTML = message.messageText;
                     pTime.innerHTML = new Date(message.timestamp).toLocaleTimeString();
-
-
 
 
                     if (localStorage.getItem("UserName") == message.userName) {
@@ -75,37 +70,40 @@ function NewGetMessage() { //Every time the user sends a message or loads the pa
                         div.className = "text-right";
                         pTime.className = "time-right";
                         $(".chatbox").append(div);
-                        $("#" + message.messageText).append(divText);
-                        $("#" + message.messageText).append(pTime);
+                        $("#"+message.messageID).append(divText);
+                        $("#"+message.messageID).append(pTime);
 
                         if (localStorage.getItem("UserRole") == "admin") {
                             icon.className = "bi bi-person-circle";
-                            $("#" + message.messageText).prepend(icon);
-                        } else if (localStorage.getItem("UserRole") == "artist") {
+                            $("#"+message.messageID).prepend(icon);
+                        }
+                         else if (localStorage.getItem("UserRole") == "artist") {
                             icon.className = "bi bi-disc"
-                            $("#" + message.messageText).prepend(icon);
+                            $("#"+ message.messageID).prepend(icon);
                         }
 
 
 
-                    } else {
+                    } 
+                    else {
                         div.className = "text-left";
                         pTime.className = "time-left";
                         $(".chatbox").append(div);
-                        $("#" + message.messageText).append(divName);
-                        $("#" + message.messageText).append(divText);
-                        $("#" + message.messageText).append(pTime);
+                        $("#" +message.messageID).append(divName);
+                        $("#" +message.messageID).append(divText);
+                        $("#" +message.messageID).append(pTime);
 
-                        if (message.userRole == "visitor") {
+                        if (message.userRole == "admin") {
                             icon.className = "bi bi-person-circle";
-                            $("#" + message.messageText).prepend(icon);
-                        } else if (message.userRole == "artist") {
+                            $("#" +message.messageID).prepend(icon);
+                        }
+                         else if (message.userRole == "artist") {
                             icon.className = "bi bi-disc"
-                            $("#" + message.messageText).prepend(icon);
+                            $("#" +message.messageID).prepend(icon);
                         }
 
                     }
-                
+
                 });
 
             } else {
@@ -124,10 +122,12 @@ function NewGetMessage() { //Every time the user sends a message or loads the pa
 function LoadPage() {
     document.getElementById("stageName").innerHTML = "Stage " + localStorage.getItem('current-StageID'); //get name of stage from local storage
     NewGetMessage(); //if the pages is loaded all sended messages are fetched via NewGetMessage 
-    if (localStorage.getItem("UserRole") == "artist") { //if user is an artist DJ booth appears on the page
-        $(".DjBooth").show();
+    if (localStorage.getItem("UserRole") == "artist") {
+         //if user is an artist DJ booth appears on the page
+         $("#DjBooth").show();
     } else {
-        $(".DjBooth").hide();
+        $("#chat").removeClass( "col-sm-9").addClass( "col-sm-12" )
+        $("#DjBooth").hide();
     }
 
 

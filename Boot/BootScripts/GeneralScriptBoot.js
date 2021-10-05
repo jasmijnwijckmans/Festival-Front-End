@@ -2,7 +2,7 @@
 //1) const baseurl = "https://localhost:44372";
 
 //2) Mock API
-const baseurl = "https://1a63a4ab-7d00-4b50-aac3-f73fb23a4d1f.mock.pstmn.io";
+const baseurl = "https://festivalapplication20211001092547.azurewebsites.net";
 
 //!!IMPORTANT!!: Use only API 1 or 2!
 
@@ -43,6 +43,7 @@ function Logout() {
 function Login() {
     let dataReceived = "";
     var myJSON = "{\"Username\": \"" + document.getElementById("Username").value + "\",\"Password\":\"" + document.getElementById("Password").value + "\"}"
+
     fetch(baseurl + "/api/Login", {
         method: "post",
         headers: {
@@ -79,6 +80,7 @@ function Register() {
         },
         body: JSON.stringify(myJson)
     })
+
     // response as Json
         .then(response => response.json())
         .then(json => {
@@ -95,7 +97,8 @@ function Register() {
 }
 
 function UpdateActivity() {
-    var Json = "{\"stageID\":" + localStorage.getItem('current-StageID') + ", \"userID\": "+localStorage.getItem("UserID")+" }"
+    var Json = "{\"stageID\":" + localStorage.getItem('current-StageID') + ", \"userID\":"+localStorage.getItem("UserID")+ " }"
+    console.log(Json);
     fetch(baseurl + "/api/UserActivity", {
         method: "put",
         headers: {
@@ -106,7 +109,7 @@ function UpdateActivity() {
     })
         .then(response => response.json())
         .then(json => {
-            if (json.succes == false) {
+            if (json.success == false) {
                 console.log(json.errorMessage);
             }
         })
