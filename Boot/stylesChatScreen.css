@@ -2,14 +2,14 @@
   
   .text-right{
     border: 2px solid #dedede;
-    background-color: #f1f1f1;
+    background-color: thistle;
     border-radius: 5px;
     padding: 10px;
     margin: 15px
   }
-  .text-left{
+    .text-left{
     border: 2px solid #dedede;
-    background-color: #f1f1f1;
+    background-color: white;
     border-radius: 5px;
     padding: 10px;
     margin: 15px;
@@ -18,12 +18,11 @@
 
   .time-right {
     text-align:left;
-    color: #aaa;
+    color: lightslategrey;
   }
   
 
   .time-left {
     text-align: right;
-    color: #999;
+    color: lightslategrey;
   }
- 
