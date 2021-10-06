@@ -5,6 +5,7 @@ function SendMessage() { //post method if user sends a message. The message is p
     fetch(baseurl + "/api/Messages", {
             method: "post",
             headers: {
+                "Authorization": localStorage.getItem('AuthenticationKey'),
                 "accept": "text/plain",
                 "Content-Type": "application/json"
             },
@@ -12,7 +13,7 @@ function SendMessage() { //post method if user sends a message. The message is p
         })
         .then(response => response.json())
         .then(json => {
-            if (json.succes == false) {
+            if (json.succes==false) {
                 console.log(json.errorMessage);
             } else {
                 NewGetMessage();
@@ -23,11 +24,11 @@ function SendMessage() { //post method if user sends a message. The message is p
         })
 
 }
-
 var LastUpdated = new Date();
-LastUpdated.setMonth(LastUpdated.getMonth() - 3);
+LastUpdated.setMonth(LastUpdated.getMonth() - 2);
 
-function NewGetMessage() { //Every time the user sends a message or loads the page all new sended messages are fetched and displayed on the page. 
+function NewGetMessage() {
+    //Every time the user sends a message or loads the page all new sended messages are fetched and displayed on the page. 
     var mijnMessage = {}
     //mijnMessage.stageID = 1;
     mijnMessage.stageID = localStorage.getItem('current-StageID');
@@ -35,6 +36,7 @@ function NewGetMessage() { //Every time the user sends a message or loads the pa
     fetch(baseurl + "/api/Messages", {
             method: "put",
             headers: {
+                "Authorization": localStorage.getItem('AuthenticationKey'),
                 "accept": "text/plain",
                 "Content-Type": "application/json"
             },
@@ -59,46 +61,50 @@ function NewGetMessage() { //Every time the user sends a message or loads the pa
 
                     divText.className = "font-weight-light";
                     divName.className = "font-weight-bold";
-    
+
                     divName.innerHTML = message.userName;
                     divText.innerHTML = message.messageText;
-                    pTime.innerHTML = new Date(message.timestamp + "Z").toLocaleTimeString([], {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit'});
+                    pTime.innerHTML = new Date(message.timestamp + "Z").toLocaleTimeString([], {
+                        year: 'numeric',
+                        month: 'numeric',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit'
+                    });
 
                     if (localStorage.getItem("UserName") == message.userName) {
 
                         div.className = "text-right";
                         pTime.className = "time-right";
                         $(".chatbox").append(div);
-                        $("#"+message.messageID).append(divText);
-                        $("#"+message.messageID).append(pTime);
+                        $("#" + message.messageID).append(divText);
+                        $("#" + message.messageID).append(pTime);
 
                         if (message.userRole == "admin") {
                             icon.className = "bi bi-person-circle";
-                            $("#"+message.messageID).prepend(icon);
-                        }
-                        else if (message.userRole == "artist") {
+                            $("#" + message.messageID).prepend(icon);
+                        } else if (message.userRole == "artist") {
                             icon.className = "bi bi-disc"
-                            $("#"+ message.messageID).prepend(icon);
+                            $("#" + message.messageID).prepend(icon);
                         }
 
 
 
-                    } 
-                    else {
+                    } else {
                         div.className = "text-left";
                         pTime.className = "time-left";
                         $(".chatbox").append(div);
-                        $("#" +message.messageID).append(divName);
-                        $("#" +message.messageID).append(divText);
-                        $("#" +message.messageID).append(pTime);
+                        $("#" + message.messageID).append(divName);
+                        $("#" + message.messageID).append(divText);
+                        $("#" + message.messageID).append(pTime);
 
                         if (message.userRole == "admin") {
                             icon.className = "bi bi-person-circle";
-                            $("#" +message.messageID).prepend(icon);
-                        }
-                         else if (message.userRole == "artist") {
+                            $("#" + message.messageID).prepend(icon);
+                        } else if (message.userRole == "artist") {
                             icon.className = "bi bi-disc"
-                            $("#" +message.messageID).prepend(icon);
+                            $("#" + message.messageID).prepend(icon);
                         }
 
                     }
@@ -122,10 +128,10 @@ function LoadPage() {
     document.getElementById("stageName").innerHTML = "Stage " + localStorage.getItem('current-StageID'); //get name of stage from local storage
     NewGetMessage(); //if the pages is loaded all sended messages are fetched via NewGetMessage 
     if (localStorage.getItem("UserRole") == "artist") {
-         //if user is an artist DJ booth appears on the page
-         $("#DjBooth").show();
+        //if user is an artist DJ booth appears on the page
+        $("#DjBooth").show();
     } else {
-        $("#chat").removeClass( "col-sm-9").addClass( "col-sm-12" )
+        $("#chat").removeClass("col-sm-9").addClass("col-sm-12")
         $("#DjBooth").hide();
     }
 
@@ -134,7 +140,7 @@ function LoadPage() {
 
 
 function GetActiveUsersStage(StageID) {
-    fetch(baseurl + "/api/User") //API list of messages
+    fetch(baseurl + "/api/User/"+localStorage.getItem('AuthenticationKey')) //API list of messages
         .then((response) => response.json())
         .then(function (returndata) {
             console.log(returndata);

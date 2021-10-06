@@ -1,0 +1,13 @@
+/*Overall Stylesheet*/
+
+
+  body {
+    font-family: "Trebuchet MS", Verdana, sans-serif;
+    background-color: lightpink;
+    line-height: 1.6;
+    letter-spacing: 1.5px;
+    font-size: 110%;
+    color: black;
+  }
+  
+  

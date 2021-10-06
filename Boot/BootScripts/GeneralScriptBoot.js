@@ -21,9 +21,16 @@ function GoToHelp() {
 function GoToCreateStage() {
     window.location.href = 'CreateStageBoot.html';
 }
-function Logout() {
-    window.location.href = 'indexBoot.html';
+function GoToSwitch(){
+    window.location.href = 'ChatSwitchBoot.html';
 }
+function GoToStage(){
+    window.location.href = 'ChatScreenBoot.html';
+}
+function GoToManageUsers(){
+    window.location.href = "ManageUserBoot.html";
+}
+
 
 function Login() {
     //let dataReceived = "";
@@ -48,7 +55,7 @@ function Login() {
                 localStorage.setItem('UserID', json.data.userID);
                 localStorage.setItem('UserName', json.data.userName);
                 localStorage.setItem('UserRole', json.data.userRole);
-                UpdateActivity(0);
+                GoToSwitch();
             } else {
                 document.getElementById("ErrorMessage").innerHTML = json.responseMessage[0];
             }
@@ -107,22 +114,48 @@ function UpdateActivity(StageID) {
         .then(function (returndata) {
             console.log(returndata);
        
-            // if (returndata.success) {
-            //     if(localStorage.getItem('current-StageID')==0){
-            //         //window.location.href = 'ChatSwitchBoot.html';
-            //     }
-            //     else{
-            //         //window.location.href = 'ChatScreenBoot.html';
-            //     }
+            if (returndata.success) {
+                if(localStorage.getItem('current-StageID')==0){
+                    GoToSwitch();
+                }
+                else{
+                   GoToStage();
+                }
 
-            // }
-            // else{
-            //     console.log("fout");
-            //     console.log(error);
+            }
+            else{
+                console.log("fout");
+                console.log(error);
 
-            // }
+            }
         })
         .catch(error => {
             console.error("Error",error);
+        });
+}
+
+
+function Logout(){
+    DeleteAuthenticationKey();
+    localStorage.clear();
+    GoToHome();
+}
+
+function DeleteAuthenticationKey() {
+    fetch(baseurl+"/api/login/"+localStorage.getItem('AuthenticationKey'), {
+            method: "delete",
+            headers: {
+                "accept" : "text/plain",
+                "Content-Type": "application/json"
+            },
+        })
+        .then(response => response.json())
+        .then(json => {
+            if(json.success == false){
+                ProcessErrors(json.errorCodes, json.responseMessage);
+            }
+        })        
+        .catch(error => {
+            console.log("Failed to send request");
         });
 }
