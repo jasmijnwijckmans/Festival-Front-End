@@ -62,7 +62,7 @@ function NewGetMessage() { //Every time the user sends a message or loads the pa
     
                     divName.innerHTML = message.userName;
                     divText.innerHTML = message.messageText;
-                    pTime.innerHTML = new Date(message.timestamp + "Z").toLocaleTimeString([], {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'});
+                    pTime.innerHTML = new Date(message.timestamp + "Z").toLocaleTimeString([], {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit'});
 
                     if (localStorage.getItem("UserName") == message.userName) {
 
@@ -72,11 +72,11 @@ function NewGetMessage() { //Every time the user sends a message or loads the pa
                         $("#"+message.messageID).append(divText);
                         $("#"+message.messageID).append(pTime);
 
-                        if (localStorage.getItem("UserRole") == "admin") {
+                        if (message.userRole == "admin") {
                             icon.className = "bi bi-person-circle";
                             $("#"+message.messageID).prepend(icon);
                         }
-                         else if (localStorage.getItem("UserRole") == "artist") {
+                        else if (message.userRole == "artist") {
                             icon.className = "bi bi-disc"
                             $("#"+ message.messageID).prepend(icon);
                         }

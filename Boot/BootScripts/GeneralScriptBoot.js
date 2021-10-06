@@ -11,10 +11,10 @@ function GoToHome() {
 }
 
 function GoToLogin() {
-    window.location.href = 'LoginPageBoot.html' ;
+    window.location.href = 'LoginPageBoot.html';
 }
- 
-function GoToHelp(){
+
+function GoToHelp() {
     window.location.href = 'HelpBoot.html';
 }
 
@@ -27,14 +27,6 @@ var StageID;
 function GoToStage(StageID) {
     localStorage.setItem('current-StageID', StageID)
     UpdateActivity();
-    window.location.href = 'ChatScreenBoot.html';
-
-}
-
-function GoToSwitch(StageID) {
-    localStorage.setItem('current-StageID', StageID)
-    UpdateActivity();
-    window.location.href = 'ChatSwitchBoot.html';
 
 }
 
@@ -44,16 +36,20 @@ function Logout() {
 
 function Login() {
     let dataReceived = "";
-    var myJSON = "{\"Username\": \"" + document.getElementById("Username").value + "\",\"Password\":\"" + document.getElementById("Password").value + "\"}"
+    myLogin = {}
+    myLogin.Username = document.getElementById("Username").value;
+    myLogin.Password = document.getElementById("Password").value;
+
+    //var myJSON = "{\"Username\": \"" + document.getElementById("Username").value + "\",\"Password\":\"" + document.getElementById("Password").value + "\"}"
 
     fetch(baseurl + "/api/Login", {
-        method: "post",
-        headers: {
-            "success": true,
-            "Content-Type": "application/json"
-        },
-        body: myJSON
-    })
+            method: "post",
+            headers: {
+                "success": true,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(myLogin)
+        })
         .then(response => response.json())
         .then(json => {
             if (json.success) {
@@ -61,7 +57,7 @@ function Login() {
                 localStorage.setItem('UserID', json.data.userID);
                 localStorage.setItem('UserName', json.data.userName);
                 localStorage.setItem('UserRole', json.data.userRole);
-                GoToSwitch();
+                GoToStage(0);
             } else {
                 document.getElementById("ErrorMessage").innerHTML = json.responseMessage[0];
             }
@@ -74,23 +70,23 @@ function Register() {
     myJson = {}
     myJson.Username = document.getElementById("Username").value;
     myJson.Password = document.getElementById("Password").value;
-    fetch(baseurl +"/api/User", {
-        method: "post",
-        headers: {
-            "success": true,
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(myJson)
-    })
+    fetch(baseurl + "/api/User", {
+            method: "post",
+            headers: {
+                "success": true,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(myJson)
+        })
 
-    // response as Json
+        // response as Json
         .then(response => response.json())
         .then(json => {
             if (json.success) {
                 // if response is is true, log the returning user ID
-               console.log(json.data)
-               //create alert to notify if regiter was succesful to do!!!
-               alert("You have been registered succesfully!, click Login to proceed");
+                console.log(json.data)
+                //create alert to notify if regiter was succesful to do!!!
+                alert("You have been registered succesfully!, click Login to proceed");
                 //GoToSwitch();
             } else {
                 // errormessage
@@ -101,26 +97,37 @@ function Register() {
 }
 
 function UpdateActivity() {
-    var Json = "{\"stageID\":" + localStorage.getItem('current-StageID') + ", \"userID\":"+localStorage.getItem("UserID")+ " }"
-    console.log(Json);
+    myJson = {}
+    myJson.stageID = localStorage.getItem('current-StageID')
+    myJson.userID = localStorage.getItem('UserID');
+    console.log(myJson);
     fetch(baseurl + "/api/UserActivity", {
-        method: "put",
-        headers: {
-            "accept": "text/plain",
-            "Content-Type": "application/json"
-        },
-        body: Json
-    })
+            method: "put",
+            headers: {
+                "accept": "text/plain",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(myJson)
+        })
         .then(response => response.json())
-        .then(json => {
-            if (json.success == false) {
-                console.log(json.errorMessage);
+        .then(function (returndata) {
+            console.log(returndata);
+       
+            if (returndata.success) {
+                if(localStorage.getItem('current-StageID')==0){
+                    window.location.href = 'ChatSwitchBoot.html';
+                }
+                else{
+                    window.location.href = 'ChatScreenBoot.html';
+                }
+
+            }
+            else{
+                console.log(returndata.error);
+
             }
         })
         .catch(error => {
-            console.error("Error");
+            console.error("Error",error);
         });
 }
-
-
-
