@@ -1,98 +1,20 @@
-/*Stylesheet*/
-/*Navigation and Footer styling*/
-/*Positioning*/
-  body {
-    margin: 0;
-    padding: 0;
-  }
-  section {
-    min-height: 100vh;
-    margin-bottom: -39.8px;
-  }
-  #nav-spacer {
-    height: 39.8px;
-  }
-  nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-  }
-  #footer-spacer {
-    height: 39.8px;
-  }
-  footer {
-    height: 38.8px;
-  }
-  /*navigation bar and footer background*/
-  ul {
-    height:38.8px;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color:darkred;
-    text-decoration: none;
-  }
-  /*Style of button*/ 
-  li {
-    list-style-type: none;
-    float: left;
-  }
-  li a {
-      display: block;
-      color: thistle;
-      text-align: center;
-      text-decoration: none;
-  }
-  .btn {
-      background-color: darkred;
-      border: none;
-      color: thistle;
-      padding: 2px 2px;
-      font-size: 25px;
-      cursor: pointer;
-      display: inline-block;
-  }  
-  .btn:hover {
-      background-color:brown;
-    }
-  /*Style of text*/ 
-  .navtxt{
-    margin:2.2px;
-    font-style:italic;
-    font-size: 26px;
-    color:lightgoldenrodyellow;
-    padding-left: 15px;
-  }
-  .foottxt{
-    margin:10px;
-    text-align: center;
-    font-size: 12px;
-    color:white;
-    padding-left: 15px;
-  }
-/*Index Page*/
-.indexpage{
-    background-color: thistle;
+.navbar{
+    background-color: rgb(125, 0, 0);
 }
-.indeximage{
-    width: 300px;
-    height: 200px;
+.nav-link{
+    color: thistle;
     cursor:pointer;
 }
-.gotoregisterbtn{
-    background-color: darkred;
-    border: none;
-    color: thistle;
-    font-size: 25px;
-    cursor: pointer;
-    display: inline-block;
-  }  
-/*Loginpage*/
-.loginpage{
-  background-color: thistle;
+.nav-link:hover{
+    color:thistle;
+    background-color: rgb(100, 0, 0);
 }
-/*Create stage page*/
-.createstagepage{
-  background-color: thistle;
+.navbar-text{
+    color:lightgoldenrodyellow;
+    font-weight: bold;
+    padding-left:10px;
+}
+
+.footer{
+    background-color:darkred;
 }
