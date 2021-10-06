@@ -1,50 +1,69 @@
 <!doctype html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ciber Festival</title>
-
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-
     <link rel="stylesheet" href="styles.css">
-    <script src="Bootscripts/GeneralScriptBoot.js"></script>
-    <script src="Bootscripts/IndexScripts.js"></script>
-
+    <script src="BootScripts/GeneralScriptBoot.js"></script>
+    <script src="Bootscripts/IndexScripts.js"></script>-->
 </head>
-
 <body>
-    <div style="height:100vh"> 
-        <nav>
-            <ul>
-                <li><a> <button class="btn" onclick="GoToLogin();"><i class="bi bi-person"></i></button></a></li>
-                <li><p class="navtxt">Welkom op het Ciber Festival!</p></li>
-            </ul>
-        </nav>
-
-        <section class="indexpage">
-            <div id="nav-spacer"></div>
-            <div>
+    <nav>
+        <ul>
+            <li><a> <button class="btn" onclick="GoToLogin();"><i class="bi bi-person"></i></button></a></li>
+            <li><p class="navtxt">Welkom op het Ciber Festival!</p></li>
+        </ul>
+    </nav>
+    <section class="container-fluid indexpage">
+        <div id="nav-spacer"></div>
+        <div class="row">
+            <div class="col-sm-6">
                 <img id="Image" class="indeximage"
                     src="https://tse4.mm.bing.net/th/id/OIP.co7Q8cJicqhZWoOfCh7TqgHaEx?pid=ImgDet&rs=1" onclick="NextImage();">
             </div>
-            <div>
-            <button class="gotoregisterbtn" onclick="GoToLogin();">Register<i class="bi bi-person-plus btn-block"></i></button>
+            <div class="col-sm-6">
+                <button class="btn" onclick="GoToLogin();">Register now! <i class="bi bi-person-plus"></i></button>
             </div>
-            <div id="footer-spacer"></div>
-        </section>
-
-        <footer>
-            <ul>
-                <li><a> <button class="btn" onclick="GoToHelp();"><i class="bi bi-info"></i></button></a></li>
-                <li><p class="foottxt">If the question is not answered by the information above, please contact us.</p></li>
-            </ul>
-        </footer>
-    </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <img id="Image" class="indeximage"
+                    src="https://tse4.mm.bing.net/th/id/OIP.co7Q8cJicqhZWoOfCh7TqgHaEx?pid=ImgDet&rs=1" onclick="NextImage();">
+            </div>
+            <div class="col-sm-6">
+                <button class="btn" onclick="GoToLogin();">Register now! <i class="bi bi-person-plus"></i></button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <img id="Image" class="indeximage"
+                    src="https://tse4.mm.bing.net/th/id/OIP.co7Q8cJicqhZWoOfCh7TqgHaEx?pid=ImgDet&rs=1" onclick="NextImage();">
+            </div>
+            <div class="col-sm-6">
+                <button class="btn" onclick="GoToLogin();">Register now! <i class="bi bi-person-plus"></i></button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <img id="Image" class="indeximage"
+                    src="https://tse4.mm.bing.net/th/id/OIP.co7Q8cJicqhZWoOfCh7TqgHaEx?pid=ImgDet&rs=1" onclick="NextImage();">
+            </div>
+            <div class="col-sm-6">
+                <button class="btn" onclick="GoToLogin();">Register now! <i class="bi bi-person-plus"></i></button>
+            </div>
+        </div>
+        <div id="footer-spacer"></div>
+    </section>
+    <footer>
+        <ul>
+            <li><a> <button class="btn" onclick="GoToHelp();"><i class="bi bi-info"></i></button></a></li>
+            <li><p class="foottxt">If the question is not answered by the information above, please contact us.</p></li>
+        </ul>
+    </footer>
 </body>
-
 </html>

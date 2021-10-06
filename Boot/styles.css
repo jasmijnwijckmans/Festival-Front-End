@@ -1,22 +1,13 @@
 /*Stylesheet*/
-
 /*Navigation and Footer styling*/
 /*Positioning*/
-html, body {
-    height: 100%;
-  }
   body {
     margin: 0;
     padding: 0;
-    background-color: #fff;
   }
   section {
-    min-height: 100%;
+    min-height: 100vh;
     margin-bottom: -39.8px;
-  }
-  * html section{
-    height: 100%;
-    margin-bottom:38.8px;
   }
   #nav-spacer {
     height: 39.8px;
@@ -34,15 +25,17 @@ html, body {
   }
   /*navigation bar and footer background*/
   ul {
-      height:38.8px;
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background-color:rgb(125, 0, 0);
+    height:38.8px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:darkred;
+    text-decoration: none;
   }
   /*Style of button*/ 
   li {
+    list-style-type: none;
     float: left;
   }
   li a {
@@ -52,66 +45,54 @@ html, body {
       text-decoration: none;
   }
   .btn {
-      background-color: rgb(125, 0, 0);
+      background-color: darkred;
       border: none;
       color: thistle;
-      padding: 5px 5px;
+      padding: 2px 2px;
       font-size: 25px;
       cursor: pointer;
       display: inline-block;
   }  
   .btn:hover {
-      background-color:rgb(100, 0, 0);
+      background-color:brown;
     }
   /*Style of text*/ 
   .navtxt{
     margin:2.2px;
-    font-style:oblique;
-    font-weight:bold;
-    font-size: 30px;
+    font-style:italic;
+    font-size: 26px;
     color:lightgoldenrodyellow;
     padding-left: 15px;
   }
   .foottxt{
+    margin:10px;
     text-align: center;
     font-size: 12px;
     color:white;
     padding-left: 15px;
   }
-
 /*Index Page*/
 .indexpage{
     background-color: thistle;
 }
 .indeximage{
-    position: absolute;
-    top: 80%;
-    left: 40%;
-    padding: 5px 5px;
-    width:60%;
-    margin-left: -30%;
-    height:60%;
-    margin-top: -30%;
+    width: 300px;
+    height: 200px;
     cursor:pointer;
 }
 .gotoregisterbtn{
-    position: absolute;
-    top: 60%;
-    left: 85%;
-    padding: 5px 5px;
-    width:20%;
-    margin-left: -10%;
-    height:30%;
-    margin-top: -15%;
-    background-color: rgb(125, 0, 0);
+    background-color: darkred;
     border: none;
     color: thistle;
     font-size: 25px;
     cursor: pointer;
     display: inline-block;
-    }  
-.gotoregisterbtn:hover {
-    background-color:rgb(100, 0, 0);
-    }
-
-
+  }  
+/*Loginpage*/
+.loginpage{
+  background-color: thistle;
+}
+/*Create stage page*/
+.createstagepage{
+  background-color: thistle;
+}
