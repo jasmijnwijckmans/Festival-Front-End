@@ -12,7 +12,7 @@ function GetInfo() {
                     row += " <div class='col-6'>"
                     row += " <div class='card mt-3'>"
                     row += "<img class=\"card-img-top\" src=\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIM3la9vbgy48Y6C_mJHPnQu_CRp1EvjnIfw&usqp=CAU\" alt=\"Card image cap\">"
-                    row += "<div>" + stage.stageName + "<br>" + stage.currentSong + "<br>" + stage.numberOfUsers + "<br><button class='btn btn-primary' onclick='GoToStage(" + stage.stageID + ")'>Join</button></div>"
+                    row += "<div>" + stage.stageName + "<br>" + stage.currentSong + "<br>" + stage.numberOfUsers + "<br><button class='btn btn-primary' onclick='UpdateActivity(" + stage.stageID + ")'>Join</button></div>"
                     row += "</div>"
                     row += "</div>"
                     //console.log(row);
