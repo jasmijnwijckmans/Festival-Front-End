@@ -18,56 +18,50 @@
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="BootScripts/ChatSwitchScriptBoot.js"></script>
     <script src="BootScripts/GeneralScriptBoot.js"></script>
+    <script src="BootScripts/ManageUsersBoot.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-</head>
-<!-- loads page when opened, and shows the info about all stages-->
-
-<body onload="GetInfo()">
-
-    <!-- header-->
+<body onload="LoadInfo()">
     <div class="container-fluid">
+        <!-- page header -->
         <div>
         </div>
-        <!-- Navigation bar-->
+        <!-- navigation bar -->
         <div class="row">
-            <div class="col-sm-3">
-                <button class="gobackbutton" onclick="GoToHome();"><i class="fa fa-sign-out"></i></button>
+            <div class="col-sm-1">
+                <button onclick="GoToSwitch(0)();"><i class="bi bi-arrow-return-left"></i></button>
             </div>
             <div class="col-sm-10">
-                <h2>Stage Area</h2>
+                <h1 id="stageName" class="text-center font-weight-bold"> </h1>
             </div>
-            <div class="col-sm-1">
-
-            </div>
+            <div class="col-sm-1"></div>
         </div>
 
-        <!-- spage specific section-->
-
-        <!-- cards for the different stages-->
-        <div class="card">
-            <div class="container p-3 my-3 bg-primary text-black">
-                <div class="row" id="stages">          
-                </div>
-            </div>
-        </div>
+        <!-- main body -->
         
+        <div class="col-sm-1">
+            <button type="button" class="bi bi-arrow-right-square" onclick="GetAllUsers()">
+                Get all Users</button>
+        </div>
+        <div class="col-sm-1">
+            <button type="button" class="bi bi-arrow-right-square" onclick="GetAllUserData()">
+                Get All User Data <br></button>
+        </div>
+        <div class="col-sm-1">
+            <button type="button" class="bi bi-arrow-right-square" onclick="UpdateUserRole()">
+                Update User Role</button>
+        </div>
 
-        <!-- footer-->
+         <!-- foot bar -->
         <div class="row">
             <div class="col-sm-1">
-                <button onclick="GoToHelp();"><i class="bi bi-question btn btn-block"></i></button>
             </div>
             <div class="col-sm-10">
-                <div>
-                    <p>For more information or FAQs about the festival click on the help button on the left.
-                    </p>
-                </div>
-            </div>
         </div>
-    </div>
-    </div>
-    </div>
+            <div class="col-sm-1">
+        </div>
+</div>
+</div>
 
 </body>
 

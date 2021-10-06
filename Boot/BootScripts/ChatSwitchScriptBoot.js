@@ -15,26 +15,26 @@ function GetInfo() {
                     row += "<div>" + stage.stageName + "<br>" + stage.currentSong + "<br>" + stage.numberOfUsers + "<br><button class='btn btn-primary' onclick='GoToStage(" + stage.stageID + ")'>Join</button></div>"
                     row += "</div>"
                     row += "</div>"
-                    console.log(row);
+                    //console.log(row);
+                    
+                    
                 });
-                row += " <div class='col-6'>"
-                row += " <div class='card mt-3'>"
-                row += "<img class=\"card-img-top\" src=\"https://s3.envato.com/files/30191147/Preview%20(0.00.00.00).jpg\" alt=\"Card image cap\">"
-                row += "<div>" + "Create Stage" + "<br>" + "<br>" + "<br><button class='btn btn-primary' onclick='GoToCreateStage()'>Create</button></div>"
-                row += "</div>"
-                row += "</div>"
                 document.getElementById("stages").innerHTML += row;
+                if (localStorage.getItem("UserRole") == "admin") {
+                    row += " <div class='col-6'>"
+                    row += " <div class='card mt-3'>"
+                    row += "<img class=\"card-img-top\" src=\"https://s3.envato.com/files/30191147/Preview%20(0.00.00.00).jpg\" alt=\"Card image cap\">"
+                    row += "<div>" + "Create Stage" + "<br><button class='btn btn-primary' onclick='GoToCreateStage()'>Create</button></div>"
+                    row += "<div>" + "ManageUsers" + "<br><button class='btn btn-primary' onclick='GoToManageUsers()'>Manage users</button></div>"
+                    row += "</div>"
+                    row += "</div>"
+                    document.getElementById("stages").innerHTML += row;
+                } 
 
             } else {}
         }) // if loading failed, error message is shown on screen
         .catch(error => {
             console.error("Error", error);
 
-        });
-    // show the create stage button only when the user is a admin
-    if (localStorage.getItem("UserRole") == "admin") {
-
-        $("div.gotocreatestage").show();
-        console.log();
-    }
+        });  
 }
