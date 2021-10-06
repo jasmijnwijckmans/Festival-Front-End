@@ -139,7 +139,8 @@ function LoadPage() {
 }
 
 
-function GetActiveUsersStage(StageID) {
+
+function GetActiveUsersStage() {
     fetch(baseurl + "/api/User/"+localStorage.getItem('AuthenticationKey')) //API list of messages
         .then((response) => response.json())
         .then(function (returndata) {

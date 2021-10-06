@@ -53,7 +53,7 @@ function EditStage() {
             console.log(json)
             if (json.success) {
                 
-                //GoToSwitch();
+                GoToSwitch();
 
             } else {
                 console.log("error",error)

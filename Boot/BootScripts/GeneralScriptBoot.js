@@ -105,6 +105,7 @@ function UpdateActivity(StageID) {
     fetch(baseurl + "/api/UserActivity", {
             method: "put",
             headers: {
+                //"Authorization": localStorage.getItem('AuthenticationKey'),
                 "accept": "text/plain",
                 "Content-Type": "application/json"
             },
@@ -124,8 +125,15 @@ function UpdateActivity(StageID) {
 
             }
             else{
-                console.log("fout");
-                console.log(error);
+                if(localStorage.getItem('current-StageID')!=0){
+                    localStorage.setItem('current-StageID',0)
+                }
+
+                else{
+                    
+                }
+                //If there occurs an error localStorage should be updated to the current stage. 
+                //localStorage.setItem('current-StageID')
 
             }
         })
@@ -145,6 +153,7 @@ function DeleteAuthenticationKey() {
     fetch(baseurl+"/api/login/"+localStorage.getItem('AuthenticationKey'), {
             method: "delete",
             headers: {
+                "Authorization": localStorage.getItem('AuthenticationKey'),
                 "accept" : "text/plain",
                 "Content-Type": "application/json"
             },
