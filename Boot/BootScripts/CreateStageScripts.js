@@ -70,7 +70,11 @@ function EditStage() {
 }
 
 function GetActiveStages() {
-    fetch(baseurl + "/api/Stage")
+    fetch(baseurl + "/api/Stage",{
+        headers: {
+            "Authorization": localStorage.getItem('AuthenticationKey')
+        }
+    })
         .then((response) => response.json()) //What's the difference 
         .then(function (returndata) {
             console.log(returndata);
@@ -80,13 +84,14 @@ function GetActiveStages() {
                 returndata.data.forEach(function (stage) {
                     row += "<tr>";
                     row += "<td style = \" font-weight: bold\">" + stage.stageID + ":" + "</td>";
-                    temp += "<td style=\"text-align:left\">" + stage.stageName + "</td>";
-                    temp += "<td style=\"font-weight: lighter\">" + stage.currentSong + "</td>";
-                    temp += "<td style=\"font-weight: lighter\">" + stage.numberOfUsers + "</td>";
-                    temp += "<td style=\"font-weight: lighter\"> <input class='form-check-input' type='checkbox' value='' id='activeStageEdit'></td>";
+                    row += "<td style=\"text-align:left\">" + stage.stageName + "</td>";
+                    row += "<td style=\"font-weight: lighter\">" + stage.currentSong + "</td>";
+                    row += "<td style=\"font-weight: lighter\">" + stage.numberOfUsers + "</td>";
+                    //temp += "<td style=\"font-weight: lighter\"> <input class='form-check-input' type='checkbox' value='' id='activeStageEdit'></td>";
 
-                    document.getElementById("myStages").innerHTML += row;
+                    
                 });
+                document.getElementById("myStages").innerHTML += row;
 
             }
             else {

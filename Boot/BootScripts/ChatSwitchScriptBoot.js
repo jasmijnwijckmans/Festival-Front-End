@@ -1,6 +1,10 @@
 // fucntion for loading the info of the stages
 function GetInfo() {
-    fetch(baseurl + "/api/Stage")
+    fetch(baseurl + "/api/Stage", {
+        headers: {
+            "Authorization": localStorage.getItem('AuthenticationKey')
+        }
+    })
         .then((response) => response.json()) //What's the difference 
         .then(function (returndata) {
             console.log(returndata);
@@ -19,7 +23,7 @@ function GetInfo() {
                     
                     
                 });
-                document.getElementById("stages").innerHTML //+= row;
+                document.getElementById("stages").innerHTML += row;
                 if (localStorage.getItem("UserRole") == "admin") { // when userID is admin, show this table.
                     row += " <div class='col-6'>"
                     row += " <div class='card mt-3'>"

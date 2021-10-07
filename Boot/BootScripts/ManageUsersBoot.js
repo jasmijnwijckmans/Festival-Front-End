@@ -1,6 +1,10 @@
 // fucntion for loading the info of the stages
 function GetUsers() {
-    fetch(baseurl + "/api/User")
+    fetch(baseurl + "/api/User", {
+        headers: {
+            "Authorization": localStorage.getItem('AuthenticationKey')
+        }
+    })
         .then((response) => response.json()) //What's the difference 
         .then(function (returndata) {
             console.log(returndata);
@@ -22,7 +26,8 @@ function GetUsers() {
             console.error("Error", error);
 
         });  
-        function EditStage() {
+
+function EditStage() {
             //localStorage.setItem('UserRole', "admin") //deze lijn is tijdelijk om te laten werken
             if (localStorage.getItem('UserRole') == "admin") {
             let dataReceived = "";
@@ -56,4 +61,4 @@ function GetUsers() {
                 //document.getElementById("RoleError").innerHTML;
         
             }
-        }
+}

@@ -105,7 +105,7 @@ function UpdateActivity(StageID) {
     fetch(baseurl + "/api/UserActivity", {
             method: "put",
             headers: {
-                //"Authorization": localStorage.getItem('AuthenticationKey'),
+                "Authorization": localStorage.getItem('AuthenticationKey'),
                 "accept": "text/plain",
                 "Content-Type": "application/json"
             },
@@ -150,7 +150,7 @@ function Logout(){
 }
 
 function DeleteAuthenticationKey() {
-    fetch(baseurl+"/api/login/"+localStorage.getItem('AuthenticationKey'), {
+    fetch(baseurl+"/api/login/"+localStorage.getItem("UserID"), {
             method: "delete",
             headers: {
                 "Authorization": localStorage.getItem('AuthenticationKey'),
