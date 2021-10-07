@@ -7,6 +7,7 @@ const baseurl = "https://festivalapplication20211001092547.azurewebsites.net";
 //!!IMPORTANT!!: Use only API 1 or 2!
 
 function GoToHome() {
+
     window.location.href = 'indexBoot.html';
 }
 
@@ -21,13 +22,13 @@ function GoToHelp() {
 function GoToCreateStage() {
     window.location.href = 'CreateStageBoot.html';
 }
-function GoToSwitch(){
+function GoToSwitch() {
     window.location.href = 'ChatSwitchBoot.html';
 }
-function GoToStage(){
-    window.location.href = 'ChatScreenBoot.html';
+function GoToStage() {
+    window.location.href = 'ChatScreenWeb.html';
 }
-function GoToManageUsers(){
+function GoToManageUsers() {
     window.location.href = "ManageUserBoot.html";
 }
 
@@ -41,13 +42,13 @@ function Login() {
     //var myJSON = "{\"Username\": \"" + document.getElementById("Username").value + "\",\"Password\":\"" + document.getElementById("Password").value + "\"}"
 
     fetch(baseurl + "/api/Login", {
-            method: "post",
-            headers: {
-                "success": true,
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(mijnlogin)
-        })
+        method: "post",
+        headers: {
+            "success": true,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(mijnlogin)
+    })
         .then(response => response.json())
         .then(json => {
             if (json.success) {
@@ -69,13 +70,13 @@ function Register() {
     myJson.Username = document.getElementById("Username").value;
     myJson.Password = document.getElementById("Password").value;
     fetch(baseurl + "/api/User", {
-            method: "post",
-            headers: {
-                "success": true,
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(myJson)
-        })
+        method: "post",
+        headers: {
+            "success": true,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(myJson)
+    })
 
         // response as Json
         .then(response => response.json())
@@ -97,73 +98,63 @@ function Register() {
 var StageID;
 
 function UpdateActivity(StageID) {
-    localStorage.setItem('current-StageID', StageID);
     update = {}
-    update.stageID = localStorage.getItem('current-StageID');
+    update.stageID = StageID;
     update.userID = localStorage.getItem('UserID');
     console.log(update);
     fetch(baseurl + "/api/UserActivity", {
-            method: "put",
-            headers: {
-                "Authorization": localStorage.getItem('AuthenticationKey'),
-                "accept": "text/plain",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(update)
-        })
+        method: "put",
+        headers: {
+            "Authorization": localStorage.getItem('AuthenticationKey'),
+            "accept": "text/plain",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(update)
+    })
         .then(response => response.json())
         .then(function (returndata) {
             console.log(returndata);
-       
+
             if (returndata.success) {
-                if(localStorage.getItem('current-StageID')==0){
+                if (StageID == 0) {
+                    localStorage.setItem('current-StageID', StageID);
                     GoToSwitch();
-                }
-                else{
-                   GoToStage();
-                }
 
-            }
-            else{
-                if(localStorage.getItem('current-StageID')!=0){
-                    localStorage.setItem('current-StageID',0)
                 }
-
-                else{
-                    
+                else {
+                    localStorage.setItem('current-StageID', StageID);
+                    GoToStage();
                 }
-                //If there occurs an error localStorage should be updated to the current stage. 
-                //localStorage.setItem('current-StageID')
-
             }
         })
         .catch(error => {
-            console.error("Error",error);
+            console.error("Error", error);
         });
 }
 
 
-function Logout(){
+function Logout() {
     DeleteAuthenticationKey();
     localStorage.clear();
     GoToHome();
+
 }
 
 function DeleteAuthenticationKey() {
-    fetch(baseurl+"/api/login/"+localStorage.getItem("UserID"), {
-            method: "delete",
-            headers: {
-                "Authorization": localStorage.getItem('AuthenticationKey'),
-                "accept" : "text/plain",
-                "Content-Type": "application/json"
-            },
-        })
+    fetch(baseurl + "/api/login/" + localStorage.getItem("UserID"), {
+        method: "delete",
+        headers: {
+            "Authorization": localStorage.getItem('AuthenticationKey'),
+            "accept": "text/plain",
+            "Content-Type": "application/json"
+        },
+    })
         .then(response => response.json())
         .then(json => {
-            if(json.success == false){
+            if (json.success == false) {
                 ProcessErrors(json.errorCodes, json.responseMessage);
             }
-        })        
+        })
         .catch(error => {
             console.log("Failed to send request");
         });
