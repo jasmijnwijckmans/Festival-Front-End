@@ -1,10 +1,10 @@
 // fucntion for loading the info of the stages
 function GetInfo() {
     fetch(baseurl + "/api/Stage", {
-        headers: {
-            "Authorization": localStorage.getItem('AuthenticationKey')
-        }
-    })
+            headers: {
+                "Authorization": localStorage.getItem('AuthenticationKey')
+            }
+        })
         .then((response) => response.json()) //What's the difference 
         .then(function (returndata) {
             console.log(returndata);
@@ -20,10 +20,7 @@ function GetInfo() {
                     row += "</div>"
                     row += "</div>"
                     //console.log(row);
-                    
-                    
                 });
-                document.getElementById("stages").innerHTML += row;
                 if (localStorage.getItem("UserRole") == "admin") { // when userID is admin, show this table.
                     row += " <div class='col-6'>"
                     row += " <div class='card mt-3'>"
@@ -32,13 +29,12 @@ function GetInfo() {
                     row += "<div>" + "ManageUsers" + "<br><button class='btn btn-primary' onclick='GoToManageUsers()'>Manage users</button></div>"
                     row += "</div>"
                     row += "</div>"
-                    document.getElementById("stages").innerHTML += row;
-                } 
-
+                }
+                document.getElementById("stages").innerHTML += row;
             } else {}
         }) // if loading failed, error message is shown on screen
         .catch(error => {
             console.error("Error", error);
 
-        });  
+        });
 }
