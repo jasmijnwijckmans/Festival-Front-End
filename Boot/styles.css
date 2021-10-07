@@ -12,9 +12,8 @@
 .navbar-text{
     color:lightgoldenrodyellow;
     font-weight: bold;
-    padding-left:10px;
 }
-
-.footer{
-    background-color:darkred;
+.footer-text{
+    color:white;
+    padding:8px;
 }
