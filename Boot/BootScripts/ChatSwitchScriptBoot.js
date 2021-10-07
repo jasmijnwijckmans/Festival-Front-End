@@ -19,8 +19,8 @@ function GetInfo() {
                     
                     
                 });
-                document.getElementById("stages").innerHTML += row;
-                if (localStorage.getItem("UserRole") == "admin") {
+                document.getElementById("stages").innerHTML //+= row;
+                if (localStorage.getItem("UserRole") == "admin") { // when userID is admin, show this table.
                     row += " <div class='col-6'>"
                     row += " <div class='card mt-3'>"
                     row += "<img class=\"card-img-top\" src=\"https://s3.envato.com/files/30191147/Preview%20(0.00.00.00).jpg\" alt=\"Card image cap\">"

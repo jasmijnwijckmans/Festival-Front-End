@@ -21,7 +21,7 @@
     <script src="BootScripts/ManageUsersBoot.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<body onload="LoadInfo()">
+<body onload="GetUsers()">
     <div class="container-fluid">
         <!-- page header -->
         <div>
@@ -39,6 +39,20 @@
 
         <!-- main body -->
         
+        <div> <table>
+            <thead>
+                <tr>
+                <th> User Name</th>
+                <th> User Role</th>
+                <th> User ID</th>
+                </tr>
+            </thead>
+            <tbody id ="myUsers">
+
+            </tbody>
+        </table>
+
+        </div>
         <div class="col-sm-1">
             <button type="button" class="bi bi-arrow-right-square" onclick="GetAllUsers()">
                 Get all Users</button>
