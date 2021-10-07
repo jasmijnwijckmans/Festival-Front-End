@@ -11,16 +11,20 @@
     <link rel="stylesheet" href="styles.css">  
     <script src="Bootscripts/GeneralScriptBoot.js"></script>  
 </head>
-<body>
-    <nav>
-        <ul>
-            <li><a> <button class="btn" onclick="GoToHome();"><i class="bi bi-house"></i></button></a></li>
-            <li><p class="navtxt">Login and register page</p></li>
+<body class="d-flex flex-column min-vh-100">
+
+    <nav class="navbar navbar-expand-sm fixed-top">
+        <ul class="nav navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" onclick="GoToHome();">Home <i class="bi bi-house"></i></a></li>
+            <span class="navbar-text">Login and Register Page</span>
+        </ul>
+        <ul class="nav navbar-nav">
+            <!-- <li class="nav-item"><a class="nav-link" onclick="GoToLogin();">Login <i class="bi bi-person"></i></a></li> -->
         </ul>
     </nav>
-    <section class="container-fluid loginpage">
-        <div id="nav-spacer"></div>
-        <div class="row">
+
+   <div class="container-fluid" style="margin-top:100px;">
+    <div class="row section">
             <div class="col-sm-12">
                 <label for="Username">Username:</label>
                 <input style="width: 100%;" type="text" id="Username">
@@ -31,22 +35,24 @@
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <li><a><button class="btn" value="Login" onclick="Login();">Login <i class="bi bi-person"></i></button></a></li>
+                <a><button class="btn" value="Login" onclick="Login();">Login <i class="bi bi-person"></i></button></a>
             </div>
         </div>
+      
+   
           <div class="row">
             <div class="col-sm-12">
                 <p>If you do not yet have an account register here:</p>
-                <li><a><button class="btn" value="Login" onclick="Register();">Register <i class="bi bi-person-plus"></i></button></a></li>
+                <a><button class="btn" value="Login" onclick="Register();">Register <i class="bi bi-person-plus"></i></button></a>
             </div>
         </div>
         <div id="footer-spacer"></div>
-    </section>
-    <footer>
-        <ul>
-            <li><a> <button class="btn" onclick="GoToHelp();"><i class="bi bi-info"></i></button></a></li>
-            <li><p class="foottxt">Have fun at the festival!</p></li>
+    </div>
+    <footer class="navbar navbar-expand-sm mt-auto">
+        <ul class="nav navbar-nav">
+            <!-- <li class="nav-item"><a class="nav-link" onclick="GoToHelp();">Help <i class="bi bi-info"></i></a></li> -->
+            <span class="footer-text">Have fun at the Festival!</span>
         </ul>
-    </footer>
+    </footer
 </body>
 </html>

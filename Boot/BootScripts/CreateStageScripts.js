@@ -20,7 +20,7 @@ function CreateStage() {
                     GoToSwitch();
 
                 } else {
-                    console.log("error")
+                    console.log("error",error)
                 }
             })
             .catch(error => {
@@ -86,8 +86,8 @@ function GetActiveStages() {
                     row += "<td style = \" font-weight: bold\">" + stage.stageID + ":" + "</td>";
                     row += "<td style=\"text-align:left\">" + stage.stageName + "</td>";
                     row += "<td style=\"font-weight: lighter\">" + stage.currentSong + "</td>";
-                    row += "<td style=\"font-weight: lighter\">" + stage.numberOfUsers + "</td>";
-                    //temp += "<td style=\"font-weight: lighter\"> <input class='form-check-input' type='checkbox' value='' id='activeStageEdit'></td>";
+                    row += "<td class = \"text-center\" style=\"font-weight: lighter\">" + stage.numberOfUsers + "</td>";
+                    row += "<td style=\"font-weight: lighter\"> <label class='switch'> <input type='checkbox' checked><span class='slider round'></span></label></td>";
 
                     
                 });
