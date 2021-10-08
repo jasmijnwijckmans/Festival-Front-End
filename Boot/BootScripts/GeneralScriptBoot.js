@@ -136,6 +136,7 @@ function UpdateActivity(StageID) {
 function Logout() {
     DeleteAuthenticationKey();
     localStorage.clear();
+    UpdateActivity(0);
     GoToHome();
 
 }

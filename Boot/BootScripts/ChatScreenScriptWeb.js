@@ -30,7 +30,7 @@ webSocket.onmessage = function (event) {
                 break;
             case "InteractionUpdate":
                 // In case of an update of the interactions, process the interaction counts into the page
-                console.log(socketmessage.Message)
+                DisplayNewInteraction(socketmessage.Message, false);
                 break;
             case "MessageResponse":
                 if (socketmessage.Message.Success) {
@@ -46,8 +46,12 @@ webSocket.onmessage = function (event) {
                 }
                 break;
             case "InteractionResponse":
-                if (!socketmessage.Message.Success) {
-                    console.log("Failed to post interaction, error code(s): " + socketmessage.Message.ErrorMessage.toString())
+                if (socketmessage.Message.Success) {
+                    DisplayNewInteraction(socketmessage.Message.Data,true);
+                   
+                }
+                else{
+                    alers("Failed to post interaction, error code(s): " + socketmessage.Message.ErrorMessage.toString())
                 }
                 break;
             default:
@@ -70,6 +74,8 @@ function DisplayNewMessage(Message, OwnMessage) {
                     var pTime = document.createElement("p");
 
                     var icon = document.createElement("div");
+                    var like= document.createElement("div");
+                    var dislike = document.createElement("div");
 
                     divText.className = "font-weight-light";
                     divName.className = "font-weight-bold";
@@ -84,6 +90,8 @@ function DisplayNewMessage(Message, OwnMessage) {
                         minute: '2-digit',
                         second: '2-digit'
                     });
+
+                  
 
                     if (OwnMessage) {
 
@@ -105,11 +113,16 @@ function DisplayNewMessage(Message, OwnMessage) {
 
                     } else {
                         div.className = "text-left";
+                        like.innerHTML =   `<button id = "like" onclick="InteractWithMessage(${Message.MessageID}, 1)"> Like <i class="bi bi-hand-thumbs-up"></i></button>`
+                        dislike.innerHTML =   `<button id = "dislike" onclick="InteractWithMessage(${Message.MessageID}, 2)"> Dislike <i class="bi bi-hand-thumbs-down"></i></button>`
                         pTime.className = "time-left";
                         $(".chatbox").append(div);
                         $("#" + Message.MessageID).append(divName);
                         $("#" + Message.MessageID).append(divText);
+                        $("#" + Message.MessageID).append(like);
+                        $("#" + Message.MessageID).append(dislike);
                         $("#" + Message.MessageID).append(pTime);
+
 
                         if (Message.UserRole == "admin") {
                             icon.className = "bi bi-person-circle";
@@ -121,6 +134,44 @@ function DisplayNewMessage(Message, OwnMessage) {
 
                     }
 }
+
+function DisplayNewInteraction(Interaction, OwnInteraction){
+//Create the required elements
+//var p1= document.createElement("p")
+var p2 = document.createElement("p");
+var p3 = document.createElement("p");
+var p4 = document.createElement("p");
+var p5 = document.createElement("p");
+
+p2.innerHTML = Interaction.InteractionType;
+p3.innerHTML = Interaction.Message.MessageText;
+//p4.innerHTML = Interaction.MessageID;
+//p5.innerHTML= Interaction.Interactions.Count;
+
+if(OwnInteraction==true){
+    if(p2.innerHTML==1){
+       alert("You have liked the message: " +Interaction.Message.MessageText)
+       
+    }
+    else{
+    alert("You have disliked the message: " +Interaction.Message.MessageText)
+       
+    }
+
+}
+else{
+
+    //  document.getElementById("interaction").appendChild(p4);
+    //  document.getElementById("interaction").appendChild(p5);
+    
+
+    
+}
+
+    
+    
+} 
+       
 
 // Send new messages
 function SendMessage() {
@@ -143,11 +194,13 @@ function InteractWithMessage(MessageID, InteractionType) {
     var msg = {
         messageType: "PostInteraction",
         messageID: MessageID,
-        userID: document.getElementById("UserField").value,
+        userID: localStorage.getItem("UserID"),
         InteractionType: InteractionType
     };
     // Send the object as a string through the websocket
     webSocket.send(JSON.stringify(msg));
+
+
 }
 
 // Close the websocket

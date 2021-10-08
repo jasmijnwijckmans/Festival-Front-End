@@ -1,7 +1,5 @@
 function CreateStage() {
-    //localStorage.setItem('UserRole', "admin") //deze lijn is tijdelijk om te laten werken
     if (localStorage.getItem('UserRole') == "admin") {
-        let dataReceived = "";
         var myJSON = "{\"stageName\": \"" + document.getElementById("stagenamefield").value + "\",\"stageActive\":" + $('#activeStage').is(':checked') + "}"
         console.log(myJSON);
         fetch(baseurl + "/api/Stage", {
@@ -20,42 +18,6 @@ function CreateStage() {
                     GoToSwitch();
 
                 } else {
-                    console.log("error",error)
-                }
-            })
-            .catch(error => {
-                console.error("Error", error);
-            });
-    }
-    else {
-        //document.getElementById("RoleError").innerHTML;
-
-    }
-}
-
-function EditStage() {
-    //localStorage.setItem('UserRole', "admin") //deze lijn is tijdelijk om te laten werken
-    if (localStorage.getItem('UserRole') == "admin") {
-        let dataReceived = "";
-        var myEdit = "{\"stageID\": " + document.getElementById("stageIDfield").value + ",\"stageActive\":" + $('#activeStageEdit').is(':checked') + "}"
-        console.log(myEdit);
-        fetch(baseurl + "/api/Stage", {
-            method: "put",
-            headers: {
-                "Authorization": localStorage.getItem('AuthenticationKey'),
-                "success": true,
-                "Content-Type": "application/json"
-            },
-            body: myEdit
-        })
-            .then(response => response.json())
-            .then(json => {
-                console.log(json)
-                if (json.success) {
-
-                    GoToSwitch();
-
-                } else {
                     console.log("error", error)
                 }
             })
@@ -69,8 +31,43 @@ function EditStage() {
     }
 }
 
+function EditStage() {
+    if (localStorage.getItem('UserRole') == "admin") {
+        var myEdit = {}
+        myEdit.stageID = document.getElementById("stageIDfield").value
+        myEdit.stageActive = $('#activeStageEdit').is(':checked');
+        console.log(myEdit);
+        fetch(baseurl + "/api/Stage", {
+            method: "put",
+            headers: {
+                "Authorization": localStorage.getItem('AuthenticationKey'),
+                "success": true,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(myEdit)
+        })
+            .then(response => response.json())
+            .then(json => {
+                console.log(json)
+                if (json.success) {
+                    onload;
+                } else {
+                    console.log("error", error)
+                }
+            })
+            .catch(error => {
+                console.error("Error", error);
+            });
+    }
+
+    else {
+        console.log(error)
+    }
+}
+
+
 function GetActiveStages() {
-    fetch(baseurl + "/api/Stage",{
+    fetch(baseurl + "/api/Stage", {
         headers: {
             "Authorization": localStorage.getItem('AuthenticationKey')
         }
@@ -83,13 +80,20 @@ function GetActiveStages() {
                 var row = "";
                 returndata.data.forEach(function (stage) {
                     row += "<tr>";
-                    row += "<td style = \" font-weight: bold\">" + stage.stageID + ":" + "</td>";
+                    row += "<td style = \" font-weight: bold\"> <div id ='stageID'>" + stage.stageID + "</div></td>";
                     row += "<td style=\"text-align:left\">" + stage.stageName + "</td>";
                     row += "<td style=\"font-weight: lighter\">" + stage.currentSong + "</td>";
-                    row += "<td class = \"text-center\" style=\"font-weight: lighter\">" + stage.numberOfUsers + "</td>";
-                    row += "<td style=\"font-weight: lighter\"> <label class='switch'> <input type='checkbox' checked><span class='slider round'></span></label></td>";
+                    row += "<td class = \"text-center\" style=\"font-weight: lighter\"> <div id ='numberOfUsers'>" + stage.numberOfUsers + "</div></td>";
+                    // if(stage.Active==True){
+                    row +=   "<td>  <input id='stageIDfield' type='number' placeholder='Enter stage ID'></td>";
+                    row += "<td style=\"font-weight: lighter\"> <label class='switch'> <input id = 'activeStageEdit'  onclick ='EditStage()' type='checkbox' checked ><span class='slider round'></span></label></td>";
 
-                    
+                    //}
+                    // else{
+                    // row += "<td style=\"font-weight: lighter\"> <label class='switch'> <input id = 'activeStageEdit'  onclick ='EditStage()' type='checkbox'><span class='slider round'></span></label></td>";
+                    // }
+                    row += "<td style=\"font-weight: lighter\"> <button class='btn' onclick='DeleteStage(" + stage.stageID + ")'> Delete</button></td>";
+
                 });
                 document.getElementById("myStages").innerHTML += row;
 
@@ -103,5 +107,41 @@ function GetActiveStages() {
 
         });
 }
+
+
+function DeleteStage(stageID) {
+    if (localStorage.getItem('UserRole') == "admin") {
+        var myDelete = {}
+        myDelete.stageID = stageID;
+        console.log(myDelete);
+        fetch(baseurl + "/api/Stage", {
+            method: "put",
+            headers: {
+                "Authorization": localStorage.getItem('AuthenticationKey'),
+                "success": true,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(myDelete)
+        })
+            .then(response => response.json())
+            .then(json => {
+                console.log(json)
+                if (json.success) {
+                    onload;
+
+                } else {
+                    console.log("error", error)
+                }
+            })
+            .catch(error => {
+                console.error("Error", error);
+            });
+    }
+    else {
+        console.log(error);
+    }
+
+}
+
 
 
