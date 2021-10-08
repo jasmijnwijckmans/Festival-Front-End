@@ -11,18 +11,18 @@ function GetUsers() {
             // if loading is correct, a card with data will be provided
             if (returndata.success) {
                 var temp = "";
-
                 returndata.data.forEach(function (user) {
                     temp += "<tr>";
 
                     temp += "<td style = \" font-weight: bold\">" + user.userName + ":" + "</td>";
                     temp += "<td style=\"text-align:left\">" + user.userID + "</td>";
-                    temp += "<td style=\"font-weight: lighter\">" + user.userRole + "</td>";
+                    temp += "<td style=\"font-weight: lighter\">" + user.userRole + "</td></tr>";
 
                 });
                 document.getElementById("myUsers").innerHTML += temp;
 
-            } else {}
+            } 
+            else {}
         }) // if loading failed, error message is shown on screen
         .catch(error => {
             console.error("Error", error);

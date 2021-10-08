@@ -19,7 +19,7 @@
     <script src="BootScripts/ChatSwitchScriptBoot.js"></script>
 </head>
 
-<body onload="LoadPage();" class="d-flex flex-column min-vh-100">
+<body onload="LoadPage()" class="d-flex flex-column min-vh-100">
     <!-- page header -->
     <!-- navigation bar -->
     <nav class="navbar navbar-expand-sm fixed-top">
@@ -40,8 +40,21 @@
     <div class="container-fluid " style="margin-top:80px;">
         <div class="row">
 
+            <div class="col-sm-3">
+                <table style="width: 80%;">
+                    <thead> Active Users
+                        <tr>
+                            <th style="width: 20%;"> Name</th>
+                            <th style="width: 20%;"> Role</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stageUsers">
+                    </tbody>
+                </table>
+            </div>
 
-            <div class="col-sm-9" id="chat">
+
+            <div class="col-sm-6" id="chat">
                 <!-- Chat Area -->
                 <div class="container">
                     <div class="row">

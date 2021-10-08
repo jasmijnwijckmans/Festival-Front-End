@@ -1,11 +1,11 @@
 // Open a new websocket
-var webSocket = new WebSocket("wss://festivalapplication20211001092547.azurewebsites.net/ws/"+localStorage.getItem("UserID"));
+var webSocket = new WebSocket("wss://festivalapplication20211001092547.azurewebsites.net/ws/" + localStorage.getItem("UserID"));
 
 var AuthKey = localStorage.getItem('AuthenticationKey');
 
 // Manually open a new websocket
 function OpenSocket() {
-    webSocket = new WebSocket("wss://festivalapplication20211001092547.azurewebsites.net/ws/"+localStorage.getItem("UserID"));
+    webSocket = new WebSocket("wss://festivalapplication20211001092547.azurewebsites.net/ws/" + localStorage.getItem("UserID"));
 }
 
 // OnOpen change a field in the html page to indicate that the socket is open
@@ -47,10 +47,10 @@ webSocket.onmessage = function (event) {
                 break;
             case "InteractionResponse":
                 if (socketmessage.Message.Success) {
-                    DisplayNewInteraction(socketmessage.Message.Data,true);
-                   
+                    DisplayNewInteraction(socketmessage.Message.Data, true);
+
                 }
-                else{
+                else {
                     alers("Failed to post interaction, error code(s): " + socketmessage.Message.ErrorMessage.toString())
                 }
                 break;
@@ -66,112 +66,112 @@ webSocket.onmessage = function (event) {
     }
 }
 function DisplayNewMessage(Message, OwnMessage) {
-                    var div = document.createElement("div");
-                    div.id = Message.MessageID;
+    var div = document.createElement("div");
+    div.id = Message.MessageID;
 
-                    var divText = document.createElement("div");
-                    var divName = document.createElement("div");
-                    var pTime = document.createElement("p");
+    var divText = document.createElement("div");
+    var divName = document.createElement("div");
+    var pTime = document.createElement("p");
 
-                    var icon = document.createElement("div");
-                    var like= document.createElement("div");
-                    var dislike = document.createElement("div");
+    var icon = document.createElement("div");
+    var like = document.createElement("div");
+    var dislike = document.createElement("div");
 
-                    divText.className = "font-weight-light";
-                    divName.className = "font-weight-bold";
+    divText.className = "font-weight-light";
+    divName.className = "font-weight-bold";
 
-                    divName.innerHTML = Message.UserName;
-                    divText.innerHTML = Message.MessageText;
-                    pTime.innerHTML = new Date(Message.Timestamp).toLocaleTimeString([], {
-                        year: 'numeric',
-                        month: 'numeric',
-                        day: 'numeric',
-                        hour: '2-digit',
-                        minute: '2-digit',
-                        second: '2-digit'
-                    });
-
-                  
-
-                    if (OwnMessage) {
-
-                        div.className = "text-right";
-                        pTime.className = "time-right";
-                        $(".chatbox").append(div);
-                        $("#" + Message.MessageID).append(divText);
-                        $("#" + Message.MessageID).append(pTime);
-
-                        if (Message.UserRole == "admin") {
-                            icon.className = "bi bi-person-circle";
-                            $("#" + Message.MessageID).prepend(icon);
-                        } else if (Message.UserRole == "artist") {
-                            icon.className = "bi bi-disc"
-                            $("#" + Message.MessageID).prepend(icon);
-                        }
+    divName.innerHTML = Message.UserName;
+    divText.innerHTML = Message.MessageText;
+    pTime.innerHTML = new Date(Message.Timestamp).toLocaleTimeString([], {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    });
 
 
 
-                    } else {
-                        div.className = "text-left";
-                        like.innerHTML =   `<button id = "like" onclick="InteractWithMessage(${Message.MessageID}, 1)"> Like <i class="bi bi-hand-thumbs-up"></i></button>`
-                        dislike.innerHTML =   `<button id = "dislike" onclick="InteractWithMessage(${Message.MessageID}, 2)"> Dislike <i class="bi bi-hand-thumbs-down"></i></button>`
-                        pTime.className = "time-left";
-                        $(".chatbox").append(div);
-                        $("#" + Message.MessageID).append(divName);
-                        $("#" + Message.MessageID).append(divText);
-                        $("#" + Message.MessageID).append(like);
-                        $("#" + Message.MessageID).append(dislike);
-                        $("#" + Message.MessageID).append(pTime);
+    if (OwnMessage) {
+
+        div.className = "text-right";
+        pTime.className = "time-right";
+        $(".chatbox").append(div);
+        $("#" + Message.MessageID).append(divText);
+        $("#" + Message.MessageID).append(pTime);
+
+        if (Message.UserRole == "admin") {
+            icon.className = "bi bi-person-circle";
+            $("#" + Message.MessageID).prepend(icon);
+        } else if (Message.UserRole == "artist") {
+            icon.className = "bi bi-disc"
+            $("#" + Message.MessageID).prepend(icon);
+        }
 
 
-                        if (Message.UserRole == "admin") {
-                            icon.className = "bi bi-person-circle";
-                            $("#" + Message.MessageID).prepend(icon);
-                        } else if (Message.UserRole == "artist") {
-                            icon.className = "bi bi-disc"
-                            $("#" + Message.MessageID).prepend(icon);
-                        }
 
-                    }
-}
+    } else {
+        div.className = "text-left";
+        like.innerHTML = `<button id = "like" onclick="InteractWithMessage(${Message.MessageID}, 1)"> Like <i class="bi bi-hand-thumbs-up"></i></button>`
+        dislike.innerHTML = `<button id = "dislike" onclick="InteractWithMessage(${Message.MessageID}, 2)"> Dislike <i class="bi bi-hand-thumbs-down"></i></button>`
+        pTime.className = "time-left";
+        $(".chatbox").append(div);
+        $("#" + Message.MessageID).append(divName);
+        $("#" + Message.MessageID).append(divText);
+        $("#" + Message.MessageID).append(like);
+        $("#" + Message.MessageID).append(dislike);
+        $("#" + Message.MessageID).append(pTime);
 
-function DisplayNewInteraction(Interaction, OwnInteraction){
-//Create the required elements
-//var p1= document.createElement("p")
-var p2 = document.createElement("p");
-var p3 = document.createElement("p");
-var p4 = document.createElement("p");
-var p5 = document.createElement("p");
 
-p2.innerHTML = Interaction.InteractionType;
-p3.innerHTML = Interaction.Message.MessageText;
-//p4.innerHTML = Interaction.MessageID;
-//p5.innerHTML= Interaction.Interactions.Count;
+        if (Message.UserRole == "admin") {
+            icon.className = "bi bi-person-circle";
+            $("#" + Message.MessageID).prepend(icon);
+        } else if (Message.UserRole == "artist") {
+            icon.className = "bi bi-disc"
+            $("#" + Message.MessageID).prepend(icon);
+        }
 
-if(OwnInteraction==true){
-    if(p2.innerHTML==1){
-       alert("You have liked the message: " +Interaction.Message.MessageText)
-       
     }
-    else{
-    alert("You have disliked the message: " +Interaction.Message.MessageText)
-       
+}
+
+function DisplayNewInteraction(Interaction, OwnInteraction) {
+    //Create the required elements
+    //var p1= document.createElement("p")
+    var p2 = document.createElement("p");
+    var p3 = document.createElement("p");
+    var p4 = document.createElement("p");
+    var p5 = document.createElement("p");
+
+    p2.innerHTML = Interaction.InteractionType;
+    p3.innerHTML = Interaction.Message.MessageText;
+    //p4.innerHTML = Interaction.MessageID;
+    //p5.innerHTML= Interaction.Interactions.Count;
+
+    if (OwnInteraction == true) {
+        if (p2.innerHTML == 1) {
+            alert("You have liked the message: " + Interaction.Message.MessageText)
+
+        }
+        else {
+            alert("You have disliked the message: " + Interaction.Message.MessageText)
+
+        }
+
+    }
+    else {
+
+        //  document.getElementById("interaction").appendChild(p4);
+        //  document.getElementById("interaction").appendChild(p5);
+
+
+
     }
 
-}
-else{
 
-    //  document.getElementById("interaction").appendChild(p4);
-    //  document.getElementById("interaction").appendChild(p5);
-    
 
-    
 }
 
-    
-    
-} 
-       
 
 // Send new messages
 function SendMessage() {
@@ -211,15 +211,46 @@ function Close() {
 }
 
 function LoadPage() {
-    document.getElementById("stageName").innerHTML = "Stage " + localStorage.getItem('current-StageID'); //get name of stage from local storage
-     //if the pages is loaded all sended messages are fetched via NewGetMessage 
+    document.getElementById("stageName").innerHTML = "Stage " + localStorage.getItem('current-StageID');
+    GetStage(localStorage.getItem('current-StageID')); //get name of stage from local storage
+    //if the pages is loaded all sended messages are fetched via NewGetMessage 
     if (localStorage.getItem("UserRole") == "artist") {
         //if user is an artist DJ booth appears on the page
         $("#DjBooth").show();
     } else {
-        $("#chat").removeClass("col-sm-9").addClass("col-sm-12")
+        $("#chat").removeClass("col-sm-6").addClass("col-sm-9")
         $("#DjBooth").hide();
     }
 
+
+
+}
+
+function GetStage(stageID) {
+    fetch(baseurl + "/api/User/" +stageID, {
+        headers: {
+            "Authorization": localStorage.getItem('AuthenticationKey')
+        }
+    })
+        .then(response => response.json())
+        .then(function (returndata) {
+            console.log(returndata);
+            if (returndata.success) {
+                var temp = "";
+
+                returndata.data.forEach(function (stageuser) {
+                    temp += "<tr>";
+                    temp += "<td style = \" font-weight: bold\">" + stageuser.userName + ":" + "</td>";
+                    temp += "<td style=\"font-weight: lighter\">" + stageuser.userRole + "</td></tr>";
+
+                });
+                document.getElementById("stageUsers").innerHTML += temp;
+
+            } else {}
+
+        })
+        .catch(error => {
+            console.error("Error", error);
+        });
 
 }
