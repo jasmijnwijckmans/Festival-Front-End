@@ -26,7 +26,24 @@ body {
     font-size: 110%;
     color: black;
   }
+ .card {
+
+    background-color:  lightgoldenrodyellow;
+    line-height: 1.6;
+    letter-spacing: 1.5px;
+    font-size: 110%;
   
+  }
+  
+  .card .mt-3{
+
+    background-color:  thistle;
+    line-height: 1.6;
+    letter-spacing: 1.5px;
+    font-size: 110%;
+ 
+
+  }
   .btn {
     background-color: rgb(125, 0, 0); 
     color: lightgoldenrodyellow;
@@ -36,7 +53,7 @@ body {
   
   /* Darker background on mouse-over */
   .btn:hover {
-    background-color: thistle;
+    background-color: plum;
   }
 
   /* The switch - the box around the slider */
