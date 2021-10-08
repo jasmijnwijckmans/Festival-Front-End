@@ -22,12 +22,15 @@ function GoToHelp() {
 function GoToCreateStage() {
     window.location.href = 'CreateStageBoot.html';
 }
+
 function GoToSwitch() {
     window.location.href = 'ChatSwitchBoot.html';
 }
+
 function GoToStage() {
     window.location.href = 'ChatScreenWeb.html';
 }
+
 function GoToManageUsers() {
     window.location.href = "ManageUserBoot.html";
 }
@@ -42,13 +45,13 @@ function Login() {
     //var myJSON = "{\"Username\": \"" + document.getElementById("Username").value + "\",\"Password\":\"" + document.getElementById("Password").value + "\"}"
 
     fetch(baseurl + "/api/Login", {
-        method: "post",
-        headers: {
-            "success": true,
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(mijnlogin)
-    })
+            method: "post",
+            headers: {
+                "success": true,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(mijnlogin)
+        })
         .then(response => response.json())
         .then(json => {
             if (json.success) {
@@ -70,13 +73,13 @@ function Register() {
     myJson.Username = document.getElementById("Username").value;
     myJson.Password = document.getElementById("Password").value;
     fetch(baseurl + "/api/User", {
-        method: "post",
-        headers: {
-            "success": true,
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(myJson)
-    })
+            method: "post",
+            headers: {
+                "success": true,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(myJson)
+        })
 
         // response as Json
         .then(response => response.json())
@@ -103,14 +106,14 @@ function UpdateActivity(StageID) {
     update.userID = localStorage.getItem('UserID');
     console.log(update);
     fetch(baseurl + "/api/UserActivity", {
-        method: "put",
-        headers: {
-            "Authorization": localStorage.getItem('AuthenticationKey'),
-            "accept": "text/plain",
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(update)
-    })
+            method: "put",
+            headers: {
+                "Authorization": localStorage.getItem('AuthenticationKey'),
+                "accept": "text/plain",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(update)
+        })
         .then(response => response.json())
         .then(function (returndata) {
             console.log(returndata);
@@ -120,8 +123,7 @@ function UpdateActivity(StageID) {
                     localStorage.setItem('current-StageID', StageID);
                     GoToSwitch();
 
-                }
-                else {
+                } else {
                     localStorage.setItem('current-StageID', StageID);
                     GoToStage();
                 }
@@ -141,15 +143,16 @@ function Logout() {
 
 }
 
+
 function DeleteAuthenticationKey() {
     fetch(baseurl + "/api/login/" + localStorage.getItem("UserID"), {
-        method: "delete",
-        headers: {
-            "Authorization": localStorage.getItem('AuthenticationKey'),
-            "accept": "text/plain",
-            "Content-Type": "application/json"
-        },
-    })
+            method: "delete",
+            headers: {
+                "Authorization": localStorage.getItem('AuthenticationKey'),
+                "accept": "text/plain",
+                "Content-Type": "application/json"
+            },
+        })
         .then(response => response.json())
         .then(json => {
             if (json.success == false) {
