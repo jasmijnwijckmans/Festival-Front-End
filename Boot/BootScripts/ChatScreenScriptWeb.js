@@ -113,8 +113,8 @@ function DisplayNewMessage(Message, OwnMessage) {
 
     } else {
         div.className = "text-left";
-        like.innerHTML = `<button id = "like" onclick="InteractWithMessage(${Message.MessageID}, 1)"> Like <i class="bi bi-hand-thumbs-up"></i></button>`
-        dislike.innerHTML = `<button id = "dislike" onclick="InteractWithMessage(${Message.MessageID}, 2)"> Dislike <i class="bi bi-hand-thumbs-down"></i></button>`
+        like.innerHTML = `<button  style="margin:5px" class = "btn" id = "like" onclick="InteractWithMessage(${Message.MessageID}, 1)"> Like <i class="bi bi-hand-thumbs-up"></i></button>`
+        dislike.innerHTML = `<button style="margin:5px" class = "btn" id = "dislike" onclick="InteractWithMessage(${Message.MessageID}, 2)"> Dislike <i class="bi bi-hand-thumbs-down"></i></button>`
         pTime.className = "time-left";
         $(".chatbox").append(div);
         $("#" + Message.MessageID).append(divName);
