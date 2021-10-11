@@ -135,9 +135,9 @@ function DisplayNewMessage(Message, OwnMessage) {
     }
 }
 
-function DisplayNewInteraction(Interaction, OwnInteraction) {
+function DisplayNewInteraction(Interaction, OwnMessage) {
     //Create the required elements
-    //var p1= document.createElement("p")
+    var p1 = document.createElement("p")
     var p2 = document.createElement("p");
     var p3 = document.createElement("p");
     var p4 = document.createElement("p");
@@ -145,32 +145,28 @@ function DisplayNewInteraction(Interaction, OwnInteraction) {
 
     p2.innerHTML = Interaction.InteractionType;
     p3.innerHTML = Interaction.Message.MessageText;
-    //p4.innerHTML = Interaction.MessageID;
-    //p5.innerHTML= Interaction.Interactions.Count;
+    p4.innerHTML = new Date(Interaction.Message.Timestamp +Z).toLocaleTimeString([], {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    });
 
-    if (OwnInteraction == true) {
+    if (OwnMessage) {
         if (p2.innerHTML == 1) {
-            alert("You have liked the message: " + Interaction.Message.MessageText)
+            alert("You have liked the message: " + p3.innerHTML + " from " + p4.innerHTML)
 
         }
         else {
-            alert("You have disliked the message: " + Interaction.Message.MessageText)
+            alert("You have disliked the message: " + p3.innerHTML + " from " + p4.innerHTML)
 
         }
-
     }
-    else {
-
-        //  document.getElementById("interaction").appendChild(p4);
-        //  document.getElementById("interaction").appendChild(p5);
-
-
-
-    }
-
-
 
 }
+
 
 
 // Send new messages
@@ -212,13 +208,12 @@ function Close() {
 
 function LoadPage() {
     document.getElementById("stageName").innerHTML = "Stage " + localStorage.getItem('current-StageID');
-    GetStage(localStorage.getItem('current-StageID')); //get name of stage from local storage
     //if the pages is loaded all sended messages are fetched via NewGetMessage 
     if (localStorage.getItem("UserRole") == "artist") {
         //if user is an artist DJ booth appears on the page
         $("#DjBooth").show();
     } else {
-        $("#chat").removeClass("col-sm-6").addClass("col-sm-9")
+        $("#chat").removeClass("col-sm-9").addClass("col-sm-12")
         $("#DjBooth").hide();
     }
 
@@ -226,31 +221,3 @@ function LoadPage() {
 
 }
 
-function GetStage(stageID) {
-    fetch(baseurl + "/api/User/" +stageID, {
-        headers: {
-            "Authorization": localStorage.getItem('AuthenticationKey')
-        }
-    })
-        .then(response => response.json())
-        .then(function (returndata) {
-            console.log(returndata);
-            if (returndata.success) {
-                var temp = "";
-
-                returndata.data.forEach(function (stageuser) {
-                    temp += "<tr>";
-                    temp += "<td style = \" font-weight: bold\">" + stageuser.userName + ":" + "</td>";
-                    temp += "<td style=\"font-weight: lighter\">" + stageuser.userRole + "</td></tr>";
-
-                });
-                document.getElementById("stageUsers").innerHTML += temp;
-
-            } else {}
-
-        })
-        .catch(error => {
-            console.error("Error", error);
-        });
-
-}
