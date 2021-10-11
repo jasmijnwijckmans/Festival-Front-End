@@ -30,7 +30,7 @@ webSocket.onmessage = function (event) {
                 break;
             case "InteractionUpdate":
                 // In case of an update of the interactions, process the interaction counts into the page
-                DisplayNewInteraction(socketmessage.Message, false);
+                DisplayUpdateInteraction(socketmessage.Message);
                 break;
             case "MessageResponse":
                 if (socketmessage.Message.Success) {
@@ -47,7 +47,7 @@ webSocket.onmessage = function (event) {
                 break;
             case "InteractionResponse":
                 if (socketmessage.Message.Success) {
-                    DisplayNewInteraction(socketmessage.Message.Data, true);
+                    DisplayNewInteraction(socketmessage.Message.Data);
 
                 }
                 else {
@@ -66,6 +66,7 @@ webSocket.onmessage = function (event) {
     }
 }
 function DisplayNewMessage(Message, OwnMessage) {
+
     var div = document.createElement("div");
     div.id = Message.MessageID;
 
@@ -76,6 +77,7 @@ function DisplayNewMessage(Message, OwnMessage) {
     var icon = document.createElement("div");
     var like = document.createElement("div");
     var dislike = document.createElement("div");
+
 
     divText.className = "font-weight-light";
     divName.className = "font-weight-bold";
@@ -90,8 +92,6 @@ function DisplayNewMessage(Message, OwnMessage) {
         minute: '2-digit',
         second: '2-digit'
     });
-
-
 
     if (OwnMessage) {
 
@@ -121,8 +121,9 @@ function DisplayNewMessage(Message, OwnMessage) {
         $("#" + Message.MessageID).append(divText);
         $("#" + Message.MessageID).append(like);
         $("#" + Message.MessageID).append(dislike);
-        $("#" + Message.MessageID).append(pTime);
 
+        $("#" + Message.MessageID).append();
+        $("#" + Message.MessageID).append(pTime);
 
         if (Message.UserRole == "admin") {
             icon.className = "bi bi-person-circle";
@@ -135,14 +136,14 @@ function DisplayNewMessage(Message, OwnMessage) {
     }
 }
 
-function DisplayNewInteraction(Interaction, OwnMessage) {
+function DisplayNewInteraction(Interaction) {
     //Create the required elements
-    var p1 = document.createElement("p")
+    var p1 = document.createElement("p");
     var p2 = document.createElement("p");
     var p3 = document.createElement("p");
     var p4 = document.createElement("p");
-    var p5 = document.createElement("p");
 
+    p1.innerHTML = Interaction.UserName;
     p2.innerHTML = Interaction.InteractionType;
     p3.innerHTML = Interaction.Message.MessageText;
     p4.innerHTML = new Date(Interaction.Message.Timestamp).toLocaleTimeString([], {
@@ -153,23 +154,60 @@ function DisplayNewInteraction(Interaction, OwnMessage) {
         minute: '2-digit',
         second: '2-digit'
     });
-
-    if (OwnMessage) {
+ 
         if (p2.innerHTML == 1) {
-            alert("You have liked the message: " + p3.innerHTML)
+            alert(p1.innerHTML + " has liked the message: " + p3.innerHTML)
 
         }
         else {
-            alert("You have disliked the message: " + p3.innerHTML)
+            alert(p1.innerHTML +" has disliked the message: " + p3.innerHTML)
 
         }
-    }
-    else{
-        
-    }
+   
 
 }
 
+
+function DisplayUpdateInteraction(Interaction){
+    console.log(Interaction);
+    Interaction.forEach(function (interactions){
+      
+         var divInteractiontype= document.createElement("div");
+         var divInteractioncount= document.createElement("div");
+        divInteractiontype.innerHTML = interactions.Interactions[0].InteractionType
+        divInteractioncount.innerHTML = interactions.Interactions[0].Count
+ 
+        if (divInteractiontype.innerHTML ==1){
+            $("#" + interactions.MessageID).append("LIKED "+ divInteractioncount.innerHTML );
+            
+
+        }
+    else{
+            $("#" + interactions.MessageID).append("DISLIKED " + divInteractioncount.innerHTML);
+        
+        }
+      
+      
+
+    });
+}
+        
+
+    // var p1 = document.createElement("p");
+    // var p2 = document.createElement("p");
+    // var p3 = document.createElement("p");
+    // p1.innerHTML = Interaction.MessageID;
+    // p2.innerHTML = Interaction.Interactions.InteractionType;
+    // p3.innerHTML = Interaction.Interactions.Count;
+
+    // if (p2.innerHTML == 1) {
+    //     console.log(p1.innerHTML + " has " + p3.innerHTML + " like(s)")
+
+    // }
+    // else {
+    //     console.log(p1.innerHTML + " has " + p3.innerHTML + " dislike(s)")
+
+    // }
 
 
 // Send new messages
@@ -219,8 +257,6 @@ function LoadPage() {
         $("#chat").removeClass("col-sm-9").addClass("col-sm-12")
         $("#DjBooth").hide();
     }
-
-
 
 }
 
