@@ -145,7 +145,7 @@ function DisplayNewInteraction(Interaction, OwnMessage) {
 
     p2.innerHTML = Interaction.InteractionType;
     p3.innerHTML = Interaction.Message.MessageText;
-    p4.innerHTML = new Date(Interaction.Message.Timestamp +Z).toLocaleTimeString([], {
+    p4.innerHTML = new Date(Interaction.Message.Timestamp).toLocaleTimeString([], {
         year: 'numeric',
         month: 'numeric',
         day: 'numeric',
@@ -156,13 +156,16 @@ function DisplayNewInteraction(Interaction, OwnMessage) {
 
     if (OwnMessage) {
         if (p2.innerHTML == 1) {
-            alert("You have liked the message: " + p3.innerHTML + " from " + p4.innerHTML)
+            alert("You have liked the message: " + p3.innerHTML)
 
         }
         else {
-            alert("You have disliked the message: " + p3.innerHTML + " from " + p4.innerHTML)
+            alert("You have disliked the message: " + p3.innerHTML)
 
         }
+    }
+    else{
+        
     }
 
 }
