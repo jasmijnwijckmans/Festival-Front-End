@@ -31,11 +31,11 @@ function CreateStage() {
     }
 }
 
-function EditStage() {
+function EditStage(StageID, Status) {
     if (localStorage.getItem('UserRole') == "admin") {
         var myEdit = {}
-        myEdit.stageID = document.getElementById("IDfield").value;
-        myEdit.stageActive = true;
+        myEdit.stageID = StageID;
+        myEdit.stageActive = Status;
         console.log(myEdit);
         fetch(baseurl + "/api/Stage", {
             method: "put",
@@ -86,13 +86,13 @@ function GetActiveStages() {
                     row += "<td style=\"font-weight: lighter\">" + stage.currentSong + "</td>";
                     row += "<td class = \"text-center\" style=\"font-weight: lighter\"> <div id ='numberOfUsers'>" + stage.numberOfUsers + "</div></td>";
                     if(stage.stageActive==true){
-                    row +=   "<td>  <input id='IDfield' type='text' placeholder='Enter stage ID'></td>";
-                    row += "<td style=\"font-weight: lighter\"> <label class='switch'> <input id = 'activeStageEdit'  onclick ='EditStage()' type='checkbox' checked ><span class='slider round'></span></label></td>";
+                    //row +=   "<td>  <input id='IDfield' type='text' placeholder='Enter stage ID'></td>";
+                    row += "<td style=\"font-weight: lighter\"> <label class='switch'> <input id = 'activeStageEdit'  onclick ='EditStage(" + stage.stageID + ","+ false + ")' type='checkbox' checked ><span class='slider round'></span></label></td>";
 
                     }
                    else{
-                     row +=   "<td>  <input id='IDfield' type='text' placeholder='Enter stage ID'></td>";
-                    row += "<td style=\"font-weight: lighter\"> <label class='switch'> <input id = 'activeStageEdit'  onclick ='EditStage()' type='checkbox'><span class='slider round'></span></label></td>";
+                     //row +=   "<td>  <input id='IDfield' type='text' placeholder='Enter stage ID'></td>";
+                    row += "<td style=\"font-weight: lighter\"> <label class='switch'> <input id = 'activeStageEdit'  onclick ='EditStage(" + stage.stageID + ","+ true +  ")' type='checkbox'><span class='slider round'></span></label></td>";
                    }
                     row += "<td style=\"font-weight: lighter\"> <button class='btn' onclick='DeleteStage(" + stage.stageID + ")'> Delete</button></td>";
     
@@ -116,6 +116,7 @@ function GetActiveStages() {
 function DeleteStage(stageID) {
     if (localStorage.getItem('UserRole') == "admin") {
         fetch(baseurl + "/api/Stage/"+stageID, {
+            method: "delete",
             headers: {
                 "Authorization": localStorage.getItem('AuthenticationKey')
             }
@@ -127,7 +128,7 @@ function DeleteStage(stageID) {
                     onload;
 
                 } else {
-                    alert("This stage can not be deleted, because there are active users in the stage");
+                    //alert("This stage can not be deleted, because there are active users in the stage");
                     console.log("error", error);
                 
                 }
