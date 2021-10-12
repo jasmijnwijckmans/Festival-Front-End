@@ -68,22 +68,22 @@ function EditUser() {
 
 }
 
-function DeleteUserID() {
-    var myDelete = {}
-    myDelete.userID = document.getElementById("userID").value;
-    fetch(baseurl + "/api/user/" + localStorage.getItem("UserID"), {
+function DeleteUser() {
+    //var myDelete = {}
+    //myDelete.userID = document.getElementById("userID").value;
+    fetch(baseurl + "/api/user/" + document.getElementById("userID").value, {
             method: "delete",
             headers: {
-                "Authorization": localStorage.getItem('Authenticationkey'),
+                "Authorization": localStorage.getItem('AuthenticationKey'),
                 "accept": "text/plain",
                 "Content-Type": "application/json"
-            },
-            body: JSON.stringify(myDelete)
+            }
+            //body: JSON.stringify(myDelete)
         })
         .then(response => response.json())
         .then(json => {
             if (json.success == false) {
-                ProcessErrors(json.errorCodes, json.responseMessage);
+                console.log(json);
             } else {
                 console.log(json);
                 onload
@@ -92,10 +92,4 @@ function DeleteUserID() {
         .catch(error => {
             console.log("Failed to send request");
         });
-}
-
-function DeleteUser() {
-    //DeleteAuthenticationKey();
-    DeleteUserID();
-    localStorage.clear();
 }
