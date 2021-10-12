@@ -19,12 +19,11 @@ function CreateStage() {
                     GoToSwitch();
 
                 } else {
-                    ProcessErrors(json.errorMessage[0])
-                    console.log("error", error)
+                    ProcessErrors(json.errorMessage)
                 }
             })
             .catch(error => {
-                console.error("Error", error);
+                ProcessErrors(json.errorMessage)
             });
     }
     else {
@@ -53,11 +52,11 @@ function EditStage(StageID, Status) {
                 if (json.success) {
                     onload;
                 } else {
-                    ProcessErrors(json.errorMessage[0])
+                    ProcessErrors(json.errorMessage)
                 }
             })
             .catch(error => {
-                console.error("Error", error);
+                ProcessErrors(json.errorMessage)
             });
     }
 
@@ -104,11 +103,11 @@ function GetActiveStages() {
 
             }
             else {
-                ProcessErrors(returndata.errorMessage[0])
+                ProcessErrors(returndata.errorMessage)
             }
         }) // if loading failed, error message is shown on screen
         .catch(error => {
-            console.error("Error", error);
+            ProcessErrors(returndata.errorMessage)
 
         });
 }
@@ -130,12 +129,12 @@ function DeleteStage(stageID) {
 
                 } else {
                     //alert("This stage can not be deleted, because there are active users in the stage");
-                    ProcessErrors(json.errorMessage[0])
+                    ProcessErrors(json.errorMessage)
                 
                 }
             })
             .catch(error => {
-                console.error("Error", error);
+                ProcessErrors(json.errorMessage)
             });
     }
     else {
@@ -167,12 +166,12 @@ function GetStage(stageID) {
                 document.getElementById("stageUsers").innerHTML += temp;
 
             } else { 
-                ProcessErrors(returndata.errorMessage[0])
+                ProcessErrors(returndata.errorMessage)
             }
 
         })
         .catch(error => {
-            console.error("Error", error);
+            ProcessErrors(returndata.errorMessage)
         });
     }
     else{
