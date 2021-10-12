@@ -19,6 +19,7 @@ function CreateStage() {
                     GoToSwitch();
 
                 } else {
+                    ProcessErrors(json.errorMessage[0])
                     console.log("error", error)
                 }
             })
@@ -52,7 +53,7 @@ function EditStage(StageID, Status) {
                 if (json.success) {
                     onload;
                 } else {
-                    console.log("error", error)
+                    ProcessErrors(json.errorMessage[0])
                 }
             })
             .catch(error => {
@@ -103,7 +104,7 @@ function GetActiveStages() {
 
             }
             else {
-                console.log(error)
+                ProcessErrors(returndata.errorMessage[0])
             }
         }) // if loading failed, error message is shown on screen
         .catch(error => {
@@ -129,7 +130,7 @@ function DeleteStage(stageID) {
 
                 } else {
                     //alert("This stage can not be deleted, because there are active users in the stage");
-                    console.log("error", error);
+                    ProcessErrors(json.errorMessage[0])
                 
                 }
             })
@@ -165,7 +166,9 @@ function GetStage(stageID) {
                 });
                 document.getElementById("stageUsers").innerHTML += temp;
 
-            } else { }
+            } else { 
+                ProcessErrors(returndata.errorMessage[0])
+            }
 
         })
         .catch(error => {

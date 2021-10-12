@@ -49,8 +49,7 @@ webSocket.onmessage = function (event) {
                 if (socketmessage.Message.Success) {
                     DisplayNewInteraction(socketmessage.Message.Data);
 
-                }
-                else {
+                } else {
                     alers("Failed to post interaction, error code(s): " + socketmessage.Message.ErrorMessage.toString())
                 }
                 break;
@@ -65,6 +64,7 @@ webSocket.onmessage = function (event) {
         console.log(event.data);
     }
 }
+
 function DisplayNewMessage(Message, OwnMessage) {
 
     var div = document.createElement("div");
@@ -100,6 +100,7 @@ function DisplayNewMessage(Message, OwnMessage) {
         $(".chatbox").append(div);
         $("#" + Message.MessageID).append(divText);
         $("#" + Message.MessageID).append(pTime);
+
 
         if (Message.UserRole == "admin") {
             icon.className = "bi bi-person-circle";
@@ -154,60 +155,45 @@ function DisplayNewInteraction(Interaction) {
         minute: '2-digit',
         second: '2-digit'
     });
- 
-        if (p2.innerHTML == 1) {
-            alert(p1.innerHTML + " has liked the message: " + p3.innerHTML)
 
-        }
-        else {
-            alert(p1.innerHTML +" has disliked the message: " + p3.innerHTML)
+    if (p2.innerHTML == 1) {
+        alert(p1.innerHTML + " has liked the message: " + p3.innerHTML)
 
-        }
-   
+    } else {
+        alert(p1.innerHTML + " has disliked the message: " + p3.innerHTML)
+
+    }
 
 }
 
 
-function DisplayUpdateInteraction(Interaction){
+function DisplayUpdateInteraction(Interaction) {
     console.log(Interaction);
-    Interaction.forEach(function (interactions){
-      
-         var divInteractiontype= document.createElement("div");
-         var divInteractioncount= document.createElement("div");
+    Interaction.forEach(function (interactions) {
+        var divMessage = document.createElement("div");
+        divMessage.id = interactions.MessageID;
+
+        var divInteractiontype = document.createElement("div");
+        var divInteractioncount = document.createElement("div");
         divInteractiontype.innerHTML = interactions.Interactions[0].InteractionType
         divInteractioncount.innerHTML = interactions.Interactions[0].Count
- 
-        if (divInteractiontype.innerHTML ==1){
-            $("#" + interactions.MessageID).append("LIKED "+ divInteractioncount.innerHTML );
-            
+
+        $("#" + interactions.MessageID).append(divMessage);
+
+
+        if (divInteractiontype.innerHTML == 1) {
+            let likes = divInteractioncount.innerHTML + " Like(s)";
+            $("#" + interactions.MessageID).append(likes)
+            likes.replace(divInteractioncount.innerHTML + " Like(s)", divInteractioncount.innerHTML + " Like(s)")
+
+        } else {
+            let dislikes = divInteractioncount.innerHTML + " Dislike(s)";
+            $("#" + interactions.MessageID).append(dislikes)
+            dislikes.replace(divInteractioncount.innerHTML + " Dislike(s)", divInteractioncount.innerHTML + " Dislike(s)")
 
         }
-    else{
-            $("#" + interactions.MessageID).append("DISLIKED " + divInteractioncount.innerHTML);
-        
-        }
-      
-      
-
     });
 }
-        
-
-    // var p1 = document.createElement("p");
-    // var p2 = document.createElement("p");
-    // var p3 = document.createElement("p");
-    // p1.innerHTML = Interaction.MessageID;
-    // p2.innerHTML = Interaction.Interactions.InteractionType;
-    // p3.innerHTML = Interaction.Interactions.Count;
-
-    // if (p2.innerHTML == 1) {
-    //     console.log(p1.innerHTML + " has " + p3.innerHTML + " like(s)")
-
-    // }
-    // else {
-    //     console.log(p1.innerHTML + " has " + p3.innerHTML + " dislike(s)")
-
-    // }
 
 
 // Send new messages
@@ -259,4 +245,3 @@ function LoadPage() {
     }
 
 }
-
