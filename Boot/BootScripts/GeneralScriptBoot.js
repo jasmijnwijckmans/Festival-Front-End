@@ -126,10 +126,12 @@ function UpdateActivity(StageID) {
                     GoToSwitch();
 
                 } else {
-                    ProcessErrors(returndata.errorMessage)
                     localStorage.setItem('current-StageID', StageID);
                     GoToStage();
                 }
+            }
+            else{
+                ProcessErrors(returndata.errorMessage)
             }
         })
         .catch(error => {

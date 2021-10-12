@@ -107,6 +107,12 @@ function DisplayNewMessage(Message, OwnMessage) {
         $(".chatbox").append(div);
         $("#" + Message.MessageID).append(divText);
         $("#" + Message.MessageID).append(pTime);
+        
+        $("#" + Message.MessageID).append(like);
+        $("#" + Message.MessageID).append(dislike);
+
+        $("#" + Message.MessageID + "_" + 1).append(likecount);
+        $("#" + Message.MessageID + "_" + 2).append(dislikecount);
 
 
         if (Message.UserRole == "admin") {
