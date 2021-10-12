@@ -20,49 +20,49 @@ webSocket.onopen = function () {
 // Listen for incoming messages
 webSocket.onmessage = function (event) {
     // Convert the incoming message
-    try {
-        var socketmessage = JSON.parse(event.data);
-        // Check what type of message you are receiving
-        switch (socketmessage.MessageType) {
-            case "IncomingMessage":
-                // In case of an incoming message, add the message to the screen
-                DisplayNewMessage(socketmessage.Message, false);
-                break;
-            case "InteractionUpdate":
-                // In case of an update of the interactions, process the interaction counts into the page
-                DisplayUpdateInteraction(socketmessage.Message);
-                break;
-            case "MessageResponse":
-                if (socketmessage.Message.Success) {
-                    // In case of a response for a posted message, add the message if successful
-                    DisplayNewMessage(socketmessage.Message.Data, true);
-                    document.getElementById("NewMessageBtn").disabled = false;
-                    document.getElementById("MessageSending").hidden = true;
-                } else {
-                    // In case of a response for a posted message, show an alert if unsuccessful
-                    alert("Failed to post message, error code(s): " + socketmessage.Message.ErrorMessage.toString())
-                    document.getElementById("NewMessageBtn").disabled = false;
-                    document.getElementById("MessageSending").hidden = true;
-                }
-                break;
-            case "InteractionResponse":
-                if (socketmessage.Message.Success) {
-                    DisplayNewInteraction(socketmessage.Message.Data);
+    // try {
+    var socketmessage = JSON.parse(event.data);
+    // Check what type of message you are receiving
+    switch (socketmessage.MessageType) {
+        case "IncomingMessage":
+            // In case of an incoming message, add the message to the screen
+            DisplayNewMessage(socketmessage.Message, false);
+            break;
+        case "InteractionUpdate":
+            // In case of an update of the interactions, process the interaction counts into the page
+            DisplayUpdateInteraction(socketmessage.Message);
+            break;
+        case "MessageResponse":
+            if (socketmessage.Message.Success) {
+                // In case of a response for a posted message, add the message if successful
+                DisplayNewMessage(socketmessage.Message.Data, true);
+                document.getElementById("NewMessageBtn").disabled = false;
+                document.getElementById("MessageSending").hidden = true;
+            } else {
+                // In case of a response for a posted message, show an alert if unsuccessful
+                alert("Failed to post message, error code(s): " + socketmessage.Message.ErrorMessage.toString())
+                document.getElementById("NewMessageBtn").disabled = false;
+                document.getElementById("MessageSending").hidden = true;
+            }
+            break;
+        case "InteractionResponse":
+            if (socketmessage.Message.Success) {
+                DisplayNewInteraction(socketmessage.Message.Data);
 
-                } else {
-                    alers("Failed to post interaction, error code(s): " + socketmessage.Message.ErrorMessage.toString())
-                }
-                break;
-            default:
+            } else {
+                alers("Failed to post interaction, error code(s): " + socketmessage.Message.ErrorMessage.toString())
+            }
+            break;
+        default:
 
-                break;
-        }
-    } catch {
-        if (event.data == "Authorization passed, connection now open") {
-            document.getElementById("socketstatus").innerHTML = "DEBUG: SOCKET OPEN";
-        }
-        console.log(event.data);
+            break;
     }
+    // } catch {
+    //     if (event.data == "Authorization passed, connection now open") {
+    //         document.getElementById("socketstatus").innerHTML = "DEBUG: SOCKET OPEN";
+    //     }
+    //     console.log(event.data);
+    // }
 }
 
 function DisplayNewMessage(Message, OwnMessage) {
@@ -77,7 +77,14 @@ function DisplayNewMessage(Message, OwnMessage) {
     var icon = document.createElement("div");
     var like = document.createElement("div");
     var dislike = document.createElement("div");
-
+    var likecount = document.createElement("div");
+    var dislikecount = document.createElement("div");
+    like.id = Message.MessageID + "_" + 1;
+    dislike.id = Message.MessageID + "_" + 2;
+    likecount.id = Message.MessageID + "-" + 1;
+    dislikecount.id = Message.MessageID + "-" + 2;
+    likecount.classList.add("interactions");
+    dislikecount.classList.add("interactions");
 
     divText.className = "font-weight-light";
     divName.className = "font-weight-bold";
@@ -122,6 +129,9 @@ function DisplayNewMessage(Message, OwnMessage) {
         $("#" + Message.MessageID).append(divText);
         $("#" + Message.MessageID).append(like);
         $("#" + Message.MessageID).append(dislike);
+
+        $("#" + Message.MessageID + "_" + 1).append(likecount);
+        $("#" + Message.MessageID + "_" + 2).append(dislikecount);
 
         $("#" + Message.MessageID).append();
         $("#" + Message.MessageID).append(pTime);
@@ -168,30 +178,22 @@ function DisplayNewInteraction(Interaction) {
 
 
 function DisplayUpdateInteraction(Interaction) {
-    console.log(Interaction);
-    Interaction.forEach(function (interactions) {
-        var divMessage = document.createElement("div");
-        divMessage.id = interactions.MessageID;
+    var divs = document.getElementsByClassName("interactions");
+    console.log(divs);
+    for (var i = 0; i < divs.length; i++) {
+        divs[i].innerHTML = "";
+    }
 
-        var divInteractiontype = document.createElement("div");
-        var divInteractioncount = document.createElement("div");
-        divInteractiontype.innerHTML = interactions.Interactions[0].InteractionType
-        divInteractioncount.innerHTML = interactions.Interactions[0].Count
-
-        $("#" + interactions.MessageID).append(divMessage);
-
-
-        if (divInteractiontype.innerHTML == 1) {
-            let likes = divInteractioncount.innerHTML + " Like(s)";
-            $("#" + interactions.MessageID).append(likes)
-            likes.replace(divInteractioncount.innerHTML + " Like(s)", divInteractioncount.innerHTML + " Like(s)")
-
-        } else {
-            let dislikes = divInteractioncount.innerHTML + " Dislike(s)";
-            $("#" + interactions.MessageID).append(dislikes)
-            dislikes.replace(divInteractioncount.innerHTML + " Dislike(s)", divInteractioncount.innerHTML + " Dislike(s)")
-
-        }
+    Interaction.forEach(function (Message) {
+        Message.Interactions.forEach(function (ints){
+            if(ints.InteractionType == 1){
+                let likes = ints.Count + " Like(s)";
+                $("#" + Message.MessageID + "-" + 1).empty().append(likes)
+            } else {
+                let dislikes = ints.Count + " Dislike(s)";
+                $("#" + Message.MessageID + "-" + 2).empty().append(dislikes)
+            }
+        })
     });
 }
 
