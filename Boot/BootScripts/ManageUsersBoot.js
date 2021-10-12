@@ -21,8 +21,9 @@ function GetUsers() {
                 });
                 document.getElementById("myUsers").innerHTML += temp;
 
-            } 
-            else {}
+            } else {
+                ProcessErrors(json.errorMessage)
+            }
         }) // if loading failed, error message is shown on screen
         .catch(error => {
             console.error("Error", error);
@@ -55,7 +56,7 @@ function EditUser() {
                     console.log(json);
                     onload
                 } else {
-                    console.log("error", error)
+                    ProcessErrors(json.errorMessage)
                 }
             })
             .catch(error => {
@@ -83,8 +84,9 @@ function DeleteUser() {
         .then(response => response.json())
         .then(json => {
             if (json.success == false) {
-                console.log(json);
+                ProcessErrors(json.errorMessage)
             } else {
+
                 console.log(json);
                 onload
             }
@@ -92,4 +94,9 @@ function DeleteUser() {
         .catch(error => {
             console.log("Failed to send request");
         });
+
+  // function reload() {
+   // reload = location.reload();
+//}
+
 }

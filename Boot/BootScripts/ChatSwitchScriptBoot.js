@@ -31,10 +31,14 @@ function GetInfo() {
                     row += "</div>"
                 }
                 document.getElementById("stages").innerHTML += row;
-            } else {}
+            } else { 
+                ProcessErrors(returndata.errorMessage)
+            }
         }) // if loading failed, error message is shown on screen
         .catch(error => {
             console.error("Error", error);
 
         });
+
+   
 }

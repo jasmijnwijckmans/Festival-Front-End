@@ -61,6 +61,7 @@ function Login() {
                 localStorage.setItem('UserRole', json.data.userRole);
                 GoToSwitch();
             } else {
+                ProcessErrors(json.errorMessage)
                 document.getElementById("ErrorMessage").innerHTML = json.responseMessage[0];
             }
         })
@@ -92,6 +93,7 @@ function Register() {
                 //GoToSwitch();
             } else {
                 // errormessage
+                ProcessErrors(json.errorMessage)
                 document.getElementById("ErrorMessage").innerHTML = json.responseMessage[0];
                 alert("something went wrong, try agian!")
             }
@@ -124,6 +126,7 @@ function UpdateActivity(StageID) {
                     GoToSwitch();
 
                 } else {
+                    ProcessErrors(returndata.errorMessage)
                     localStorage.setItem('current-StageID', StageID);
                     GoToStage();
                 }
@@ -143,6 +146,18 @@ function Logout() {
 
 }
 
+function ProcessErrors(errorCodes) {
+    if (errorCodes != null) {
+        var AlertMessage = " this errorcode:" + errorCodes;
+        alert(AlertMessage)
+
+        if (errorCodes.includes (5)) {
+            alert("you're not a validated user, proceed to login");
+            Logout()
+        }
+    }
+}
+
 
 function DeleteAuthenticationKey() {
     fetch(baseurl + "/api/login/" + localStorage.getItem("UserID"), {
@@ -156,7 +171,8 @@ function DeleteAuthenticationKey() {
         .then(response => response.json())
         .then(json => {
             if (json.success == false) {
-                ProcessErrors(json.errorCodes, json.responseMessage);
+                //when errorcodes get this error.
+                ProcessErrors(json.errorMessage)
             }
         })
         .catch(error => {
