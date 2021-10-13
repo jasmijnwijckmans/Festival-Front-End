@@ -129,8 +129,7 @@ function UpdateActivity(StageID) {
                     localStorage.setItem('current-StageID', StageID);
                     GoToStage();
                 }
-            }
-            else{
+            } else {
                 ProcessErrors(returndata.errorMessage)
             }
         })
@@ -153,11 +152,26 @@ function ProcessErrors(errorCodes) {
         var AlertMessage = " this errorcode:" + errorCodes;
         alert(AlertMessage)
 
-        if (errorCodes.includes (5)) {
+        if (errorCodes.includes(1)) {
+            alert("Server Error, try again later");
+        }
+
+        if (errorCodes.includes(2)) {
+            alert("This request cannot be taken into account");
+        }
+        if (errorCodes.includes(3)) {
+            alert("You do not have acces to enter this resource");
+            Logout()
+        }
+        if (errorCodes.includes(4)) {
+            alert("The data you provided is not correct, try again");
+        }
+        if (errorCodes.includes(5)) {
             alert("you're not a validated user, proceed to login");
             Logout()
         }
     }
+
 }
 
 

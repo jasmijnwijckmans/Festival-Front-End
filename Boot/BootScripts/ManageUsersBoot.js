@@ -92,7 +92,6 @@ function DeleteUser() {
             }
         })
         .catch(error => {
-            console.log("Failed to send request");
         });
 
   // function reload() {
