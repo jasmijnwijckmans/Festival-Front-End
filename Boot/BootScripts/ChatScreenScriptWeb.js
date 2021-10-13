@@ -32,8 +32,10 @@ webSocket.onmessage = function (event) {
                 // In case of an update of the interactions, process the interaction counts into the page
                 DisplayUpdateInteraction(socketmessage.Message);
                 break;
-            case "DeletedMesage":
+            case "DeletedMessage":
                 // In case of an update of an deleted message
+                //DisplayNewMessage(socketmessage.Message, false);
+               //DisplayNewMessage(socketmessage.Message, true);
       
                 break;
             case "MessageResponse":
@@ -57,14 +59,7 @@ webSocket.onmessage = function (event) {
                     alert("Failed to post interaction, error code(s): " + socketmessage.Message.ErrorMessage.toString())
                 }
                 break;
-            case "DeleteResponse":
-                if (socketmessage.Message.Succes) {
-                    alert("Message is deleted with success")
-                }
-                else {
-                    alert("Failed to delete message, error code(s): " + socketmessage.Message.ErrorMessage.toString())
-                }
-                break;
+        
             default:
 
                 break;
@@ -143,7 +138,9 @@ function DisplayNewMessage(Message, OwnMessage) {
 
 
 
+
     } else {
+
         div.className = "text-left";
         like.innerHTML = `<button  style="margin:5px" class = "btn" id = "like" onclick="InteractWithMessage(${Message.MessageID}, 1)"> Like <i class="bi bi-hand-thumbs-up"></i></button>`
         dislike.innerHTML = `<button style="margin:5px" class = "btn" id = "dislike" onclick="InteractWithMessage(${Message.MessageID}, 2)"> Dislike <i class="bi bi-hand-thumbs-down"></i></button>`
@@ -276,16 +273,14 @@ function DeleteMessage(MessageID) {
             console.log(json);
             if (json.success) {
                 console.log(JSON.stringify(msg))               
-                webSocket.send(JSON.stringify(msg))
                 alert("Message is deleted with success")
 
             } else {
-                webSocket.send(JSON.stringify(msg))
+                ProcessErrors(json.ErrorMessageS)
             
             }
         })
         .catch(error => {
-            webSocket.send(JSON.stringify(msg))
         });
  
 }
