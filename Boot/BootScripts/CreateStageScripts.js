@@ -16,7 +16,7 @@ function CreateStage() {
                 console.log(json);
                 if (json.success) {
 
-                    GoToSwitch();
+                    GetStages();
 
                 } else {
                     ProcessErrors(json.errorMessage)
@@ -50,7 +50,7 @@ function EditStage(StageID, Status) {
             .then(json => {
                 console.log(json);
                 if (json.success) {
-                    onload;
+                    GetStages();
                 } else {
                     ProcessErrors(json.errorMessage)
                 }
@@ -66,7 +66,7 @@ function EditStage(StageID, Status) {
 }
 
 
-function GetActiveStages() {
+function GetStages() {
     fetch(baseurl + "/api/Stage/api/Stage/all", {
         headers: {
             "Authorization": localStorage.getItem('AuthenticationKey')
@@ -125,7 +125,7 @@ function DeleteStage(stageID) {
             .then(json => {
                 console.log(json);
                 if (json.success) {
-                    onload;
+                    GetStages();
 
                 } else {
                     //alert("This stage can not be deleted, because there are active users in the stage");
