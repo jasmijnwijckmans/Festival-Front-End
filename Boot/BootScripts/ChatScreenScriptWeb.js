@@ -33,9 +33,8 @@ webSocket.onmessage = function (event) {
                 DisplayUpdateInteraction(socketmessage.Message);
                 break;
             case "DeletedMessage":
-                // In case of an update of an deleted message
-                //DisplayNewMessage(socketmessage.Message, false);
-               //DisplayNewMessage(socketmessage.Message, true);
+                DisplayDeletedMessage(socketmessage.Message);
+
       
                 break;
             case "MessageResponse":
@@ -226,6 +225,10 @@ function DisplayUpdateInteraction(Interaction) {
     });
 }
 
+function DisplayDeletedMessage(MessageID){
+    $("#" +MessageID).remove()
+}
+
 
 // Send new messages
 function SendMessage() {
@@ -258,10 +261,6 @@ function InteractWithMessage(MessageID, InteractionType) {
 }
 
 function DeleteMessage(MessageID) {
-     var msg = {
-        messageType: "Delete",
-        messageID: MessageID,
-    };
     fetch(baseurl + "/api/Messages/"+MessageID, {
         method: "delete",
         headers: {
@@ -272,8 +271,8 @@ function DeleteMessage(MessageID) {
         .then(json => {
             console.log(json);
             if (json.success) {
-                console.log(JSON.stringify(msg))               
-                alert("Message is deleted with success")
+                $("#" +MessageID).remove()
+               
 
             } else {
                 ProcessErrors(json.ErrorMessageS)
