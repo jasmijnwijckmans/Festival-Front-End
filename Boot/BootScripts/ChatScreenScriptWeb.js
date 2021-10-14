@@ -207,7 +207,7 @@ function DisplayNewInteraction(Interaction) {
 
 function DisplayUpdateInteraction(Interaction) {
     var divs = document.getElementsByClassName("interactions");
-    console.log(divs);
+    //console.log(divs);
     for (var i = 0; i < divs.length; i++) {
         divs[i].innerHTML = "";
     }
